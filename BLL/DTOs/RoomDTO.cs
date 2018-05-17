@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Models
+namespace BLL.DTOs
 {
-    public class Room
+    class RoomDTO
     {
         public int Id { get; set; }
         public bool IsPrivate { get; set; }
-        public virtual ICollection<User> Users { get; set; }
-        public virtual ICollection<Message> Messages { get; set; }
+        public virtual ICollection<UserDTO> Users { get; set; }
+        public virtual ICollection<MessageDTO> Messages { get; set; }
     }
 }

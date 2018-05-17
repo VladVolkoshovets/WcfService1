@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace DAL.Models
+namespace WcfService1.DataContracts
 {
     public class User
     {
@@ -14,6 +13,5 @@ namespace DAL.Models
         public int Status { get; set; }
         public virtual ICollection<Message> Messages { get; set; }
         public virtual ICollection<Room> Rooms { get; set; }
-
     }
 }
