@@ -19,7 +19,7 @@ namespace DAL.Models
                     Papassword = "12",
                 },
                 Text = "Hello World",
-                
+                SendTime = DateTime.Now
             };
             context.Messages.Add(message);
 
