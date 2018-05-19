@@ -11,17 +11,51 @@ namespace DAL.Models
     {
         protected override void Seed(MessengerModel context)
         {
+
+            User vlad = new User
+            {
+                UserName = "Vlad",
+                Papassword = "10",
+            };
+            User dima = new User
+            {
+                UserName = "Dima",
+                Papassword = "11",
+            };
+            User stas = new User
+            {
+                UserName = "Stas",
+                Papassword = "11",
+            };
+            User tolik = new User
+            {
+                UserName = "Tolik",
+                Papassword = "12",
+            };
+            Room generalRoom = new Room()
+            {
+                Name = "General",
+                IsPrivate = false
+            };
             Message message = new Message()
             {
-                Sender = new User
-                {
-                    UserName = "Vlad",
-                    Papassword = "12",
-                },
+                Sender = vlad,
                 Text = "Hello World",
-                SendTime = DateTime.Now
+                SendTime = DateTime.Today,
+                room = generalRoom
             };
+            Message message2 = new Message()
+            {
+                Sender = stas,
+                Text = "Ok!",
+                SendTime = DateTime.Today,
+                room = generalRoom
+            };
+            List<User> users = new List<User>() { vlad, dima, stas, tolik };
+            context.Users.AddRange(users);
+            context.Rooms.Add(generalRoom);
             context.Messages.Add(message);
+            context.Messages.Add(message2);
 
             context.SaveChanges();
         }

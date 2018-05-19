@@ -48,6 +48,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="DAL.cs" />
+    <Compile Include="DTOs\MessageDTO.cs" />
+    <Compile Include="DTOs\RoomDTO.cs" />
+    <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +61,9 @@
     <None Include="Connected Services\ServiceReference1\DALwcf.ServiceReference1.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference1\DALwcf.ServiceReference1.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\Service1.wsdl" />
     <None Include="Connected Services\ServiceReference1\Service1.xsd">
       <SubType>Designer</SubType>
@@ -66,6 +72,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference1\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference1\Service13.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

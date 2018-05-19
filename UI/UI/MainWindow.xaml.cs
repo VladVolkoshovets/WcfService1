@@ -19,13 +19,19 @@ namespace UI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    /// </summary>S
     public partial class MainWindow : Window
     {
         private readonly DAL _dal = new DAL();
         public MainWindow()
         {
-            _dal.SomeWork();
+            var l = _dal.GetUsers();
+            string res = String.Empty;
+            foreach (var item in l)
+            {
+                res += item.Id + " " + item.UserName + " " + item.Papassword + "\n";
+            }
+            MessageBox.Show(res);
         }
     }
 }

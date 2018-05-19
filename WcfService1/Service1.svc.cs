@@ -1,4 +1,5 @@
 ﻿using BLL;
+using BLL.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using WcfService1.DataContracts;
 
 namespace WcfService1
 {
@@ -17,6 +19,35 @@ namespace WcfService1
         public void SomeWork()
         {
             _bll.SomeWork();
+        }
+        public User[] GetUsers()
+        {
+            List<UserDTO> usersBLL = _bll.GetUsers();
+            List<User> usersBuff = new List<User>();
+            foreach (var item in usersBLL)
+            {
+                User userDC = new User
+                {
+                    Id = item.Id,
+                    UserName = item.UserName,
+                    Papassword = item.Papassword,
+                    Messages = item.Messages.Select(m => new Message
+                    {
+                        ID = m.ID,
+                        Text = m.Text,
+                        SendTime = m.SendTime,
+                    }).ToList(),
+                    Status = item.Status,
+                    Rooms = item.Rooms.Select(r => new Room
+                    {
+                        Id = r.Id,
+                        IsPrivate = r.IsPrivate,
+                        Name = r.Name
+                    }).ToList()
+                };
+                usersBuff.Add(userDC);
+            }
+            return usersBuff.ToArray();
         }
         public string GetData(int value)
         {

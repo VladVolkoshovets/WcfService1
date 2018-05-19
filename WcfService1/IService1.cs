@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using WcfService1.DataContracts;
 
 namespace WcfService1
 {
@@ -14,7 +15,8 @@ namespace WcfService1
     {
         [OperationContract]
         void SomeWork();
-
+        [OperationContract]
+        User[] GetUsers();
         [OperationContract]
         string GetData(int value);
 

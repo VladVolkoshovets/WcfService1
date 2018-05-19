@@ -15,5 +15,9 @@ namespace DAL
         {
             _ctx.Messages.First();
         }
+        public List<User> GetUsers()
+        {
+            return _ctx.Users.ToList();
+        }
     }
 }

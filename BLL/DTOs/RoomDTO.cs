@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace BLL.DTOs
 {
-    class RoomDTO
+    public class RoomDTO
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public bool IsPrivate { get; set; }
         public virtual ICollection<UserDTO> Users { get; set; }
         public virtual ICollection<MessageDTO> Messages { get; set; }
