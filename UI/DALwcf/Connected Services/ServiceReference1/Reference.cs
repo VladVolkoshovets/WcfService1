@@ -433,6 +433,12 @@ namespace DALwcf.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUsers", ReplyAction="http://tempuri.org/IService1/GetUsersResponse")]
         System.Threading.Tasks.Task<DALwcf.ServiceReference1.User[]> GetUsersAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Autorisation", ReplyAction="http://tempuri.org/IService1/AutorisationResponse")]
+        DALwcf.ServiceReference1.User Autorisation(string UserName, string Password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Autorisation", ReplyAction="http://tempuri.org/IService1/AutorisationResponse")]
+        System.Threading.Tasks.Task<DALwcf.ServiceReference1.User> AutorisationAsync(string UserName, string Password);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
         string GetData(int value);
         
@@ -487,6 +493,14 @@ namespace DALwcf.ServiceReference1 {
         
         public System.Threading.Tasks.Task<DALwcf.ServiceReference1.User[]> GetUsersAsync() {
             return base.Channel.GetUsersAsync();
+        }
+        
+        public DALwcf.ServiceReference1.User Autorisation(string UserName, string Password) {
+            return base.Channel.Autorisation(UserName, Password);
+        }
+        
+        public System.Threading.Tasks.Task<DALwcf.ServiceReference1.User> AutorisationAsync(string UserName, string Password) {
+            return base.Channel.AutorisationAsync(UserName, Password);
         }
         
         public string GetData(int value) {

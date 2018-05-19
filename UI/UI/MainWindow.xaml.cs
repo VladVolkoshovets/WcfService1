@@ -25,13 +25,15 @@ namespace UI
         private readonly DAL _dal = new DAL();
         public MainWindow()
         {
+            InitializeComponent();
+            Main.Content = new LoginPage();
             var l = _dal.GetUsers();
             string res = String.Empty;
             foreach (var item in l)
             {
                 res += item.Id + " " + item.UserName + " " + item.Papassword + "\n";
             }
-            MessageBox.Show(res);
+            //MessageBox.Show(res);
         }
     }
 }

@@ -49,6 +49,33 @@ namespace WcfService1
             }
             return usersBuff.ToArray();
         }
+        public User Autorisation(string UserName, string Password)
+        {
+            UserDTO userDTO = _bll.Autorisation(UserName, Password);
+            User userDC = null;
+            if (userDTO != null)
+            {
+                userDC = new User
+                {
+                    UserName = userDTO.UserName,
+                    Id = userDTO.Id,
+                    Messages = userDTO.Messages.Select(m => new Message
+                    {
+                        ID = m.ID,
+                        Text = m.Text,
+                        SendTime = m.SendTime,
+                    }).ToList(),
+                    Status = userDTO.Status,
+                    Rooms = userDTO.Rooms.Select(r => new Room
+                    {
+                        Id = r.Id,
+                        IsPrivate = r.IsPrivate,
+                        Name = r.Name
+                    }).ToList()
+                };
+            }
+            return userDC;
+        }
         public string GetData(int value)
         {
             

@@ -20,6 +20,12 @@
   <wsdl:message name="IService1_GetUsers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUsersResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_Autorisation_InputMessage">
+    <wsdl:part name="parameters" element="tns:Autorisation" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Autorisation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AutorisationResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_GetData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetData" />
   </wsdl:message>
@@ -40,6 +46,10 @@
     <wsdl:operation name="GetUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUsers" message="tns:IService1_GetUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUsersResponse" message="tns:IService1_GetUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Autorisation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Autorisation" message="tns:IService1_Autorisation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AutorisationResponse" message="tns:IService1_Autorisation_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -63,6 +73,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetUsers">
       <soap:operation soapAction="http://tempuri.org/IService1/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Autorisation">
+      <soap:operation soapAction="http://tempuri.org/IService1/Autorisation" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

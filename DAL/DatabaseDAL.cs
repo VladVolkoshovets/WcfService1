@@ -19,5 +19,10 @@ namespace DAL
         {
             return _ctx.Users.ToList();
         }
+        public User Autorisation(string UserName, string Password)
+        {
+            User user = _ctx.Users.Where(u => u.UserName == UserName && u.Papassword == Password).SingleOrDefault(); 
+            return user;
+        }
     }
 }

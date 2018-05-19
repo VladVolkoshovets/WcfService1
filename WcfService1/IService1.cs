@@ -18,6 +18,8 @@ namespace WcfService1
         [OperationContract]
         User[] GetUsers();
         [OperationContract]
+        User Autorisation(string UserName, string Password);
+        [OperationContract]
         string GetData(int value);
 
         [OperationContract]

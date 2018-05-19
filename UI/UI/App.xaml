@@ -4,6 +4,24 @@
              xmlns:local="clr-namespace:UI"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <SolidColorBrush Color="#03A9F4" x:Key="primary" x:Name="primary2"/>
+            <SolidColorBrush Color="#0288D1" x:Key="primary_dark" />
+            <SolidColorBrush Color="#B3E5FC" x:Key="primary_light" />
+            <SolidColorBrush Color="#FFC107" x:Key="accent" />
+            <SolidColorBrush Color="#212121" x:Key="primary_text" />
+            <SolidColorBrush Color="#757575" x:Key="secondary_text" />
+            <SolidColorBrush Color="#FFFFFF" x:Key="icons" />
+            <SolidColorBrush Color="#BDBDBD" x:Key="divider" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Amber.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+        
     </Application.Resources>
 </Application>

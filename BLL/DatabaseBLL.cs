@@ -45,5 +45,33 @@ namespace BLL
             }
             return userDTOs;
         }
+        public UserDTO Autorisation(string UserName, string Password)
+        {
+            User userDAL = _dal.Autorisation(UserName, Password);
+            UserDTO userDTO = null;
+            if (userDAL != null)
+            {
+                userDTO = new UserDTO
+                {
+                    UserName = userDAL.UserName,
+                    Id = userDAL.Id,
+                    Messages = userDAL.Messages.Select(m => new MessageDTO
+                    {
+                        ID = m.ID,
+                        Text = m.Text,
+                        SendTime = m.SendTime,
+                    }).ToList(),
+                    Status = userDAL.Status,
+                    Rooms = userDAL.Rooms.Select(r => new RoomDTO
+                    {
+                        Id = r.Id,
+                        IsPrivate = r.IsPrivate,
+                        Name = r.Name
+                    }).ToList()
+                };
+                
+            }
+            return userDTO;
+        }
     }
 }
