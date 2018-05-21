@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
+
 using System.Threading.Tasks;
 
 namespace DAL.Models
@@ -11,7 +13,7 @@ namespace DAL.Models
     {
         protected override void Seed(MessengerModel context)
         {
-
+            MemoryStream ms = new MemoryStream();
             User vlad = new User
             {
                 UserName = "Vlad",

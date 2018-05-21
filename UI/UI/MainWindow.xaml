@@ -11,6 +11,6 @@
         <Grid.Background>
             <ImageBrush ImageSource="Images/Background.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
-        <Frame x:Name="Main"></Frame>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

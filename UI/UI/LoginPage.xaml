@@ -56,9 +56,9 @@
                                      FontSize="16"
                                      Foreground="{DynamicResource secondary_text}"
                                      Text="Password"
-                                     IsReadOnly="True">
-                                
-                            </TextBox>
+                                     IsReadOnly="True"
+                                     IsTabStop="False"
+                                     />
                             <PasswordBox x:Name="Password"
                                          Tag="Password"
                                          Margin="0 0 0 30"
@@ -69,7 +69,8 @@
                         
                             <Label></Label>
                             <!-- Login button -->
-                            <Button Content="GO" 
+                        <Button Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                                Content="GO" 
                                     IsDefault="True"
                                     Foreground="{StaticResource icons}"
                                     Command="{Binding LoginCommand}"

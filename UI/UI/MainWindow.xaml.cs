@@ -26,7 +26,7 @@ namespace UI
         public MainWindow()
         {
             InitializeComponent();
-            Main.Content = new LoginPage();
+            MainFrame.Content = new LoginPage();
             var l = _dal.GetUsers();
             string res = String.Empty;
             foreach (var item in l)
@@ -35,5 +35,6 @@ namespace UI
             }
             //MessageBox.Show(res);
         }
+    
     }
 }

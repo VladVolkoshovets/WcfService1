@@ -47,11 +47,12 @@ namespace UI
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
+
             if (_dal.Autorisation(UserName.Text, Password.Password) != null)
             {
-                MessageBox.Show("YRRAA!!");
-            }
-            
+                ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new MainPage();
+            } 
+
         }
     }
 }
