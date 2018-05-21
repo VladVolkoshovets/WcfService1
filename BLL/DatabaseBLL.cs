@@ -3,9 +3,11 @@ using DAL;
 using DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace BLL
 {
@@ -39,8 +41,19 @@ namespace BLL
                         Id = r.Id,
                         IsPrivate = r.IsPrivate,
                         Name = r.Name
-                    }).ToList()
+                    }).ToList(),
+                    Image = item.Image
+                    
                 };
+                if (userDTO.Image == null)
+                {
+                    ImageConverter _imageConverter = new ImageConverter();
+                    Image image = Image.FromFile(@"D:\icon_user.png");
+
+
+                    userDTO.Image = (byte[])_imageConverter.ConvertTo(image, typeof(byte[]));
+
+                }
                 userDTOs.Add(userDTO);
             }
             return userDTOs;
@@ -67,8 +80,20 @@ namespace BLL
                         Id = r.Id,
                         IsPrivate = r.IsPrivate,
                         Name = r.Name
-                    }).ToList()
+                    }).ToList(),
+                    
+                    Image = userDAL.Image
+                    
                 };
+                
+            }
+            if (userDTO.Image == null)
+            {
+                ImageConverter _imageConverter = new ImageConverter();
+                Image image = Image.FromFile(@"D:\icon_user.png");
+                
+
+                userDTO.Image = (byte[])_imageConverter.ConvertTo(image, typeof(byte[]));
                 
             }
             return userDTO;

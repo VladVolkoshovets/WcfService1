@@ -26,6 +26,9 @@ namespace DALwcf.ServiceReference1 {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] ImageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private DALwcf.ServiceReference1.Message[] MessagesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -59,6 +62,19 @@ namespace DALwcf.ServiceReference1 {
                 if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] Image {
+            get {
+                return this.ImageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImageField, value) != true)) {
+                    this.ImageField = value;
+                    this.RaisePropertyChanged("Image");
                 }
             }
         }

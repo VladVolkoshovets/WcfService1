@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DALwcf;
+using DALwcf.DTOs;
 using MaterialDesignColors;
 
 namespace UI
@@ -47,10 +48,11 @@ namespace UI
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
-
-            if (_dal.Autorisation(UserName.Text, Password.Password) != null)
+            UserDTO userDTO = null;
+            userDTO = _dal.Autorisation(UserName.Text, Password.Password);
+            if (userDTO != null)
             {
-                ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new MainPage();
+                ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new MainPage(userDTO);
             } 
 
         }

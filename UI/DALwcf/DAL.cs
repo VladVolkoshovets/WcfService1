@@ -10,6 +10,20 @@ namespace DALwcf
     public class DAL
     {
         private readonly Service1Client _service = new Service1Client();
+        public System.Windows.Media.Imaging.BitmapImage ConvertToImage(byte[] image)
+        {
+            System.Windows.Media.Imaging.BitmapImage GetImage = new System.Windows.Media.Imaging.BitmapImage();
+            using (var ms = new System.IO.MemoryStream(image))
+            {
+                GetImage.BeginInit();
+                GetImage.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad;
+                GetImage.StreamSource = ms;
+                GetImage.EndInit();
+            }
+
+            return GetImage;
+        }
+
         public List<UserDTO> GetUsers()
         {
             var UsersWCF = _service.GetUsers().ToList();
@@ -33,7 +47,9 @@ namespace DALwcf
                         Id = r.Id,
                         IsPrivate = r.IsPrivate,
                         Name = r.Name
-                    }).ToList()
+                    }).ToList(),
+                    Icon = ConvertToImage(item.Image)
+
                 };
                 userDTOs.Add(userDTO);
             }
@@ -62,7 +78,8 @@ namespace DALwcf
                         Id = r.Id,
                         IsPrivate = r.IsPrivate,
                         Name = r.Name
-                    }).ToList()
+                    }).ToList(),
+                    Icon = ConvertToImage(userDAL.Image)
                 };
 
             }

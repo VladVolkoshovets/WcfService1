@@ -9,6 +9,7 @@
   <xs:complexType name="User">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="Messages" nillable="true" type="tns:ArrayOfMessage" />
       <xs:element minOccurs="0" name="Papassword" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Rooms" nillable="true" type="tns:ArrayOfRoom" />

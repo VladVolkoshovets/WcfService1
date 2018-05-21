@@ -12,6 +12,7 @@ namespace BLL.DTOs
         public string UserName { get; set; }
         public string Papassword { get; set; }
         public int Status { get; set; }
+        public byte[] Image { get; set; }
         public virtual ICollection<MessageDTO> Messages { get; set; }
         public virtual ICollection<RoomDTO> Rooms { get; set; }
     }

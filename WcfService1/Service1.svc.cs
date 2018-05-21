@@ -43,7 +43,8 @@ namespace WcfService1
                         Id = r.Id,
                         IsPrivate = r.IsPrivate,
                         Name = r.Name
-                    }).ToList()
+                    }).ToList(),
+                    Image = item.Image
                 };
                 usersBuff.Add(userDC);
             }
@@ -71,7 +72,9 @@ namespace WcfService1
                         Id = r.Id,
                         IsPrivate = r.IsPrivate,
                         Name = r.Name
-                    }).ToList()
+                    }).ToList(),
+                    Image = userDTO.Image
+                    
                 };
             }
             return userDC;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DALwcf.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,24 +23,37 @@ namespace UI
     {
         
 
-        public MainPage()
+        public MainPage(UserDTO userDTO)
         {
             InitializeComponent();
+
+            Image image = new Image();
+            image.Source = userDTO.Icon;
+
+            IconButton = image;
+
             ChatFrame.Content = new NonSelectedChatPage();
+
+
             for (int i = 0; i < 3; i++)
             {
+
                 Button button = new Button();
                 Grid grid = new Grid();
-                
-                
-                
+                //button = SupperButton1;
+                button.Content = SupperButton1.ContentTemplate;
+
+                DynamicResourceExtension dynamicResource = new DynamicResourceExtension();
+                dynamicResource.ResourceKey = "ButtonTemplate";
+                //button.Content= Template.Resources.FindName("ButtonTemplate");
+                //button.Content = dynamicResource;
                 //RoomName.Text = "GEnerAL";
                 //LastMessage.Text = "Heare will be message";
-                grid.Resources = MyGrid.Resources;
-               
-                button.DataContext = SupperButton.DataContext;
-                //button.Content = SupperButton.Content;
-                button.Content = SupperButton.Resources.Values;
+                //grid.Resources = MyGrid.Resources;
+
+                //button.DataContext = SupperButton.DataContext;
+                //button.Content = SupperButton1.ContentTemplate.LoadContent();
+                //button.Content = SupperButton.Resources.Values;
                 ButtonsPanel.Children.Add(button);
             }
            
