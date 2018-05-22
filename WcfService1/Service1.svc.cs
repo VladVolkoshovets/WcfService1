@@ -30,7 +30,6 @@ namespace WcfService1
                 {
                     Id = item.Id,
                     UserName = item.UserName,
-                    Papassword = item.Papassword,
                     Messages = item.Messages.Select(m => new Message
                     {
                         ID = m.ID,
@@ -71,7 +70,13 @@ namespace WcfService1
                     {
                         Id = r.Id,
                         IsPrivate = r.IsPrivate,
-                        Name = r.Name
+                        Name = r.Name,
+                        Messages = r.Messages.Select(m => new Message
+                        {
+                            ID = m.ID,
+                            Text = m.Text,
+                            SendTime = m.SendTime,
+                        }).ToList(),
                     }).ToList(),
                     Image = userDTO.Image
                     

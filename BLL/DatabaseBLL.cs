@@ -79,23 +79,29 @@ namespace BLL
                     {
                         Id = r.Id,
                         IsPrivate = r.IsPrivate,
-                        Name = r.Name
+                        Name = r.Name,
+                        Messages = r.Messages.Select(m => new MessageDTO
+                        {
+                            ID = m.ID,
+                            Text = m.Text,
+                            SendTime = m.SendTime,
+                        }).ToList(),
                     }).ToList(),
                     
                     Image = userDAL.Image
                     
                 };
-                
-            }
-            if (userDTO.Image == null)
-            {
-                ImageConverter _imageConverter = new ImageConverter();
-                Image image = Image.FromFile(@"D:\icon_user.png");
-                
+                if (userDTO.Image == null)
+                {
+                    ImageConverter _imageConverter = new ImageConverter();
+                    Image image = Image.FromFile(@"D:\icon_user.png");
 
-                userDTO.Image = (byte[])_imageConverter.ConvertTo(image, typeof(byte[]));
-                
+
+                    userDTO.Image = (byte[])_imageConverter.ConvertTo(image, typeof(byte[]));
+
+                }
             }
+            
             return userDTO;
         }
     }

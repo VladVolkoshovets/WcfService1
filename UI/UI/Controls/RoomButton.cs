@@ -78,8 +78,8 @@ namespace UI.Controls
 
             TextBlock userName = new TextBlock();
             userName.Text = UserName;
-            userName.Background = Brushes.Bisque;
-            
+            userName.Margin = new System.Windows.Thickness(4);
+            userName.VerticalAlignment = System.Windows.VerticalAlignment.Center;
             userName.FontSize = 14;
             userName.Foreground = Brushes.Black;
             Grid.SetColumn(userName, 1);
@@ -87,6 +87,11 @@ namespace UI.Controls
 
             TextBlock lastMessage = new TextBlock();
             lastMessage.Text = LastMessage;
+            lastMessage.FontSize = 10;
+            lastMessage.Foreground = System.Windows.Application.Current.Resources["primary_text"] as Brush;
+            lastMessage.TextWrapping = System.Windows.TextWrapping.Wrap;
+            lastMessage.FontFamily = new FontFamily("Verdana");
+            lastMessage.Margin = new System.Windows.Thickness(4);
             Grid.SetColumn(lastMessage, 1);
             Grid.SetRow(lastMessage, 1);
             Grid.SetColumnSpan(lastMessage, 2);

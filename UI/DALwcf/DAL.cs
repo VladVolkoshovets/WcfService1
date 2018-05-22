@@ -34,7 +34,6 @@ namespace DALwcf
                 {
                     Id = item.Id,
                     UserName = item.UserName,
-                    Papassword = item.Papassword,
                     Messages = item.Messages.Select(m => new MessageDTO
                     {
                         ID = m.ID,
@@ -77,7 +76,13 @@ namespace DALwcf
                     {
                         Id = r.Id,
                         IsPrivate = r.IsPrivate,
-                        Name = r.Name
+                        Name = r.Name,
+                        Messages = r.Messages.Select(m => new MessageDTO
+                        {
+                            ID = m.ID,
+                            Text = m.Text,
+                            SendTime = m.SendTime,
+                        }).ToList(),
                     }).ToList(),
                     Icon = ConvertToImage(userDAL.Image)
                 };

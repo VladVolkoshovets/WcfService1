@@ -34,10 +34,35 @@ namespace DAL.Models
                 UserName = "Tolik",
                 Papassword = "12",
             };
+            User milky = new User
+            {
+                UserName = "Milky",
+                Papassword = "niga",
+            };
+            User deShawn = new User
+            {
+                UserName = "DeShawn",
+                Papassword = "niga",
+            };
+
+            List<User> users = new List<User>() { vlad, dima, stas, tolik, milky, deShawn };
             Room generalRoom = new Room()
             {
                 Name = "General",
-                IsPrivate = false
+                IsPrivate = false,
+                Users = users
+            };
+            Room testRoom = new Room()
+            {
+                Name = "TestRoom",
+                IsPrivate = false,
+                Users = new List<User> { vlad, tolik, dima, milky }
+            };
+            Room testDialog = new Room()
+            {
+                Name = "testDialog",
+                IsPrivate = false,
+                Users = new List<User> { deShawn, milky }
             };
             Message message = new Message()
             {
@@ -46,19 +71,77 @@ namespace DAL.Models
                 SendTime = DateTime.Today,
                 room = generalRoom
             };
-            Message message2 = new Message()
+            Message message1 = new Message()
             {
                 Sender = stas,
                 Text = "Ok!",
                 SendTime = DateTime.Today,
                 room = generalRoom
             };
-            List<User> users = new List<User>() { vlad, dima, stas, tolik };
+            Message message2 = new Message()
+            {
+                Sender = vlad,
+                Text = "Hello guys!!",
+                SendTime = DateTime.Today,
+                room = testRoom
+            };
+            Message message3 = new Message()
+            {
+                Sender = stas,
+                Text = "Hi man!",
+                SendTime = DateTime.Today,
+                room = testRoom
+            };
+            Message message4 = new Message()
+            {
+                Sender = dima,
+                Text = "How are u?",
+                SendTime = DateTime.Today,
+                room = testRoom
+            };
+            Message message5 = new Message()
+            {
+                Sender = tolik,
+                Text = "Pretty good!!",
+                SendTime = DateTime.Today,
+                room = testRoom
+            };
+            Message message6 = new Message()
+            {
+                Sender = milky,
+                Text = "I think i saw u diging apples..",
+                SendTime = DateTime.Today,
+                room = testDialog
+            };
+            Message message7 = new Message()
+            {
+                Sender = deShawn,
+                Text = "Ye niga! It was tomorrow!",
+                SendTime = DateTime.Today,
+                room = testDialog
+            };
+            Message message8 = new Message()
+            {
+                Sender = milky,
+                Text = "Ok! I'll be back yesterday",
+                SendTime = DateTime.Today,
+                room = testDialog
+            };
+            Message message9 = new Message()
+            {
+                Sender = milky,
+                Text = "Test<",
+                SendTime = DateTime.Today,
+                room = generalRoom
+            };
+            List<Room> rooms = new List<Room>() { generalRoom, testDialog, testRoom };
+            List<Message> messages = new List<Message> { message, message1, message2, message3, message4, message5, message6, message7};
             context.Users.AddRange(users);
-            context.Rooms.Add(generalRoom);
-            context.Messages.Add(message);
-            context.Messages.Add(message2);
-
+            context.Rooms.AddRange(rooms);            
+            context.Messages.AddRange(messages);
+            context.SaveChanges();
+            context.Messages.Add(message8);
+            context.Messages.Add(message9);
             context.SaveChanges();
         }
     }

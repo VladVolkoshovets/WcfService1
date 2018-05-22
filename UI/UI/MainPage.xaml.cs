@@ -34,34 +34,18 @@ namespace UI
             IconButton = image;
 
             ChatFrame.Content = new NonSelectedChatPage();
-
-
-            for (int i = 0; i < 3; i++)
+            foreach (var item in userDTO.Rooms)
             {
-
-                //Button button = new Button();
-                //Grid grid = new Grid();
-                //button = SupperButton1;
-                //button.Content = SupperButton1.ContentTemplate;
-                //
-                //DynamicResourceExtension dynamicResource = new DynamicResourceExtension();
-                //dynamicResource.ResourceKey = "ButtonTemplate";
-                //button.Content= Template.Resources.FindName("ButtonTemplate");
-                //button.Content = dynamicResource;
-                //RoomName.Text = "GEnerAL";
-                //LastMessage.Text = "Heare will be message";
-                //grid.Resources = MyGrid.Resources;
-
-                //button.DataContext = SupperButton.DataContext;
-                //button.Content = SupperButton1.ContentTemplate.LoadContent();
-                //button.Content = SupperButton.Resources.Values;
-
                 RoomButton roomButton = new RoomButton()
                 {
-                    UserName = i.ToString(),
+                    UserName = item.Name,
                     Icon = userDTO.Icon,
-                    LastMessage = "Some mesage fksdj fjsd jf Bla Bla Bla Olia Ila dalila Da da asfas asfd asd asfd asfd as afs as af asd asfd asdf asf asf a af a"
+                    LastMessage = String.Empty
                 };
+                if (item.Messages != null)
+                {
+                    roomButton.LastMessage = item.Messages.Last().Text;
+                }
                 roomButton.SetContent();
                 ButtonsPanel.Children.Add(roomButton);
             }
