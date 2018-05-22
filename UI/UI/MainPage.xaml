@@ -59,7 +59,7 @@
 
                     <TextBlock Background="Transparent" Name="RoomName1" Grid.Column="1" Foreground="{StaticResource primary_text}" FontSize="14" Margin="3">Vlad</TextBlock>
                     <TextBlock Background="Transparent" Name="LastMessage1" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Foreground="{StaticResource primary_text}" FontFamily="Verdana" FontSize="10" TextWrapping="Wrap" Margin="4" >Some mesage fksdj fjsd jf Bla Bla Bla Olia Ila dalila Da da asfas asfd asd asfd asfd as afs as af asd asfd asdf asf asf a af a </TextBlock>
-                    <Button  Grid.RowSpan="2" Height="50" Width="50" MinHeight="45" MinWidth="45"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}"  FontSize="11" Margin="0" IsHitTestVisible="False">
+                    <Button  Grid.RowSpan="2" Height="50" Width="50" MinHeight="45" MinWidth="45"  Style="{DynamicResource MaterialDesignFloatingActionAccentButton}" Margin="0" IsHitTestVisible="False">
                         <Image x:Name="IconButton" Source="Images/icon_user.png" Height="33"/>
                     </Button>
                 </Grid>

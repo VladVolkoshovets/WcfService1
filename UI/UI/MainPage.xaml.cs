@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UI.Controls;
 
 namespace UI
 {
@@ -38,13 +39,13 @@ namespace UI
             for (int i = 0; i < 3; i++)
             {
 
-                Button button = new Button();
-                Grid grid = new Grid();
+                //Button button = new Button();
+                //Grid grid = new Grid();
                 //button = SupperButton1;
-                button.Content = SupperButton1.ContentTemplate;
-
-                DynamicResourceExtension dynamicResource = new DynamicResourceExtension();
-                dynamicResource.ResourceKey = "ButtonTemplate";
+                //button.Content = SupperButton1.ContentTemplate;
+                //
+                //DynamicResourceExtension dynamicResource = new DynamicResourceExtension();
+                //dynamicResource.ResourceKey = "ButtonTemplate";
                 //button.Content= Template.Resources.FindName("ButtonTemplate");
                 //button.Content = dynamicResource;
                 //RoomName.Text = "GEnerAL";
@@ -54,7 +55,15 @@ namespace UI
                 //button.DataContext = SupperButton.DataContext;
                 //button.Content = SupperButton1.ContentTemplate.LoadContent();
                 //button.Content = SupperButton.Resources.Values;
-                ButtonsPanel.Children.Add(button);
+
+                RoomButton roomButton = new RoomButton()
+                {
+                    UserName = i.ToString(),
+                    Icon = userDTO.Icon,
+                    LastMessage = "Some mesage fksdj fjsd jf Bla Bla Bla Olia Ila dalila Da da asfas asfd asd asfd asfd as afs as af asd asfd asdf asf asf a af a"
+                };
+                roomButton.SetContent();
+                ButtonsPanel.Children.Add(roomButton);
             }
            
         }

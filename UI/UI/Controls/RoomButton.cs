@@ -4,29 +4,98 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
+
 
 namespace UI.Controls
 {
     class RoomButton : Button
     {
+
+        public String UserName { get; set; }
+        public String LastMessage { get; set; }
+        public System.Windows.Media.Imaging.BitmapImage Icon { get; set; }
         public RoomButton()
         {
-            Grid grid = new Grid();
-            {
-            }
+            Height = 75;
+            Padding = new System.Windows.Thickness(0,0, 0, 0);
             
+        }
+        public void SetContent()
+        {
+            
+            Style = System.Windows.Application.Current.Resources["MaterialDesignFlatAccentButton"] as System.Windows.Style;
+            Padding = new System.Windows.Thickness(4);
+            //System.Windows.Thickness pading = Padding;
+            //pading.Left = 1;
+            //pading.Right = 1;
+            //pading.Top = 1;
+            //pading.Bottom = 1;
+            //Padding = pading;
+            VerticalContentAlignment = System.Windows.VerticalAlignment.Stretch;
+            HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch;
+
+            Grid gridContent = new Grid();
+
             ColumnDefinition colDef1 = new ColumnDefinition();
             ColumnDefinition colDef2 = new ColumnDefinition();
             ColumnDefinition colDef3 = new ColumnDefinition();
-            grid.ColumnDefinitions.Add(colDef1);
-            grid.ColumnDefinitions.Add(colDef2);
-            grid.ColumnDefinitions.Add(colDef3);
-            RowDefinition rowDef1 = new RowDefinition();
-            
-            RowDefinition rowDef2 = new RowDefinition();
-            grid.RowDefinitions.Add(rowDef1);
-            grid.RowDefinitions.Add(rowDef2);
            
+            //colDef2.MinWidth = 50;
+            colDef2.Width = new System.Windows.GridLength(2, System.Windows.GridUnitType.Star);
+            //colDef3.MinWidth = 35;
+            gridContent.ColumnDefinitions.Add(colDef1);
+            gridContent.ColumnDefinitions.Add(colDef2);
+            gridContent.ColumnDefinitions.Add(colDef3);
+
+            RowDefinition rowDef1 = new RowDefinition();
+            RowDefinition rowDef2 = new RowDefinition();
+            gridContent.RowDefinitions.Add(rowDef1);
+            gridContent.RowDefinitions.Add(rowDef2);
+
+            Button buttonIcon = new Button();
+            
+            
+
+            Image image = new Image();
+            image.Source = Icon;
+            image.Height = 33;
+            buttonIcon.Height = 50;
+            buttonIcon.Width = 50;
+            buttonIcon.MinHeight = 45;
+            buttonIcon.MinWidth = 45;
+            buttonIcon.Content = image;
+            
+            buttonIcon.Style = System.Windows.Application.Current.Resources["MaterialDesignFloatingActionAccentButton"] as System.Windows.Style;
+            buttonIcon.MaxHeight = 50;
+            buttonIcon.MaxWidth = 50;
+            buttonIcon.MinHeight = 45;
+            buttonIcon.MinWidth = 45;
+            buttonIcon.IsHitTestVisible = false;
+            //buttonIcon.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+            Grid.SetRowSpan(buttonIcon, 2);
+            
+
+            TextBlock userName = new TextBlock();
+            userName.Text = UserName;
+            userName.Background = Brushes.Bisque;
+            
+            userName.FontSize = 14;
+            userName.Foreground = Brushes.Black;
+            Grid.SetColumn(userName, 1);
+
+
+            TextBlock lastMessage = new TextBlock();
+            lastMessage.Text = LastMessage;
+            Grid.SetColumn(lastMessage, 1);
+            Grid.SetRow(lastMessage, 1);
+            Grid.SetColumnSpan(lastMessage, 2);
+
+            gridContent.Children.Add(buttonIcon);
+            gridContent.Children.Add(userName);
+            gridContent.Children.Add(lastMessage);
+
+            Content = gridContent;
         }
     }
 }
