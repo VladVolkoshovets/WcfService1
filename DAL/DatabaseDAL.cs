@@ -21,7 +21,7 @@ namespace DAL
         }
         public User Autorisation(string UserName, string Password)
         {
-            User user = _ctx.Users.Where(u => u.UserName == UserName && u.Papassword == Password).SingleOrDefault(); 
+            User user = _ctx.Users.FirstOrDefault(u => u.UserName == UserName && u.Papassword == Password); 
             return user;
         }
     }

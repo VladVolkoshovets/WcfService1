@@ -76,6 +76,11 @@ namespace WcfService1
                             ID = m.ID,
                             Text = m.Text,
                             SendTime = m.SendTime,
+                            Sender = new User
+                            {
+                                Image = m.Sender.Image,
+                                UserName = m.Sender.UserName
+                            },
                         }).ToList(),
                     }).ToList(),
                     Image = userDTO.Image

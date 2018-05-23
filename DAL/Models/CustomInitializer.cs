@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,12 @@ namespace DAL.Models
 {
     internal class CustomInitializer<T> : DropCreateDatabaseAlways<MessengerModel>
     {
+        byte[] SetDefoultIcon(string path)
+        {
+            ImageConverter _imageConverter = new ImageConverter();
+            Image image = Image.FromFile(path);
+            return (byte[])_imageConverter.ConvertTo(image, typeof(byte[]));
+        }
         protected override void Seed(MessengerModel context)
         {
             MemoryStream ms = new MemoryStream();
@@ -38,6 +45,7 @@ namespace DAL.Models
             {
                 UserName = "Milky",
                 Papassword = "niga",
+                Image = SetDefoultIcon(@"D:\NigasIcon.jpg")
             };
             User deShawn = new User
             {
@@ -69,70 +77,70 @@ namespace DAL.Models
                 Sender = vlad,
                 Text = "Hello World",
                 SendTime = DateTime.Today,
-                room = generalRoom
+                Room = generalRoom
             };
             Message message1 = new Message()
             {
                 Sender = stas,
                 Text = "Ok!",
                 SendTime = DateTime.Today,
-                room = generalRoom
+                Room = generalRoom
             };
             Message message2 = new Message()
             {
                 Sender = vlad,
                 Text = "Hello guys!!",
                 SendTime = DateTime.Today,
-                room = testRoom
+                Room = testRoom
             };
             Message message3 = new Message()
             {
                 Sender = stas,
                 Text = "Hi man!",
                 SendTime = DateTime.Today,
-                room = testRoom
+                Room = testRoom
             };
             Message message4 = new Message()
             {
                 Sender = dima,
                 Text = "How are u?",
                 SendTime = DateTime.Today,
-                room = testRoom
+                Room = testRoom
             };
             Message message5 = new Message()
             {
                 Sender = tolik,
                 Text = "Pretty good!!",
                 SendTime = DateTime.Today,
-                room = testRoom
+                Room = testRoom
             };
             Message message6 = new Message()
             {
                 Sender = milky,
                 Text = "I think i saw u diging apples..",
                 SendTime = DateTime.Today,
-                room = testDialog
+                Room = testDialog
             };
             Message message7 = new Message()
             {
                 Sender = deShawn,
                 Text = "Ye niga! It was tomorrow!",
                 SendTime = DateTime.Today,
-                room = testDialog
+                Room = testDialog
             };
             Message message8 = new Message()
             {
                 Sender = milky,
                 Text = "Ok! I'll be back yesterday",
                 SendTime = DateTime.Today,
-                room = testDialog
+                Room = testDialog
             };
             Message message9 = new Message()
             {
                 Sender = milky,
                 Text = "Test<",
                 SendTime = DateTime.Today,
-                room = generalRoom
+                Room = generalRoom
             };
             List<Room> rooms = new List<Room>() { generalRoom, testDialog, testRoom };
             List<Message> messages = new List<Message> { message, message1, message2, message3, message4, message5, message6, message7};

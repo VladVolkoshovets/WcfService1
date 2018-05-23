@@ -82,6 +82,11 @@ namespace DALwcf
                             ID = m.ID,
                             Text = m.Text,
                             SendTime = m.SendTime,
+                            Sender = new UserDTO
+                            {
+                                Icon = ConvertToImage(m.Sender.Image),
+                                UserName = m.Sender.UserName
+                            },
                         }).ToList(),
                     }).ToList(),
                     Icon = ConvertToImage(userDAL.Image)

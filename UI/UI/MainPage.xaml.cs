@@ -39,12 +39,12 @@ namespace UI
                 RoomButton roomButton = new RoomButton()
                 {
                     UserName = item.Name,
-                    Icon = userDTO.Icon,
                     LastMessage = String.Empty
                 };
                 if (item.Messages != null)
                 {
-                    roomButton.LastMessage = item.Messages.Last().Text;
+                    roomButton.LastMessage = item.Messages.Last().Sender.UserName + ": " + item.Messages.Last().Text;
+                    roomButton.Icon = item.Messages.Last().Sender.Icon;
                 }
                 roomButton.SetContent();
                 ButtonsPanel.Children.Add(roomButton);
