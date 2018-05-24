@@ -23,7 +23,7 @@ namespace DALwcf
 
             return GetImage;
         }
-
+        
         public List<UserDTO> GetUsers()
         {
             var UsersWCF = _service.GetUsers().ToList();

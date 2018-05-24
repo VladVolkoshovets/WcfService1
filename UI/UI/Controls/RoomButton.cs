@@ -59,18 +59,22 @@ namespace UI.Controls
 
             Image image = new Image();
             image.Source = Icon;
-            image.Height = 33;
-            buttonIcon.Height = 50;
-            buttonIcon.Width = 50;
-            buttonIcon.MinHeight = 45;
-            buttonIcon.MinWidth = 45;
-            buttonIcon.Content = image;
             
+            buttonIcon.Content = image;
             buttonIcon.Style = System.Windows.Application.Current.Resources["MaterialDesignFloatingActionAccentButton"] as System.Windows.Style;
-            buttonIcon.MaxHeight = 50;
-            buttonIcon.MaxWidth = 50;
-            buttonIcon.MinHeight = 45;
-            buttonIcon.MinWidth = 45;
+            buttonIcon.BorderBrush = Brushes.Transparent;
+            buttonIcon.Padding = new System.Windows.Thickness(0);
+            buttonIcon.VerticalContentAlignment = System.Windows.VerticalAlignment.Center;
+            buttonIcon.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
+            //image.Height = 34;
+            image.MaxHeight = 54;
+            image.MaxHeight = 54;
+            image.MinWidth = 54;
+            image.MaxWidth = 54;
+            image.Height = 54;
+            image.Width = 54;
+            buttonIcon.Height = 54;
+            buttonIcon.Width = 54;
             buttonIcon.IsHitTestVisible = false;
             //buttonIcon.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
             Grid.SetRowSpan(buttonIcon, 2);
