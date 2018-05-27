@@ -14,6 +14,7 @@ namespace UI.Controls
 
         public String UserName { get; set; }
         public String LastMessage { get; set; }
+
         public System.Windows.Media.Imaging.BitmapImage Icon { get; set; }
         public RoomButton()
         {
@@ -21,9 +22,18 @@ namespace UI.Controls
             Padding = new System.Windows.Thickness(0,0, 0, 0);
             
         }
+        public void Select()
+        {
+            Background = System.Windows.Application.Current.Resources["primary"] as Brush;
+
+        }
+        public void UnSelect()
+        {
+            Background = System.Windows.Application.Current.Resources["icon"] as Brush;
+        }
         public void SetContent()
         {
-            
+
             Style = System.Windows.Application.Current.Resources["MaterialDesignFlatAccentButton"] as System.Windows.Style;
             Padding = new System.Windows.Thickness(4);
             //System.Windows.Thickness pading = Padding;

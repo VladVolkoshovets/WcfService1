@@ -19,10 +19,10 @@ namespace BLL
         {
             _dal.SomeWork();
         }
-        byte[] SetDefoultIcon()
+        byte[] DefoultIcon()
         {
             ImageConverter _imageConverter = new ImageConverter();
-            Image image = Image.FromFile(@"D:\icon_user.png");
+            Image image = Image.FromFile(@"D:\icon_user11.png");
             return (byte[])_imageConverter.ConvertTo(image, typeof(byte[]));
         }
         public List<UserDTO> GetUsers()
@@ -54,12 +54,7 @@ namespace BLL
                 };
                 if (userDTO.Image == null)
                 {
-                    ImageConverter _imageConverter = new ImageConverter();
-                    Image image = Image.FromFile(@"D:\icon_user.png");
-
-
-                    userDTO.Image = (byte[])_imageConverter.ConvertTo(image, typeof(byte[]));
-
+                    userDTO.Image = DefoultIcon();
                 }
                 userDTOs.Add(userDTO);
             }
@@ -95,7 +90,7 @@ namespace BLL
                             SendTime = m.SendTime,
                             Sender = new UserDTO
                             {
-                                Image = m.Sender?.Image??SetDefoultIcon(),
+                                Image = m.Sender?.Image??DefoultIcon(),
                                 UserName = m.Sender.UserName
                             }
 
@@ -107,7 +102,7 @@ namespace BLL
                 };
                 if (userDTO.Image == null)
                 {
-                    userDTO.Image = SetDefoultIcon();
+                    userDTO.Image = DefoultIcon();
                 }
             }
             

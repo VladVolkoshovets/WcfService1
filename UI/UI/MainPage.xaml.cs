@@ -28,41 +28,51 @@ namespace UI
         {
             InitializeComponent();
 
-            Image image = new Image();
-            image.Source = userDTO.Icon;
 
-            IconButton = image;
 
             ChatFrame.Content = new NonSelectedChatPage();
             foreach (var item in userDTO.Rooms)
             {
-
-                //RoomButton roomButton = new RoomButton()
+                if (item.Messages != null)
+                {
+                    RoomButton roomButton = new RoomButton()
+                    {
+                        UserName = item.Name,
+                        LastMessage = String.Empty
+                    };
+                   
+                    roomButton.LastMessage = item.Messages.Last().Sender.UserName + ": " + item.Messages.Last().Text;
+                    roomButton.Icon = item.Messages.Last().Sender.Icon;
+                    roomButton.Tag = item.Id;
+                    roomButton.Click += new System.Windows.RoutedEventHandler((Sender, Args) =>
+                    {
+                        for (int i = 0; i < ButtonsPanel.Children.Count; i++)
+                        {
+                            if (ButtonsPanel.Children[i] is RoomButton)
+                            {
+                                (ButtonsPanel.Children[i] as RoomButton).UnSelect();
+                            }
+                        }
+                        roomButton.Select();
+                        ChatFrame.Content = new ChatPage();
+                    });
+                    roomButton.SetContent();
+                    ButtonsPanel.Children.Add(roomButton);
+                }
+               
+                //RadioButtonExperement roomButton = new RadioButtonExperement()
                 //{
                 //    UserName = item.Name,
                 //    LastMessage = String.Empty
                 //};
                 //if (item.Messages != null)
                 //{
-                //    
+                //
                 //    roomButton.LastMessage = item.Messages.Last().Sender.UserName + ": " + item.Messages.Last().Text;
                 //    roomButton.Icon = item.Messages.Last().Sender.Icon;
                 //}
                 //roomButton.SetContent();
                 //ButtonsPanel.Children.Add(roomButton);
-                RadioButtonExperement roomButton = new RadioButtonExperement()
-                {
-                    UserName = item.Name,
-                    LastMessage = String.Empty
-                };
-                if (item.Messages != null)
-                {
-
-                    roomButton.LastMessage = item.Messages.Last().Sender.UserName + ": " + item.Messages.Last().Text;
-                    roomButton.Icon = item.Messages.Last().Sender.Icon;
-                }
-                roomButton.SetContent();
-                ButtonsPanel.Children.Add(roomButton);
 
             }
 
