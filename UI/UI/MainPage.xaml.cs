@@ -36,20 +36,36 @@ namespace UI
             ChatFrame.Content = new NonSelectedChatPage();
             foreach (var item in userDTO.Rooms)
             {
-                RoomButton roomButton = new RoomButton()
+
+                //RoomButton roomButton = new RoomButton()
+                //{
+                //    UserName = item.Name,
+                //    LastMessage = String.Empty
+                //};
+                //if (item.Messages != null)
+                //{
+                //    
+                //    roomButton.LastMessage = item.Messages.Last().Sender.UserName + ": " + item.Messages.Last().Text;
+                //    roomButton.Icon = item.Messages.Last().Sender.Icon;
+                //}
+                //roomButton.SetContent();
+                //ButtonsPanel.Children.Add(roomButton);
+                RadioButtonExperement roomButton = new RadioButtonExperement()
                 {
                     UserName = item.Name,
                     LastMessage = String.Empty
                 };
                 if (item.Messages != null)
                 {
+
                     roomButton.LastMessage = item.Messages.Last().Sender.UserName + ": " + item.Messages.Last().Text;
                     roomButton.Icon = item.Messages.Last().Sender.Icon;
                 }
                 roomButton.SetContent();
                 ButtonsPanel.Children.Add(roomButton);
+
             }
-           
+
         }
     }
 }

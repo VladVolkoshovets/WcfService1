@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
+
     public class DatabaseBLL
     {
         private readonly DatabaseDAL _dal = new DatabaseDAL();

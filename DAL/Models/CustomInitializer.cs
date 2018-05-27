@@ -12,9 +12,8 @@ namespace DAL.Models
 {
     internal class CustomInitializer<T> : DropCreateDatabaseAlways<MessengerModel>
     {
-        Bitmap MakeSquarePhoto(Bitmap bmp)
+        private  Bitmap MakeSquarePhoto(Bitmap bmp)
         {
-
             int size;
             int t = 0, l = 0;
             if (bmp.Height > bmp.Width)
@@ -36,15 +35,13 @@ namespace DAL.Models
             
             
         }
-        byte[] SetDefoultIcon(string path)
+        byte[] GetBytesIcon(string path)
         {
             Bitmap bitmap = MakeSquarePhoto(new Bitmap(path));
 
             ImageConverter _imageConverter = new ImageConverter();
-            Image image = (Image)bitmap;
 
-
-            return (byte[])_imageConverter.ConvertTo(image, typeof(byte[]));
+            return (byte[])_imageConverter.ConvertTo(bitmap, typeof(byte[]));
         }
         protected override void Seed(MessengerModel context)
         {
@@ -73,7 +70,7 @@ namespace DAL.Models
             {
                 UserName = "Milky",
                 Papassword = "niga",
-                Image = SetDefoultIcon(@"D:\NigasIcon.jpg")
+                Image = GetBytesIcon(@"D:\NigasIcon2.jpg")
             };
             User deShawn = new User
             {
@@ -175,6 +172,9 @@ namespace DAL.Models
             context.Users.AddRange(users);
             context.Rooms.AddRange(rooms);            
             context.Messages.AddRange(messages);
+            context.SaveChanges();
+            context.SaveChanges();
+            context.SaveChanges();
             context.SaveChanges();
             context.Messages.Add(message8);
             context.Messages.Add(message9);

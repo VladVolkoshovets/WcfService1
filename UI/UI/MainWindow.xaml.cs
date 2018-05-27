@@ -27,12 +27,13 @@ namespace UI
         {
             InitializeComponent();
             MainFrame.Content = new LoginPage();
-            var l = _dal.GetUsers();
-            string res = String.Empty;
-            foreach (var item in l)
-            {
-                res += item.Id + " " + item.UserName + " " + item.Papassword + "\n";
-            }
+            _dal.FakeWork();
+            //var l = _dal.GetUsers();
+            //string res = String.Empty;
+            //foreach (var item in l)
+            //{
+            //    res += item.Id + " " + item.UserName + " " + item.Papassword + "\n";
+            //
             //MessageBox.Show(res);
         }
     

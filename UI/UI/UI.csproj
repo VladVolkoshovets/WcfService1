@@ -60,6 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\RadioButtonExperement.cs" />
     <Compile Include="Controls\RoomButton.cs" />
     <Compile Include="Controls\RoomGrid.cs" />
     <Page Include="LoginPage.xaml">

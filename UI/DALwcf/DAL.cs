@@ -24,6 +24,11 @@ namespace DALwcf
             return GetImage;
         }
         
+        public void FakeWork()
+        {
+            _service.SomeWork();
+        }
+
         public List<UserDTO> GetUsers()
         {
             var UsersWCF = _service.GetUsers().ToList();
