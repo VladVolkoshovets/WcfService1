@@ -9,49 +9,24 @@
       Title="ChatPage">
 
     <Grid>
-        <ScrollViewer Name="ScrollViewer" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
-            <StackPanel Name="StackPanel1" OverridesDefaultStyle="False" VerticalAlignment="Top" HorizontalAlignment="Left">
-                <TextBlock>as dadsa </TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height ="60"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.ColumnSpan="2" Name="ScrollViewer" VerticalScrollBarVisibility="Auto" CanContentScroll="True" Margin="0,0,0,73">
+            <StackPanel Name="StackPanel" OverridesDefaultStyle="False" VerticalAlignment="Top" HorizontalAlignment="Left">
 
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
-                <TextBlock>as dadsa</TextBlock>
             </StackPanel>
+            
         </ScrollViewer>
+        <Border Grid.Row="2" Background="{StaticResource icons}">
+            <TextBox Name="Message" Margin="40,5,30,5" FontSize="20"></TextBox>
+        </Border>
+       
+        <Button Grid.Column="1" Margin="20, 14" Grid.Row="1" Click="Button_Click">Send</Button>
     </Grid>
 </Page>

@@ -54,7 +54,7 @@ namespace UI
                             }
                         }
                         roomButton.Select();
-                        ChatFrame.Content = new ChatPage();
+                        ChatFrame.Content = new ChatPage(item, userDTO);
                     });
                     roomButton.SetContent();
                     ButtonsPanel.Children.Add(roomButton);
