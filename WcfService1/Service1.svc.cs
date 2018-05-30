@@ -59,12 +59,6 @@ namespace WcfService1
                 {
                     UserName = userDTO.UserName,
                     Id = userDTO.Id,
-                    Messages = userDTO.Messages.Select(m => new Message
-                    {
-                        ID = m.ID,
-                        Text = m.Text,
-                        SendTime = m.SendTime,
-                    }).ToList(),
                     Status = userDTO.Status,
                     Rooms = userDTO.Rooms.Select(r => new Room
                     {
@@ -78,6 +72,7 @@ namespace WcfService1
                             SendTime = m.SendTime,
                             Sender = new User
                             {
+                                Id = m.Sender.Id,
                                 Image = m.Sender.Image,
                                 UserName = m.Sender.UserName
                             },

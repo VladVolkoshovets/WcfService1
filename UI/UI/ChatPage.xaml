@@ -1,32 +1,37 @@
 ﻿<Page x:Class="UI.ChatPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:UI"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ChatPage">
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:local="clr-namespace:UI"
+     mc:Ignorable="d"
+     d:DesignHeight="450" d:DesignWidth="800"
+     Title="ChatPage">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height ="60"></RowDefinition>
+            <RowDefinition Height ="70"></RowDefinition>
         </Grid.RowDefinitions>
-        <ScrollViewer Grid.ColumnSpan="2" Name="ScrollViewer" VerticalScrollBarVisibility="Auto" CanContentScroll="True" Margin="0,0,0,73">
-            <StackPanel Name="StackPanel" OverridesDefaultStyle="False" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <ScrollViewer Grid.ColumnSpan="2" Name="ScrollViewer" VerticalScrollBarVisibility="Auto" CanContentScroll="True" Margin="5" Style="{StaticResource MaterialDesignScrollViewer}">
+            <StackPanel Name="StackPanel" OverridesDefaultStyle="False" VerticalAlignment="Top" HorizontalAlignment="Stretch">
 
             </StackPanel>
-            
+
         </ScrollViewer>
-        <Border Grid.Row="2" Background="{StaticResource icons}">
-            <TextBox Name="Message" Margin="40,5,30,5" FontSize="20"></TextBox>
+        <Border Grid.Row="2" Grid.ColumnSpan="2" Margin="5" Background="{StaticResource icons}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Name="Message" Margin="40,5,30,5" FontSize="20"></TextBox>
+                <Button Grid.Column="1" Margin="20, 14" Grid.Row="1" Click="Button_Click">Send</Button>
+            </Grid>
+
         </Border>
-       
-        <Button Grid.Column="1" Margin="20, 14" Grid.Row="1" Click="Button_Click">Send</Button>
+
+
     </Grid>
 </Page>

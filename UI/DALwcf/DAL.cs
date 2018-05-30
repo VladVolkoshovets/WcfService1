@@ -70,12 +70,6 @@ namespace DALwcf
                 {
                     UserName = userDAL.UserName,
                     Id = userDAL.Id,
-                    Messages = userDAL.Messages.Select(m => new MessageDTO
-                    {
-                        ID = m.ID,
-                        Text = m.Text,
-                        SendTime = m.SendTime,
-                    }).ToList(),
                     Status = userDAL.Status,
                     Rooms = userDAL.Rooms.Select(r => new RoomDTO
                     {
@@ -89,6 +83,7 @@ namespace DALwcf
                             SendTime = m.SendTime,
                             Sender = new UserDTO
                             {
+                                Id = m.Sender.Id,
                                 Icon = ConvertToImage(m.Sender.Image),
                                 UserName = m.Sender.UserName
                             },

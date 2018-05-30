@@ -26,7 +26,7 @@ namespace UI
         {
             InitializeComponent();
         }
-        public ChatPage(RoomDTO room, UserDTO thisUser )
+        public ChatPage(RoomDTO room, UserDTO thisUser)
         {
             InitializeComponent();
             CurrentUser = thisUser;
@@ -36,20 +36,24 @@ namespace UI
                 Border border = new Border();
                 border.Padding = new System.Windows.Thickness(11);
                 border.CornerRadius = new CornerRadius(8);
-
-                if (item.Sender.UserName == CurrentUser.UserName)
+                border.MaxWidth = 350;
+                if (item.Sender.Id == CurrentUser.Id)
                 {
+                    border.HorizontalAlignment = HorizontalAlignment.Right;
                     border.Background = System.Windows.Application.Current.Resources["divider"] as Brush;
                 }
                 else
                 {
+                    border.HorizontalAlignment = HorizontalAlignment.Left;
                     border.Background = System.Windows.Application.Current.Resources["icons"] as Brush;
                 }
                 TextBlock textBlock = new TextBlock();
+                textBlock.TextWrapping = TextWrapping.Wrap;
                 textBlock.Text = item.Sender.UserName + ": " + item.Text;
                 border.Child = textBlock;
                 border.Margin = new System.Windows.Thickness(4);
                 StackPanel.Children.Add(border);
+
             }
         }
 
@@ -58,8 +62,11 @@ namespace UI
             Border border = new Border();
             border.Padding = new System.Windows.Thickness(11);
             border.CornerRadius = new CornerRadius(8);
+            border.HorizontalAlignment = HorizontalAlignment.Right;
+            border.MaxWidth = 350;
             border.Background = System.Windows.Application.Current.Resources["divider"] as Brush;
             TextBlock textBlock = new TextBlock();
+            textBlock.TextWrapping = TextWrapping.Wrap;
             textBlock.Text = CurrentUser.UserName + ": " + Message.Text;
             border.Child = textBlock;
             border.Margin = new System.Windows.Thickness(4);
@@ -67,6 +74,11 @@ namespace UI
 
 
             Message.Text = String.Empty;
+        }
+
+        private void ScrollViewer_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        {
+
         }
     }
 }
