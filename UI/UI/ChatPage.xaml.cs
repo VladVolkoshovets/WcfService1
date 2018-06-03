@@ -40,7 +40,7 @@ namespace UI
                 if (item.Sender.Id == CurrentUser.Id)
                 {
                     border.HorizontalAlignment = HorizontalAlignment.Right;
-                    border.Background = System.Windows.Application.Current.Resources["divider"] as Brush;
+                    border.Background = System.Windows.Application.Current.Resources["background_message"] as Brush;
                 }
                 else
                 {
@@ -60,11 +60,13 @@ namespace UI
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Border border = new Border();
+            border.OpacityMask = Brushes.White;
+            border.Opacity = 50;
             border.Padding = new System.Windows.Thickness(11);
             border.CornerRadius = new CornerRadius(8);
             border.HorizontalAlignment = HorizontalAlignment.Right;
             border.MaxWidth = 350;
-            border.Background = System.Windows.Application.Current.Resources["divider"] as Brush;
+            border.Background = System.Windows.Application.Current.Resources["background_message"] as Brush;
             TextBlock textBlock = new TextBlock();
             textBlock.TextWrapping = TextWrapping.Wrap;
             textBlock.Text = CurrentUser.UserName + ": " + Message.Text;
