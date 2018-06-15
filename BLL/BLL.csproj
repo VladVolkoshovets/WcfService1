@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Convertation.cs" />
     <Compile Include="DatabaseBLL.cs" />
     <Compile Include="DTOs\MessageDTO.cs" />
     <Compile Include="DTOs\RoomDTO.cs" />

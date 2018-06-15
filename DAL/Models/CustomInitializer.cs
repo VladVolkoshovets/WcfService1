@@ -46,6 +46,7 @@ namespace DAL.Models
         protected override void Seed(MessengerModel context)
         {
             MemoryStream ms = new MemoryStream();
+          
             User vlad = new User
             {
                 UserName = "Vlad",
@@ -79,24 +80,29 @@ namespace DAL.Models
             };
 
             List<User> users = new List<User>() { vlad, dima, stas, tolik, milky, deShawn };
+            Status status = new Status
+            {
+                IsAdmin = true,
+                Participant = new List<Participant>() { new Participant()},
+            };
             Room generalRoom = new Room()
             {
                 Name = "General",
                 IsPrivate = false,
-                Users = users
+                
             };
-            Room testRoom = new Room()
-            {
-                Name = "TestRoom",
-                IsPrivate = false,
-                Users = new List<User> { vlad, tolik, dima, milky }
-            };
-            Room testDialog = new Room()
-            {
-                Name = "testDialog",
-                IsPrivate = false,
-                Users = new List<User> { deShawn, milky }
-            };
+            //Room testRoom = new Room()
+            //{
+            //    Name = "TestRoom",
+            //    IsPrivate = false,
+            //    Users = new List<User> { vlad, tolik, dima, milky }
+            //};
+            //Room testDialog = new Room()
+            //{
+            //    Name = "testDialog",
+            //    IsPrivate = false,
+            //    Users = new List<User> { deShawn, milky }
+            //};
             Message message = new Message()
             {
                 Sender = vlad,
@@ -111,64 +117,66 @@ namespace DAL.Models
                 SendTime = DateTime.Today,
                 Room = generalRoom
             };
-            Message message2 = new Message()
-            {
-                Sender = vlad,
-                Text = "Hello guys!!",
-                SendTime = DateTime.Today,
-                Room = testRoom
-            };
-            Message message3 = new Message()
-            {
-                Sender = stas,
-                Text = "Hi man!",
-                SendTime = DateTime.Today,
-                Room = testRoom
-            };
-            Message message4 = new Message()
-            {
-                Sender = dima,
-                Text = "How are u?",
-                SendTime = DateTime.Today,
-                Room = testRoom
-            };
-            Message message5 = new Message()
-            {
-                Sender = tolik,
-                Text = "Pretty good!!",
-                SendTime = DateTime.Today,
-                Room = testRoom
-            };
-            Message message6 = new Message()
-            {
-                Sender = milky,
-                Text = "I think i saw u diging apples..",
-                SendTime = DateTime.Today,
-                Room = testDialog
-            };
-            Message message7 = new Message()
-            {
-                Sender = deShawn,
-                Text = "Ye niga! It was tomorrow!",
-                SendTime = DateTime.Today,
-                Room = testDialog
-            };
-            Message message8 = new Message()
-            {
-                Sender = milky,
-                Text = "Ok! I'll be back yesterday",
-                SendTime = DateTime.Today,
-                Room = testDialog
-            };
-            Message message9 = new Message()
-            {
-                Sender = milky,
-                Text = "Test<",
-                SendTime = DateTime.Today,
-                Room = generalRoom
-            };
-            List<Room> rooms = new List<Room>() { generalRoom, testDialog, testRoom };
-            List<Message> messages = new List<Message> { message, message1, message2, message3, message4, message5, message6, message7};
+            //Message message2 = new Message()
+            //{
+            //    Sender = vlad,
+            //    Text = "Hello guys!!",
+            //    SendTime = DateTime.Today,
+            //    Room = testRoom
+            //};
+            //Message message3 = new Message()
+            //{
+            //    Sender = stas,
+            //    Text = "Hi man!",
+            //    SendTime = DateTime.Today,
+            //    Room = testRoom
+            //};
+            //Message message4 = new Message()
+            //{
+            //    Sender = dima,
+            //    Text = "How are u?",
+            //    SendTime = DateTime.Today,
+            //    Room = testRoom
+            //};
+            //Message message5 = new Message()
+            //{
+            //    Sender = tolik,
+            //    Text = "Pretty good!!",
+            //    SendTime = DateTime.Today,
+            //    Room = testRoom
+            //};
+            //Message message6 = new Message()
+            //{
+            //    Sender = milky,
+            //    Text = "I think i saw u diging apples..",
+            //    SendTime = DateTime.Today,
+            //    Room = testDialog
+            //};
+            //Message message7 = new Message()
+            //{
+            //    Sender = deShawn,
+            //    Text = "Ye niga! It was tomorrow!",
+            //    SendTime = DateTime.Today,
+            //    Room = testDialog
+            //};
+            //Message message8 = new Message()
+            //{
+            //    Sender = milky,
+            //    Text = "Ok! I'll be back yesterday",
+            //    SendTime = DateTime.Today,
+            //    Room = testDialog
+            //};
+            //Message message9 = new Message()
+            //{
+            //    Sender = milky,
+            //    Text = "Test<",
+            //    SendTime = DateTime.Today,
+            //    Room = generalRoom
+            //};
+            //List<Room> rooms = new List<Room>() { generalRoom, testDialog, testRoom };
+            List<Room> rooms = new List<Room>() { generalRoom };
+            List<Message> messages = new List<Message> { message, message1 };
+            //List<Message> messages = new List<Message> { message, message1, message2, message3, message4, message5, message6, message7};
             context.Users.AddRange(users);
             context.Rooms.AddRange(rooms);            
             context.Messages.AddRange(messages);
@@ -176,8 +184,8 @@ namespace DAL.Models
             context.SaveChanges();
             context.SaveChanges();
             context.SaveChanges();
-            context.Messages.Add(message8);
-            context.Messages.Add(message9);
+            //context.Messages.Add(message8);
+            //context.Messages.Add(message9);
             context.SaveChanges();
         }
     }

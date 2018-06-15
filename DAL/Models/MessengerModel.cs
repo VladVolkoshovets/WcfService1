@@ -24,5 +24,8 @@ namespace DAL.Models
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
+        public virtual DbSet<Participant> Participant { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
+
     }
 }

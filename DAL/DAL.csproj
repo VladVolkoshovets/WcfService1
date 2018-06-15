@@ -56,6 +56,7 @@
     <Compile Include="Models\MessengerModel.cs" />
     <Compile Include="Models\Participant.cs" />
     <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\Status.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
