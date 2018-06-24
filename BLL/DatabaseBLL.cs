@@ -19,7 +19,7 @@ namespace BLL
         {
             _dal.SomeWork();
         }
-        byte[] DefoultIcon()
+        public byte[] DefoultIcon()
         {
             ImageConverter _imageConverter = new ImageConverter();
             Image image = Image.FromFile(@"D:\icon_user11.png");
@@ -63,47 +63,51 @@ namespace BLL
         //    return userDTOs;
         //}
         //
-        //public UserDTO Autorisation(string UserName, string Password)
-        //{
-        //    User userDAL = _dal.Autorisation(UserName, Password);
-        //    UserDTO userDTO = null;
-        //    if (userDAL != null)
-        //    {
-        //        userDTO = new UserDTO
-        //        {
-        //            UserName = userDAL.UserName,
-        //            Id = userDAL.Id,
-        //            Status = userDAL.Status,
-        //            Rooms = userDAL.Rooms.Select(r => new RoomDTO
-        //            {
-        //                Id = r.Id,
-        //                IsPrivate = r.IsPrivate,
-        //                Name = r.Name,
-        //                Messages = r.Messages.Select(m => new MessageDTO
-        //                {
-        //                    ID = m.ID,
-        //                    Text = m.Text,
-        //                    SendTime = m.SendTime,
-        //                    Sender = new UserDTO
-        //                    {
-        //                        Id = m.Sender.Id,
-        //                        Image = m.Sender?.Image??DefoultIcon(),
-        //                        UserName = m.Sender.UserName
-        //                    }
-        //
-        //                }).ToList(),
-        //            }).ToList(),
-        //            
-        //            Image = userDAL.Image
-        //            
-        //        };
-        //        if (userDTO.Image == null)
-        //        {
-        //            userDTO.Image = DefoultIcon();
-        //        }
-        //    }
-        //    
-        //    return userDTO;
-        //}
+        public UserDTO Autorisation(string UserName, string Password)
+        {
+            User userDAL = _dal.Autorisation(UserName, Password);
+            UserDTO userDTO = null;
+            if (userDAL != null)
+            {
+                userDTO = new UserDTO
+                {
+                    UserName = userDAL.UserName,
+                    Id = userDAL.Id,
+                    ParticipantDTO = userDAL.Participant.Select(p => new ParticipantDTO
+                    {
+                        Id = p.Id,
+                        RoomsDTO = p.Rooms.Select(r => new RoomDTO
+                        {
+                            Id = r.Id,
+                            IsPrivate = r.IsPrivate,
+                            Name = r.Name,
+                            Messages = r.Messages.Select(m => new MessageDTO
+                            {
+                                ID = m.ID,
+                                Text = m.Text,
+                                SendTime = m.SendTime,
+                                
+                                Sender = new UserDTO
+                                {
+                                    Id = m.Sender.Id,
+                                    Image = m.Sender?.Image ?? DefoultIcon(),
+                                    UserName = m.Sender.UserName
+                                }
+
+                            }).ToList(),
+                        }).ToList(),
+
+                    }).ToList(),
+                    Image = userDAL.Image
+                    
+                };
+                if (userDTO.Image == null)
+                {
+                    userDTO.Image = DefoultIcon();
+                }
+            }
+            
+            return userDTO;
+        }
     }
 }

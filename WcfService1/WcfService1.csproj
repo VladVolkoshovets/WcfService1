@@ -73,7 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContracts\Message.cs" />
+    <Compile Include="DataContracts\Participant.cs" />
     <Compile Include="DataContracts\Room.cs" />
+    <Compile Include="DataContracts\Status.cs" />
     <Compile Include="DataContracts\User.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>

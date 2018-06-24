@@ -10,8 +10,8 @@ namespace BLL.DTOs
     {
         public int ID { get; set; }
         public string Text { get; set; }
-        public RoomDTO room { get; set; }
-        public UserDTO Sender { get; set; }
+        public RoomDTO RoomDTO { get; set; }
+        public  UserDTO Sender { get; set; }
         public DateTime SendTime { get; set; }
     }
 }

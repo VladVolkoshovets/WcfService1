@@ -51,7 +51,9 @@
     </Compile>
     <Compile Include="DAL.cs" />
     <Compile Include="DTOs\MessageDTO.cs" />
+    <Compile Include="DTOs\ParticipantDTO.cs" />
     <Compile Include="DTOs\RoomDTO.cs" />
+    <Compile Include="DTOs\StatusDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

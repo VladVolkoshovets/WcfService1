@@ -22,7 +22,7 @@ namespace UI
     /// </summary>
     public partial class MainPage : Page
     {
-        
+
 
         public MainPage(UserDTO userDTO)
         {
@@ -31,51 +31,55 @@ namespace UI
 
 
             ChatFrame.Content = new NonSelectedChatPage();
-            foreach (var item in userDTO.Rooms)
+
+            foreach (var item2 in userDTO.ParticipantDTO)
             {
-                if (item.Messages != null)
+                foreach (var item in item2.RoomsDTO)
                 {
-                    RoomButton roomButton = new RoomButton()
+                    if (item.Messages != null)
                     {
-                        UserName = item.Name,
-                        LastMessage = String.Empty
-                    };
-                   
-                    roomButton.LastMessage = item.Messages.Last().Sender.UserName + ": " + item.Messages.Last().Text;
-                    roomButton.Icon = item.Messages.Last().Sender.Icon;
-                    roomButton.Tag = item.Id;
-                    roomButton.Click += new System.Windows.RoutedEventHandler((Sender, Args) =>
-                    {
-                        for (int i = 0; i < ButtonsPanel.Children.Count; i++)
+                        RoomButton roomButton = new RoomButton()
                         {
-                            if (ButtonsPanel.Children[i] is RoomButton)
+                            UserName = item.Name,
+                            LastMessage = String.Empty
+                        };
+
+                        roomButton.LastMessage = item.Messages.Last().Sender.UserName + ": " + item.Messages.Last().Text;
+                        roomButton.Icon = item.Messages.Last().Sender.Icon;
+                        roomButton.Tag = item.Id;
+                        roomButton.Click += new System.Windows.RoutedEventHandler((Sender, Args) =>
+                        {
+                            for (int i = 0; i < ButtonsPanel.Children.Count; i++)
                             {
-                                (ButtonsPanel.Children[i] as RoomButton).UnSelect();
+                                if (ButtonsPanel.Children[i] is RoomButton)
+                                {
+                                    (ButtonsPanel.Children[i] as RoomButton).UnSelect();
+                                }
                             }
-                        }
-                        roomButton.Select();
-                        ChatFrame.Content = new ChatPage(item, userDTO);
-                    });
-                    roomButton.SetContent();
-                    ButtonsPanel.Children.Add(roomButton);
+                            roomButton.Select();
+                            ChatFrame.Content = new ChatPage(item, userDTO);
+                        });
+                        roomButton.SetContent();
+                        ButtonsPanel.Children.Add(roomButton);
+                    }
+
+                    //RadioButtonExperement roomButton = new RadioButtonExperement()
+                    //{
+                    //    UserName = item.Name,
+                    //    LastMessage = String.Empty
+                    //};
+                    //if (item.Messages != null)
+                    //{
+                    //
+                    //    roomButton.LastMessage = item.Messages.Last().Sender.UserName + ": " + item.Messages.Last().Text;
+                    //    roomButton.Icon = item.Messages.Last().Sender.Icon;
+                    //}
+                    //roomButton.SetContent();
+                    //ButtonsPanel.Children.Add(roomButton);
+
                 }
-               
-                //RadioButtonExperement roomButton = new RadioButtonExperement()
-                //{
-                //    UserName = item.Name,
-                //    LastMessage = String.Empty
-                //};
-                //if (item.Messages != null)
-                //{
-                //
-                //    roomButton.LastMessage = item.Messages.Last().Sender.UserName + ": " + item.Messages.Last().Text;
-                //    roomButton.Icon = item.Messages.Last().Sender.Icon;
-                //}
-                //roomButton.SetContent();
-                //ButtonsPanel.Children.Add(roomButton);
 
             }
-
         }
     }
 }
