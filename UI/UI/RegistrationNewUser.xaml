@@ -4,83 +4,38 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UI"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      Height="450" Width="800"
+      d:DesignHeight="450" d:DesignWidth="800"
       Title="RegistrationNewUser">
+    <Page.Resources>
+        <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource MaterialDesignPasswordBox}"/>
+    </Page.Resources>
 
     <Grid>
-
-        <!-- Main content scroll -->
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <StackPanel 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    TextBlock.TextAlignment="Center">
-
-                <!-- Login main content white box -->
-                <Border Background="{StaticResource icons}" 
-                            CornerRadius="10"
-                            Padding="35 50 35 15"
-                            Width="210"
-                            Margin="50 50 50 0">
-
-                    <StackPanel>
-
-                        <!-- Sign Up header -->
-                        <TextBlock Text="Registration"
-                                   Foreground="{StaticResource primary_text}"
-                                   FontSize="22"
-                                   Margin="0,0,0,18"
-                                   
-                                   />
-
-                        <!-- Sign up subtext-->
-
-                        <!-- Email -->
-                        <TextBox Text="Login"
-                            x:Name="UserName"
-                            Tag="Login"  
-                            Foreground="{DynamicResource secondary_text}"
-                            FontSize="16" GotFocus="Login_GotFocus"
-                            >
-                        </TextBox>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*"></RowDefinition>
+            <RowDefinition Height="0.7*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
 
 
-
-                        <!-- Password -->
-                        <Grid>
-                            <TextBox x:Name="PasswordText"
-                                     Margin="0 0 0 30"
-                                     FontSize="16"
-                                     Foreground="{DynamicResource secondary_text}"
-                                     Text="Password"
-                                     IsReadOnly="True"
-                                     IsTabStop="False"
-                                     />
-                            <PasswordBox x:Name="Password"
-                                         Tag="Password"
-                                         Margin="0 0 0 30"
-                                         Foreground="{DynamicResource primary_text}"
-                                         FontSize="16" GotFocus="Password_GotFocus">
-                            </PasswordBox>
-                        </Grid>
-
-              
-                        <!-- Login button -->
-                        <Button Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                                Content="GO" 
-                                    IsDefault="True"
-                                    Foreground="{StaticResource icons}"
-                                    Command="{Binding LoginCommand}"
-                                    CommandParameter="{Binding ElementName=Page}" 
-                                    HorizontalAlignment="Center" Click="SignInButton_Click" />
-                    </StackPanel>
-
-
-                </Border>
-
-             
-            </StackPanel>
-        </ScrollViewer>
+        <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Background="{StaticResource icons}" CornerRadius="10"></Border>
+        <TextBlock Grid.Column="1" Grid.Row="1" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36">Registration</TextBlock>
+        <TextBox MaxLength="15" materialDesign:HintAssist.Hint="Login" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" Grid.Row="2" Foreground="{DynamicResource primary_text}" FontSize="20" Margin="10,0" VerticalAlignment="Top"  />
+        <PasswordBox MaxLength="15" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Grid.Column="1" Grid.Row="3" Foreground="{DynamicResource primary_text}" FontSize="20" Margin="10,0" VerticalAlignment="Top"/>
+        <PasswordBox MaxLength="15" materialDesign:HintAssist.Hint="Repeat Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Grid.Column="1" Grid.Row="4" Foreground="{DynamicResource primary_text}" FontSize="20" Margin="10,0" VerticalAlignment="Top"/>
+        <Button Grid.Column="1" Grid.Row="5" Foreground="{StaticResource icons}" Style="{StaticResource MaterialDesignRaisedAccentButton}" Content="Registration" Margin="20,0" FontSize="18" VerticalAlignment="Center" Click="Button_Click"/>
     </Grid>
+
+
 </Page>
