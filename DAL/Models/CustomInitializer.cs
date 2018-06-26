@@ -54,8 +54,8 @@ namespace DAL.Models
             };
             User dima = new User
             {
-                UserName = "Dima",
-                Papassword = "11",
+                UserName = "1",
+                Papassword = "1",
             };
             User stas = new User
             {
