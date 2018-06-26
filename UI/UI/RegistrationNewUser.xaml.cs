@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace UI
 {
     /// <summary>
-    /// Interaction logic for CreateNewUser.xaml
+    /// Логика взаимодействия для RegistrationNewUser.xaml
     /// </summary>
-    public partial class CreateNewUser : Page
+    public partial class RegistrationNewUser : Page
     {
-        public CreateNewUser()
+        public RegistrationNewUser()
         {
             InitializeComponent();
         }

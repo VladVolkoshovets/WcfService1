@@ -1,0 +1,86 @@
+﻿<Page x:Class="UI.RegistrationNewUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UI"
+      mc:Ignorable="d" 
+      Height="450" Width="800"
+      Title="RegistrationNewUser">
+
+    <Grid>
+
+        <!-- Main content scroll -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    TextBlock.TextAlignment="Center">
+
+                <!-- Login main content white box -->
+                <Border Background="{StaticResource icons}" 
+                            CornerRadius="10"
+                            Padding="35 50 35 15"
+                            Width="210"
+                            Margin="50 50 50 0">
+
+                    <StackPanel>
+
+                        <!-- Sign Up header -->
+                        <TextBlock Text="Registration"
+                                   Foreground="{StaticResource primary_text}"
+                                   FontSize="22"
+                                   Margin="0,0,0,18"
+                                   
+                                   />
+
+                        <!-- Sign up subtext-->
+
+                        <!-- Email -->
+                        <TextBox Text="Login"
+                            x:Name="UserName"
+                            Tag="Login"  
+                            Foreground="{DynamicResource secondary_text}"
+                            FontSize="16" GotFocus="Login_GotFocus"
+                            >
+                        </TextBox>
+
+
+
+                        <!-- Password -->
+                        <Grid>
+                            <TextBox x:Name="PasswordText"
+                                     Margin="0 0 0 30"
+                                     FontSize="16"
+                                     Foreground="{DynamicResource secondary_text}"
+                                     Text="Password"
+                                     IsReadOnly="True"
+                                     IsTabStop="False"
+                                     />
+                            <PasswordBox x:Name="Password"
+                                         Tag="Password"
+                                         Margin="0 0 0 30"
+                                         Foreground="{DynamicResource primary_text}"
+                                         FontSize="16" GotFocus="Password_GotFocus">
+                            </PasswordBox>
+                        </Grid>
+
+              
+                        <!-- Login button -->
+                        <Button Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                                Content="GO" 
+                                    IsDefault="True"
+                                    Foreground="{StaticResource icons}"
+                                    Command="{Binding LoginCommand}"
+                                    CommandParameter="{Binding ElementName=Page}" 
+                                    HorizontalAlignment="Center" Click="SignInButton_Click" />
+                    </StackPanel>
+
+
+                </Border>
+
+             
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
