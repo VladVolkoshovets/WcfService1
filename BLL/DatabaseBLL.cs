@@ -22,7 +22,7 @@ namespace BLL
         public byte[] DefoultIcon()
         {
             ImageConverter _imageConverter = new ImageConverter();
-            Image image = Image.FromFile(@"D:\icon_user11.png");
+            Image image = Image.FromFile(@"D:\icon_user.png");
             return (byte[])_imageConverter.ConvertTo(image, typeof(byte[]));
         }
         //public List<UserDTO> GetUsers()
