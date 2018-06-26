@@ -26,7 +26,7 @@ namespace UI
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Content = new LoginPage();
+            MainFrame.Content = new LoginPage(this);
             _dal.FakeWork();
             //var l = _dal.GetUsers();
             //string res = String.Empty;
