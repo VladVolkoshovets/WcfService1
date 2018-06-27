@@ -63,12 +63,12 @@ namespace WcfService1
                     Participant = userDTO.ParticipantDTO.Select(p => new Participant
                     {
                         Id = p.Id,
-                        Rooms = p.RoomsDTO.Select(r => new Room
+                        Rooms = new Room
                         {
-                            Id = r.Id,
-                            IsPrivate = r.IsPrivate,
-                            Name = r.Name,
-                            Messages = r.Messages.Select(m => new Message
+                            Id = p.RoomsDTO.Id,
+                            IsPrivate = p.RoomsDTO.IsPrivate,
+                            Name = p.RoomsDTO.Name,
+                            Messages = p.RoomsDTO.Messages.Select(m => new Message
                             {
                                 ID = m.ID,
                                 Text = m.Text,
@@ -80,7 +80,7 @@ namespace WcfService1
                                     UserName = m.Sender.UserName
                                 },
                             }).ToList(),
-                        }).ToList(),
+                        },
 
                     }).ToList(),
                     Image = userDTO.Image

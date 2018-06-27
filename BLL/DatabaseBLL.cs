@@ -76,26 +76,27 @@ namespace BLL
                     ParticipantDTO = userDAL.Participant.Select(p => new ParticipantDTO
                     {
                         Id = p.Id,
-                        RoomsDTO = p.Rooms.Select(r => new RoomDTO
+                        RoomsDTO = new RoomDTO
                         {
-                            Id = r.Id,
-                            IsPrivate = r.IsPrivate,
-                            Name = r.Name,
-                            Messages = r.Messages.Select(m => new MessageDTO
+                            Id = p.Rooms.Id,
+                            IsPrivate = p.Rooms.IsPrivate,
+                            Name = p.Rooms.Name,
+                            Messages = p.Rooms.Messages.Select(m => new MessageDTO
                             {
                                 ID = m.ID,
                                 Text = m.Text,
                                 SendTime = m.SendTime,
-                                
+                            
                                 Sender = new UserDTO
                                 {
                                     Id = m.Sender.Id,
                                     Image = m.Sender?.Image ?? DefoultIcon(),
                                     UserName = m.Sender.UserName
                                 }
+                            }).ToList()
 
-                            }).ToList(),
-                        }).ToList(),
+
+                        }
 
                     }).ToList(),
                     Image = userDAL.Image

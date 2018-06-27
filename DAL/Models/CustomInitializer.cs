@@ -51,6 +51,7 @@ namespace DAL.Models
             {
                 UserName = "Vlad",
                 Papassword = "10",
+
             };
             User dima = new User
             {
@@ -61,6 +62,7 @@ namespace DAL.Models
             {
                 UserName = "Stas",
                 Papassword = "11",
+                Image = GetBytesIcon(@"D:\NigasIcon2.jpg")
             };
             User tolik = new User
             {
@@ -87,9 +89,16 @@ namespace DAL.Models
             };
             Room generalRoom = new Room()
             {
+                
                 Name = "General",
                 IsPrivate = false,
                 
+                
+            };
+            Participant participant1 = new Participant()
+            {
+                Rooms = generalRoom,
+                Users = users
             };
             //Room testRoom = new Room()
             //{
@@ -177,8 +186,10 @@ namespace DAL.Models
             List<Room> rooms = new List<Room>() { generalRoom };
             List<Message> messages = new List<Message> { message, message1 };
             //List<Message> messages = new List<Message> { message, message1, message2, message3, message4, message5, message6, message7};
+            
             context.Users.AddRange(users);
-            context.Rooms.AddRange(rooms);            
+            context.Rooms.AddRange(rooms);
+            context.Participant.Add(participant1);
             context.Messages.AddRange(messages);
             context.SaveChanges();
             context.SaveChanges();

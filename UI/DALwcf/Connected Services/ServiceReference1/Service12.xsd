@@ -52,18 +52,12 @@
   <xs:complexType name="Participant">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Rooms" nillable="true" type="tns:ArrayOfRoom" />
+      <xs:element minOccurs="0" name="Rooms" nillable="true" type="tns:Room" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="tns:Status" />
       <xs:element minOccurs="0" name="Users" nillable="true" type="tns:ArrayOfUser" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Participant" nillable="true" type="tns:Participant" />
-  <xs:complexType name="ArrayOfRoom">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Room" nillable="true" type="tns:Room" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfRoom" nillable="true" type="tns:ArrayOfRoom" />
   <xs:complexType name="Status">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />

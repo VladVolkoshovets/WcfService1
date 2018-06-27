@@ -73,12 +73,12 @@ namespace DALwcf
                     ParticipantDTO = userDAL.Participant.Select(p => new ParticipantDTO
                     {
                         Id = p.Id,
-                        RoomsDTO = p.Rooms.Select(r => new RoomDTO
+                        RoomsDTO = new RoomDTO
                         {
-                            Id = r.Id,
-                            IsPrivate = r.IsPrivate,
-                            Name = r.Name,
-                            Messages = r.Messages.Select(m => new MessageDTO
+                            Id = p.Rooms.Id,
+                            IsPrivate = p.Rooms.IsPrivate,
+                            Name = p.Rooms.Name,
+                            Messages = p.Rooms.Messages.Select(m => new MessageDTO
                             {
                                 ID = m.ID,
                                 Text = m.Text,
@@ -90,9 +90,12 @@ namespace DALwcf
                                     Icon = ConvertToImage(m.Sender.Image),
                                     UserName = m.Sender.UserName
                                 }
+                            }).ToList()
 
-                            }).ToList(),
-                        }).ToList(),
+
+                        }
+                                   
+
 
                     }).ToList(),
                     Icon = ConvertToImage(userDAL.Image)

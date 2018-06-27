@@ -32,20 +32,20 @@ namespace UI
 
             ChatFrame.Content = new NonSelectedChatPage();
 
-            foreach (var item2 in userDTO.ParticipantDTO)
+            foreach (var item in userDTO.ParticipantDTO)
             {
-                foreach (var item in item2.RoomsDTO)
-                {
-                    if (item.Messages != null)
+
+                if (item.RoomsDTO.Messages != null)
                     {
-                        RoomButton roomButton = new RoomButton()
-                        {
-                            UserName = item.Name,
+                    RoomButton roomButton = new RoomButton()
+                    {
+                        UserName = item.RoomsDTO.Name,
+                            
                             LastMessage = String.Empty
                         };
 
-                        roomButton.LastMessage = item.Messages.Last().Sender.UserName + ": " + item.Messages.Last().Text;
-                        roomButton.Icon = item.Messages.Last().Sender.Icon;
+                        roomButton.LastMessage = item.RoomsDTO.Messages.Last().Sender.UserName + ": " + item.RoomsDTO.Messages.Last().Text;
+                        roomButton.Icon = item.RoomsDTO.Messages.Last().Sender.Icon;
                         roomButton.Tag = item.Id;
                         roomButton.Click += new System.Windows.RoutedEventHandler((Sender, Args) =>
                         {
@@ -57,7 +57,7 @@ namespace UI
                                 }
                             }
                             roomButton.Select();
-                            ChatFrame.Content = new ChatPage(item, userDTO);
+                            ChatFrame.Content = new ChatPage(item.RoomsDTO, userDTO);
                         });
                         roomButton.SetContent();
                         ButtonsPanel.Children.Add(roomButton);
@@ -77,7 +77,7 @@ namespace UI
                     //roomButton.SetContent();
                     //ButtonsPanel.Children.Add(roomButton);
 
-                }
+                
 
             }
         }
