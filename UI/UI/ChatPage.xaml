@@ -14,7 +14,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height ="70"></RowDefinition>
         </Grid.RowDefinitions>
-        <ScrollViewer Grid.ColumnSpan="2" Name="ScrollViewer" VerticalScrollBarVisibility="Auto" CanContentScroll="True" Margin="5" Style="{StaticResource MaterialDesignScrollViewer}">
+        <ScrollViewer Grid.ColumnSpan="2" Name="ScrollViewer" VerticalScrollBarVisibility="Auto" CanContentScroll="True" Margin="5"  Style="{StaticResource MaterialDesignScrollViewer}">
             <StackPanel Name="StackPanel" OverridesDefaultStyle="False" VerticalAlignment="Top" HorizontalAlignment="Stretch">
 
             </StackPanel>

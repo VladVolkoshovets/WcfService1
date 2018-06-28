@@ -35,10 +35,7 @@ namespace DALwcf.ServiceReference1 {
         private string PapasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DALwcf.ServiceReference1.Room[] RoomsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int StatusField;
+        private DALwcf.ServiceReference1.Participant[] ParticipantField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserNameField;
@@ -106,27 +103,14 @@ namespace DALwcf.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public DALwcf.ServiceReference1.Room[] Rooms {
+        public DALwcf.ServiceReference1.Participant[] Participant {
             get {
-                return this.RoomsField;
+                return this.ParticipantField;
             }
             set {
-                if ((object.ReferenceEquals(this.RoomsField, value) != true)) {
-                    this.RoomsField = value;
-                    this.RaisePropertyChanged("Rooms");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Status {
-            get {
-                return this.StatusField;
-            }
-            set {
-                if ((this.StatusField.Equals(value) != true)) {
-                    this.StatusField = value;
-                    this.RaisePropertyChanged("Status");
+                if ((object.ReferenceEquals(this.ParticipantField, value) != true)) {
+                    this.ParticipantField = value;
+                    this.RaisePropertyChanged("Participant");
                 }
             }
         }
@@ -167,6 +151,9 @@ namespace DALwcf.ServiceReference1 {
         private int IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DALwcf.ServiceReference1.Room RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime SendTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -174,9 +161,6 @@ namespace DALwcf.ServiceReference1 {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TextField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DALwcf.ServiceReference1.Room roomField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -197,6 +181,19 @@ namespace DALwcf.ServiceReference1 {
                 if ((this.IDField.Equals(value) != true)) {
                     this.IDField = value;
                     this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DALwcf.ServiceReference1.Room Room {
+            get {
+                return this.RoomField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomField, value) != true)) {
+                    this.RoomField = value;
+                    this.RaisePropertyChanged("Room");
                 }
             }
         }
@@ -240,15 +237,95 @@ namespace DALwcf.ServiceReference1 {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public DALwcf.ServiceReference1.Room room {
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Participant", Namespace="http://schemas.datacontract.org/2004/07/WcfService1.DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class Participant : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DALwcf.ServiceReference1.Room RoomsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DALwcf.ServiceReference1.Status StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DALwcf.ServiceReference1.User[] UsersField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
-                return this.roomField;
+                return this.extensionDataField;
             }
             set {
-                if ((object.ReferenceEquals(this.roomField, value) != true)) {
-                    this.roomField = value;
-                    this.RaisePropertyChanged("room");
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DALwcf.ServiceReference1.Room Rooms {
+            get {
+                return this.RoomsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomsField, value) != true)) {
+                    this.RoomsField = value;
+                    this.RaisePropertyChanged("Rooms");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DALwcf.ServiceReference1.Status Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DALwcf.ServiceReference1.User[] Users {
+            get {
+                return this.UsersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsersField, value) != true)) {
+                    this.UsersField = value;
+                    this.RaisePropertyChanged("Users");
                 }
             }
         }
@@ -285,7 +362,7 @@ namespace DALwcf.ServiceReference1 {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DALwcf.ServiceReference1.User[] UsersField;
+        private DALwcf.ServiceReference1.Participant[] ParticipantField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -350,14 +427,91 @@ namespace DALwcf.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public DALwcf.ServiceReference1.User[] Users {
+        public DALwcf.ServiceReference1.Participant[] Participant {
             get {
-                return this.UsersField;
+                return this.ParticipantField;
             }
             set {
-                if ((object.ReferenceEquals(this.UsersField, value) != true)) {
-                    this.UsersField = value;
-                    this.RaisePropertyChanged("Users");
+                if ((object.ReferenceEquals(this.ParticipantField, value) != true)) {
+                    this.ParticipantField = value;
+                    this.RaisePropertyChanged("Participant");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Status", Namespace="http://schemas.datacontract.org/2004/07/WcfService1.DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class Status : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsAdminField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DALwcf.ServiceReference1.Participant[] ParticipantField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsAdmin {
+            get {
+                return this.IsAdminField;
+            }
+            set {
+                if ((this.IsAdminField.Equals(value) != true)) {
+                    this.IsAdminField = value;
+                    this.RaisePropertyChanged("IsAdmin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DALwcf.ServiceReference1.Participant[] Participant {
+            get {
+                return this.ParticipantField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParticipantField, value) != true)) {
+                    this.ParticipantField = value;
+                    this.RaisePropertyChanged("Participant");
                 }
             }
         }

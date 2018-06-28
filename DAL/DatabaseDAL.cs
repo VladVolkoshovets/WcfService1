@@ -18,7 +18,7 @@ namespace DAL
         public List<User> GetUsers()
         {
             return _ctx.Users.ToList();
-            //sdfsdf
+
         }
         public User Autorisation(string UserName, string Password)
         {

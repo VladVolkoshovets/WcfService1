@@ -5,12 +5,12 @@ using System.Web;
 
 namespace WcfService1.DataContracts
 {
-    public class Room
+    public class Status
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public bool IsPrivate { get; set; }
-        public virtual ICollection<Message> Messages { get; set; }
+
+        public bool IsAdmin { get; set; }
+
         public virtual ICollection<Participant> Participant { get; set; }
     }
 }

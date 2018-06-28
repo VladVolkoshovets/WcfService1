@@ -20,35 +20,36 @@ namespace WcfService1
         {
             _bll.SomeWork();
         }
-        public User[] GetUsers()
-        {
-            List<UserDTO> usersBLL = _bll.GetUsers();
-            List<User> usersBuff = new List<User>();
-            foreach (var item in usersBLL)
+            public User[] GetUsers()
             {
-                User userDC = new User
-                {
-                    Id = item.Id,
-                    UserName = item.UserName,
-                    Messages = item.Messages.Select(m => new Message
-                    {
-                        ID = m.ID,
-                        Text = m.Text,
-                        SendTime = m.SendTime,
-                    }).ToList(),
-                    Status = item.Status,
-                    Rooms = item.Rooms.Select(r => new Room
-                    {
-                        Id = r.Id,
-                        IsPrivate = r.IsPrivate,
-                        Name = r.Name
-                    }).ToList(),
-                    Image = item.Image
-                };
-                usersBuff.Add(userDC);
+            //List<UserDTO> usersBLL = _bll.GetUsers();
+            //List<User> usersBuff = new List<User>();
+            //foreach (var item in usersBLL)
+            //{
+            //    User userDC = new User
+            //    {
+            //        Id = item.Id,
+            //        UserName = item.UserName,
+            //        Messages = item.Messages.Select(m => new Message
+            //        {
+            //            ID = m.ID,
+            //            Text = m.Text,
+            //            SendTime = m.SendTime,
+            //        }).ToList(),
+            //        Status = item.Status,
+            //        Rooms = item.Rooms.Select(r => new Room
+            //        {
+            //            Id = r.Id,
+            //            IsPrivate = r.IsPrivate,
+            //            Name = r.Name
+            //        }).ToList(),
+            //        Image = item.Image
+            //    };
+            //    usersBuff.Add(userDC);
+            //}
+            //return usersBuff.ToArray();
+            return null;
             }
-            return usersBuff.ToArray();
-        }
         public User Autorisation(string UserName, string Password)
         {
             UserDTO userDTO = _bll.Autorisation(UserName, Password);
@@ -59,31 +60,72 @@ namespace WcfService1
                 {
                     UserName = userDTO.UserName,
                     Id = userDTO.Id,
-                    Status = userDTO.Status,
-                    Rooms = userDTO.Rooms.Select(r => new Room
+                    Participant = userDTO.ParticipantDTO.Select(p => new Participant
                     {
-                        Id = r.Id,
-                        IsPrivate = r.IsPrivate,
-                        Name = r.Name,
-                        Messages = r.Messages.Select(m => new Message
+                        Id = p.Id,
+                        Rooms = new Room
                         {
-                            ID = m.ID,
-                            Text = m.Text,
-                            SendTime = m.SendTime,
-                            Sender = new User
+                            Id = p.RoomDTO.Id,
+                            IsPrivate = p.RoomDTO.IsPrivate,
+                            Name = p.RoomDTO.Name,
+                            Messages = p.RoomDTO.Messages.Select(m => new Message
                             {
-                                Id = m.Sender.Id,
-                                Image = m.Sender.Image,
-                                UserName = m.Sender.UserName
-                            },
-                        }).ToList(),
+                                ID = m.ID,
+                                Text = m.Text,
+                                SendTime = m.SendTime,
+                                Sender = new User
+                                {
+                                    Id = m.Sender.Id,
+                                    Image = m.Sender.Image,
+                                    UserName = m.Sender.UserName
+                                },
+                            }).ToList(),
+                        },
+
                     }).ToList(),
                     Image = userDTO.Image
-                    
+
                 };
+                userDTO.Image = userDTO.Image;
             }
+
             return userDC;
         }
+       // public User Autorisation(string UserName, string Password)
+       // {
+       //     UserDTO userDTO = _bll.Autorisation(UserName, Password);
+       //     User userDC = null;
+       //     if (userDTO != null)
+       //     {
+       //         userDC = new User
+       //         {
+       //             UserName = userDTO.UserName,
+       //             Id = userDTO.Id,
+       //             Status = userDTO.Status,
+       //             Rooms = userDTO.Rooms.Select(r => new Room
+       //             {
+       //                 Id = r.Id,
+       //                 IsPrivate = r.IsPrivate,
+       //                 Name = r.Name,
+       //                 Messages = r.Messages.Select(m => new Message
+       //                 {
+       //                     ID = m.ID,
+       //                     Text = m.Text,
+       //                     SendTime = m.SendTime,
+       //                     Sender = new User
+       //                     {
+       //                         Id = m.Sender.Id,
+       //                         Image = m.Sender.Image,
+       //                         UserName = m.Sender.UserName
+       //                     },
+       //                 }).ToList(),
+       //             }).ToList(),
+       //             Image = userDTO.Image
+       //             
+       //         };
+       //     }
+       //     return userDC;
+       // }
         public string GetData(int value)
         {
             

@@ -45,21 +45,23 @@ namespace DAL.Models
         }
         protected override void Seed(MessengerModel context)
         {
-            MemoryStream ms = new MemoryStream();
+          
             User vlad = new User
             {
                 UserName = "Vlad",
                 Papassword = "10",
+
             };
             User dima = new User
             {
-                UserName = "Dima",
-                Papassword = "11",
+                UserName = "1",
+                Papassword = "1",
             };
             User stas = new User
             {
                 UserName = "Stas",
                 Papassword = "11",
+                
             };
             User tolik = new User
             {
@@ -79,24 +81,47 @@ namespace DAL.Models
             };
 
             List<User> users = new List<User>() { vlad, dima, stas, tolik, milky, deShawn };
+            Status status = new Status
+            {
+                IsAdmin = true,
+                Participant = new List<Participant>() { new Participant()},
+            };
             Room generalRoom = new Room()
             {
+                
                 Name = "General",
                 IsPrivate = false,
-                Users = users
+                
+                
             };
             Room testRoom = new Room()
             {
                 Name = "TestRoom",
                 IsPrivate = false,
-                Users = new List<User> { vlad, tolik, dima, milky }
+                
             };
             Room testDialog = new Room()
             {
                 Name = "testDialog",
                 IsPrivate = false,
+                
+            };
+            Participant participant1 = new Participant()
+            {
+                Room = generalRoom,
+                Users = users
+            };
+            Participant participant2 = new Participant()
+            {
+                Room = testRoom,
+                Users = new List<User> { vlad, tolik, dima, milky }
+            };
+            Participant participant3 = new Participant()
+            {
+                Room = testDialog,
                 Users = new List<User> { deShawn, milky }
             };
+
             Message message = new Message()
             {
                 Sender = vlad,
@@ -168,9 +193,13 @@ namespace DAL.Models
                 Room = generalRoom
             };
             List<Room> rooms = new List<Room>() { generalRoom, testDialog, testRoom };
+            List<Participant> participants = new List<Participant>() { participant1, participant2, participant3 };
+            
             List<Message> messages = new List<Message> { message, message1, message2, message3, message4, message5, message6, message7};
+            
             context.Users.AddRange(users);
-            context.Rooms.AddRange(rooms);            
+            context.Rooms.AddRange(rooms);
+            context.Participant.AddRange(participants);
             context.Messages.AddRange(messages);
             context.SaveChanges();
             context.SaveChanges();

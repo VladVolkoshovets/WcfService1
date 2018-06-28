@@ -10,7 +10,7 @@ namespace DALwcf.DTOs
     {
         public int ID { get; set; }
         public string Text { get; set; }
-        public RoomDTO Room { get; set; }
+        public RoomDTO RoomDTO { get; set; }
         public UserDTO Sender { get; set; }
         public DateTime SendTime { get; set; }
     }

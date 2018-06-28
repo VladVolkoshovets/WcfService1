@@ -29,37 +29,37 @@ namespace DALwcf
             _service.SomeWork();
         }
 
-        public List<UserDTO> GetUsers()
-        {
-            var UsersWCF = _service.GetUsers().ToList();
-            List<UserDTO> userDTOs = new List<UserDTO>();
-            foreach (var item in UsersWCF)
-            {
-                UserDTO userDTO = new UserDTO
-                {
-                    Id = item.Id,
-                    UserName = item.UserName,
-                    Messages = item.Messages.Select(m => new MessageDTO
-                    {
-                        ID = m.ID,
-                        Text = m.Text,
-                        SendTime = m.SendTime,
-                    }).ToList(),
-                    Status = item.Status,
-                    Rooms = item.Rooms.Select(r => new RoomDTO
-                    {
-                        Id = r.Id,
-                        IsPrivate = r.IsPrivate,
-                        Name = r.Name
-                    }).ToList(),
-                    Icon = ConvertToImage(item.Image)
-
-                };
-                userDTOs.Add(userDTO);
-            }
-
-            return userDTOs;
-        }
+        //public List<UserDTO> GetUsers()
+        //{
+        //    var UsersWCF = _service.GetUsers().ToList();
+        //    List<UserDTO> userDTOs = new List<UserDTO>();
+        //    foreach (var item in UsersWCF)
+        //    {
+        //        UserDTO userDTO = new UserDTO
+        //        {
+        //            Id = item.Id,
+        //            UserName = item.UserName,
+        //            Messages = item.Messages.Select(m => new MessageDTO
+        //            {
+        //                ID = m.ID,
+        //                Text = m.Text,
+        //                SendTime = m.SendTime,
+        //            }).ToList(),
+        //            Status = item.Status,
+        //            Rooms = item.Rooms.Select(r => new RoomDTO
+        //            {
+        //                Id = r.Id,
+        //                IsPrivate = r.IsPrivate,
+        //                Name = r.Name
+        //            }).ToList(),
+        //            Icon = ConvertToImage(item.Image)
+        //
+        //        };
+        //        userDTOs.Add(userDTO);
+        //    }
+        //
+        //    return userDTOs;
+        //}
         public UserDTO Autorisation(string UserName, string Password)
         {
             User userDAL = _service.Autorisation(UserName, Password);
@@ -70,24 +70,33 @@ namespace DALwcf
                 {
                     UserName = userDAL.UserName,
                     Id = userDAL.Id,
-                    Status = userDAL.Status,
-                    Rooms = userDAL.Rooms.Select(r => new RoomDTO
+                    ParticipantDTO = userDAL.Participant.Select(p => new ParticipantDTO
                     {
-                        Id = r.Id,
-                        IsPrivate = r.IsPrivate,
-                        Name = r.Name,
-                        Messages = r.Messages.Select(m => new MessageDTO
+                        Id = p.Id,
+                        RoomsDTO = new RoomDTO
                         {
-                            ID = m.ID,
-                            Text = m.Text,
-                            SendTime = m.SendTime,
-                            Sender = new UserDTO
+                            Id = p.Rooms.Id,
+                            IsPrivate = p.Rooms.IsPrivate,
+                            Name = p.Rooms.Name,
+                            Messages = p.Rooms.Messages.Select(m => new MessageDTO
                             {
-                                Id = m.Sender.Id,
-                                Icon = ConvertToImage(m.Sender.Image),
-                                UserName = m.Sender.UserName
-                            },
-                        }).ToList(),
+                                ID = m.ID,
+                                Text = m.Text,
+                                SendTime = m.SendTime,
+
+                                Sender = new UserDTO
+                                {
+                                    Id = m.Sender.Id,
+                                    Icon = ConvertToImage(m.Sender.Image),
+                                    UserName = m.Sender.UserName
+                                }
+                            }).ToList()
+
+
+                        }
+                                   
+
+
                     }).ToList(),
                     Icon = ConvertToImage(userDAL.Image)
                 };

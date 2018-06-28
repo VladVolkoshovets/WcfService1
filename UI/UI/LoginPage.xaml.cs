@@ -24,11 +24,10 @@ namespace UI
     public partial class LoginPage : Page
     {
         private readonly DAL _dal = new DAL();
+
         public LoginPage()
         {
-            InitializeComponent();
-           
-           
+           InitializeComponent();
         }
 
         private void Login_GotFocus(object sender, RoutedEventArgs e)
@@ -55,6 +54,11 @@ namespace UI
                 ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new MainPage(userDTO);
             } 
 
+        }
+
+        private void CreateNewUser(object sender, MouseButtonEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new RegistrationNewUser();
         }
     }
 }

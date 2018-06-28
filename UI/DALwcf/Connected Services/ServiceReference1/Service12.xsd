@@ -12,8 +12,7 @@
       <xs:element minOccurs="0" name="Image" nillable="true" type="xs:base64Binary" />
       <xs:element minOccurs="0" name="Messages" nillable="true" type="tns:ArrayOfMessage" />
       <xs:element minOccurs="0" name="Papassword" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Rooms" nillable="true" type="tns:ArrayOfRoom" />
-      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="Participant" nillable="true" type="tns:ArrayOfParticipant" />
       <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -27,10 +26,10 @@
   <xs:complexType name="Message">
     <xs:sequence>
       <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Room" nillable="true" type="tns:Room" />
       <xs:element minOccurs="0" name="SendTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Sender" nillable="true" type="tns:User" />
       <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="room" nillable="true" type="tns:Room" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Message" nillable="true" type="tns:Message" />
@@ -40,14 +39,31 @@
       <xs:element minOccurs="0" name="IsPrivate" type="xs:boolean" />
       <xs:element minOccurs="0" name="Messages" nillable="true" type="tns:ArrayOfMessage" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Users" nillable="true" type="tns:ArrayOfUser" />
+      <xs:element minOccurs="0" name="Participant" nillable="true" type="tns:ArrayOfParticipant" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Room" nillable="true" type="tns:Room" />
-  <xs:complexType name="ArrayOfRoom">
+  <xs:complexType name="ArrayOfParticipant">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Room" nillable="true" type="tns:Room" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Participant" nillable="true" type="tns:Participant" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfRoom" nillable="true" type="tns:ArrayOfRoom" />
+  <xs:element name="ArrayOfParticipant" nillable="true" type="tns:ArrayOfParticipant" />
+  <xs:complexType name="Participant">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Rooms" nillable="true" type="tns:Room" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="tns:Status" />
+      <xs:element minOccurs="0" name="Users" nillable="true" type="tns:ArrayOfUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Participant" nillable="true" type="tns:Participant" />
+  <xs:complexType name="Status">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IsAdmin" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Participant" nillable="true" type="tns:ArrayOfParticipant" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Status" nillable="true" type="tns:Status" />
 </xs:schema>

@@ -76,13 +76,14 @@
                                     Command="{Binding LoginCommand}"
                                     CommandParameter="{Binding ElementName=Page}" 
                                     HorizontalAlignment="Center" Click="SignInButton_Click" />
+                    </StackPanel>
 
-                        </StackPanel>
-
+                   
                     </Border>
 
                 <Label  
-                            
+                            MouseDown="CreateNewUser"
+                            Name="CreatNewUser_Label"
                             Background="Transparent"
                             Content="Or, create a free account..." 
                             HorizontalAlignment="Center">
