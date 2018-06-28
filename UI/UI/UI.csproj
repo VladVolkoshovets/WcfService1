@@ -66,6 +66,9 @@
     <Compile Include="Controls\RadioButtonExperement.cs" />
     <Compile Include="Controls\RoomButton.cs" />
     <Compile Include="Controls\RoomGrid.cs" />
+    <Compile Include="Profile.xaml.cs">
+      <DependentUpon>Profile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrationNewUser.xaml.cs">
       <DependentUpon>RegistrationNewUser.xaml</DependentUpon>
     </Compile>
@@ -99,7 +102,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="NonSelectedChatPage.xaml">
+    <Page Include="Profile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -109,9 +112,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NonSelectedChatPage.xaml.cs">
-      <DependentUpon>NonSelectedChatPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -152,6 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Iconca.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Def_avatar.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
