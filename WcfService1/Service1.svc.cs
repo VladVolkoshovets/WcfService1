@@ -65,10 +65,10 @@ namespace WcfService1
                         Id = p.Id,
                         Rooms = new Room
                         {
-                            Id = p.RoomsDTO.Id,
-                            IsPrivate = p.RoomsDTO.IsPrivate,
-                            Name = p.RoomsDTO.Name,
-                            Messages = p.RoomsDTO.Messages.Select(m => new Message
+                            Id = p.RoomDTO.Id,
+                            IsPrivate = p.RoomDTO.IsPrivate,
+                            Name = p.RoomDTO.Name,
+                            Messages = p.RoomDTO.Messages.Select(m => new Message
                             {
                                 ID = m.ID,
                                 Text = m.Text,

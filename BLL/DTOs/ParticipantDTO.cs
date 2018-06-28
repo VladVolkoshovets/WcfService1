@@ -9,7 +9,7 @@ namespace BLL.DTOs
     public class ParticipantDTO
     {
         public int Id { get; set; }
-        public virtual RoomDTO RoomsDTO { get; set; }
+        public virtual RoomDTO RoomDTO { get; set; }
         public virtual ICollection<UserDTO> UserDTO { get; set; }
         public virtual StatusDTO StatusDTO { get; set; }
     }
