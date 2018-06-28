@@ -21,20 +21,30 @@ namespace UI
     /// </summary>
     public partial class Profile : UserControl
     {
+    
         public Profile()
         {
             InitializeComponent();
+
+
+            Avaterka.Source = new BitmapImage(new Uri("Images/Def_avatar.jpg", UriKind.Relative));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.png) | *.jpg; *.jpeg; *.jpeg; *.png";
+
             if (openFileDialog.ShowDialog() == true)
             {
-                  
+                string strPath = openFileDialog.FileName;
+                Avaterka.Source = new BitmapImage(new Uri(strPath, UriKind.RelativeOrAbsolute));
             }
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Metod for SAVE new info");
+        }
     }
 }
