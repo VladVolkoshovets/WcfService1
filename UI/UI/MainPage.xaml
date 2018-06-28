@@ -43,7 +43,11 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition Width="2*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Click="Button_Click">Menu</Button>
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" ToolTip="MaterialDesignFloatingActionMiniDarkButton"  Click="Button_Click" Margin="5">
+                    <materialDesign:PackIcon Kind="Menu" Height="40" Width="23"></materialDesign:PackIcon>
+                   
+                </Button>
+               
                 <TextBox  Text="Search" Grid.Column="1" TextAlignment="Center" HorizontalAlignment="Center"></TextBox>
             </Grid>
 
