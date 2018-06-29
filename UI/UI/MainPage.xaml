@@ -43,12 +43,17 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition Width="2*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" ToolTip="MaterialDesignFloatingActionMiniDarkButton"  Click="Button_Click" Margin="5">
-                    <materialDesign:PackIcon Kind="Menu" Height="40" Width="23"></materialDesign:PackIcon>
-                   
-                </Button>
-               
-                <TextBox  Text="Search" Grid.Column="1" TextAlignment="Center" HorizontalAlignment="Center"></TextBox>
+                <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Grid.Column="0" Margin="10,12,0,0" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <materialDesign:PopupBox.ToggleContent>
+                        <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" />
+                    </materialDesign:PopupBox.ToggleContent>
+                    <StackPanel>
+                        <Button Click="Button_ClickProfile">Profile</Button>
+                        <Button>Create new group</Button>
+                        <Button>Logout</Button>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+                <TextBox Text="Search" FontSize="16" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="{DynamicResource primary_text}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             </Grid>
 
         </StackPanel>

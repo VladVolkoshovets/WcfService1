@@ -78,7 +78,7 @@ namespace UI
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_ClickProfile(object sender, RoutedEventArgs e)
         {
             var profile = new Profile();
             Prof.Content = profile;
