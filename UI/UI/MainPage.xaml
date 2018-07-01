@@ -49,7 +49,7 @@
                     </materialDesign:PopupBox.ToggleContent>
                     <StackPanel>
                         <Button Click="Button_ClickProfile">Profile</Button>
-                        <Button>Create new group</Button>
+                        <Button >Create new group</Button>
                         <Button>Logout</Button>
                     </StackPanel>
                 </materialDesign:PopupBox>
@@ -58,7 +58,6 @@
 
         </StackPanel>
         <Grid Grid.Column="1">
-            <ContentControl Name="Prof"></ContentControl>
             <Frame x:Name="ChatFrame"></Frame>
         </Grid>
     </Grid>

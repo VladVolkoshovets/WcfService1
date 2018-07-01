@@ -60,8 +60,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ChatPage.xaml.cs">
-      <DependentUpon>ChatPage.xaml</DependentUpon>
+    <Compile Include="ChatControl.xaml.cs">
+      <DependentUpon>ChatControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\RadioButtonExperement.cs" />
     <Compile Include="Controls\RoomButton.cs" />
@@ -72,7 +72,7 @@
     <Compile Include="RegistrationNewUser.xaml.cs">
       <DependentUpon>RegistrationNewUser.xaml</DependentUpon>
     </Compile>
-    <Page Include="ChatPage.xaml">
+    <Page Include="ChatControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

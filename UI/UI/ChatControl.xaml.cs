@@ -1,11 +1,11 @@
-﻿using DALwcf.DTOs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using DALwcf.DTOs;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -17,16 +17,18 @@ using System.Windows.Shapes;
 namespace UI
 {
     /// <summary>
-    /// Interaction logic for ChatPage.xaml
+    /// Interaction logic for ChatControl.xaml
     /// </summary>
-    public partial class ChatPage : Page
+    public partial class ChatControl : UserControl
     {
         public UserDTO CurrentUser { get; set; }
-        public ChatPage()
+
+        public ChatControl()
         {
             InitializeComponent();
         }
-        public ChatPage(RoomDTO room, UserDTO thisUser)
+
+        public ChatControl(RoomDTO room, UserDTO thisUser)
         {
             InitializeComponent();
             CurrentUser = thisUser;
@@ -57,7 +59,8 @@ namespace UI
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void Button_Click_SendMessage(object sender, RoutedEventArgs e)
         {
             Border border = new Border();
             border.OpacityMask = Brushes.White;
@@ -76,11 +79,6 @@ namespace UI
 
 
             Message.Text = String.Empty;
-        }
-
-        private void ScrollViewer_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
-        {
-
         }
     }
 }
