@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{89DF01E6-A995-4F96-9579-720763A2C87A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALwcf", "DALwcf\DALwcf.csproj", "{CD95B0EF-04F6-4B46-A70C-6016B05467F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DALwcf\DAL.csproj", "{CD95B0EF-04F6-4B46-A70C-6016B05467F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

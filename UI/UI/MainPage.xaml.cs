@@ -31,17 +31,17 @@ namespace UI
             foreach (var item in userDTO.ParticipantDTO)
             {
 
-                if (item.RoomsDTO.Messages != null)
+                if (item.RoomDTO.Messages != null)
                     {
                     RoomButton roomButton = new RoomButton()
                     {
-                        UserName = item.RoomsDTO.Name,
+                        UserName = item.RoomDTO.Name,
                             
                             LastMessage = String.Empty
                         };
 
-                        roomButton.LastMessage = item.RoomsDTO.Messages.Last().Sender.UserName + ": " + item.RoomsDTO.Messages.Last().Text;
-                        roomButton.Icon = item.RoomsDTO.Messages.Last().Sender.Icon;
+                        roomButton.LastMessage = item.RoomDTO.Messages.Last().Sender.UserName + ": " + item.RoomDTO.Messages.Last().Text;
+                        roomButton.Icon = item.RoomDTO.Messages.Last().Sender.Icon;
                         roomButton.Tag = item.Id;
                         roomButton.Click += new System.Windows.RoutedEventHandler((Sender, Args) =>
                         {
@@ -53,7 +53,7 @@ namespace UI
                                 }
                             }
                             roomButton.Select();
-                            ChatFrame.Content = new ChatPage(item.RoomsDTO, userDTO);
+                            ChatFrame.Content = new ChatPage(item.RoomDTO, userDTO);
                         });
                         roomButton.SetContent();
                         ButtonsPanel.Children.Add(roomButton);

@@ -139,9 +139,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DALwcf\DALwcf.csproj">
+    <ProjectReference Include="..\DALwcf\DAL.csproj">
       <Project>{CD95B0EF-04F6-4B46-A70C-6016B05467F2}</Project>
-      <Name>DALwcf</Name>
+      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

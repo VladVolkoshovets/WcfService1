@@ -1,12 +1,10 @@
 ﻿using BLL.DTOs;
-using DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace BLL
+namespace WcfService1.DataContracts
 {
     public class Convertation
     {
@@ -20,6 +18,7 @@ namespace BLL
             };
             return userDTO;
         }
+
         public static MessageDTO ToMessageDTO(Message messageDAL)
         {
             MessageDTO messageDTO = new MessageDTO()
@@ -57,53 +56,54 @@ namespace BLL
             };
             return statusDTO;
         }
-        public static User ToUserDAL(UserDTO userDTO)
+        public static User ToUserDC(UserDTO userDTO)
         {
-            User userDAL = new User
+            User userDC = new User
             {
                 Id = userDTO.Id,
                 UserName = userDTO.UserName,
                 Image = userDTO.Image
             };
-            return userDAL;
+            return userDC;
         }
-        public static Message ToMessageDAL(MessageDTO messageDTO)
+        public static Message ToMessageDC(MessageDTO messageDTO)
         {
-            Message messageDAL = new Message()
+            Message messageDC = new Message()
             {
                 ID = messageDTO.ID,
                 Text = messageDTO.Text,
                 SendTime = messageDTO.SendTime
             };
-            return messageDAL;
+            return messageDC;
         }
-        public static Participant ToParticipantDAL(ParticipantDTO participantDTO)
+        public static Participant ToParticipantDC(ParticipantDTO participantDTO)
         {
-            Participant participantDAL = new Participant()
+            Participant participantDC = new Participant()
             {
                 Id = participantDTO.Id,
             };
-            return participantDAL;
+            return participantDC;
         }
-        public static Room ToRoomDAL(RoomDTO roomDTO)
+        public static Room ToRoomDC(RoomDTO roomDTO)
         {
-            Room roomDAL = new Room()
+            Room roomDC = new Room()
             {
                 Id = roomDTO.Id,
                 IsPrivate = roomDTO.IsPrivate,
                 Name = roomDTO.Name
             };
-            return roomDAL;
+            return roomDC;
         }
-        public static Status ToStatusDAL(StatusDTO statusDTO)
+        public static Status ToStatusDC(StatusDTO statusDTO)
         {
-            Status statusDAL = new Status()
+            Status statusDC = new Status()
             {
                 Id = statusDTO.Id,
                 IsAdmin = statusDTO.IsAdmin
             };
-            return statusDAL;
+            return statusDC;
         }
+
 
     }
 }

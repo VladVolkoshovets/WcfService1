@@ -260,7 +260,7 @@ namespace DALwcf.ServiceReference1 {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private DALwcf.ServiceReference1.Room RoomsField;
+        private DALwcf.ServiceReference1.Room RoomField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private DALwcf.ServiceReference1.Status StatusField;
@@ -292,14 +292,14 @@ namespace DALwcf.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public DALwcf.ServiceReference1.Room Rooms {
+        public DALwcf.ServiceReference1.Room Room {
             get {
-                return this.RoomsField;
+                return this.RoomField;
             }
             set {
-                if ((object.ReferenceEquals(this.RoomsField, value) != true)) {
-                    this.RoomsField = value;
-                    this.RaisePropertyChanged("Rooms");
+                if ((object.ReferenceEquals(this.RoomField, value) != true)) {
+                    this.RoomField = value;
+                    this.RaisePropertyChanged("Room");
                 }
             }
         }
