@@ -50,7 +50,7 @@
                     <StackPanel>
                         <Button Click="Button_ClickProfile">Profile</Button>
                         <Button>Create new group</Button>
-                        <Button>Logout</Button>
+                        <Button Click="Button_ClickLogOut">Logout</Button>
                     </StackPanel>
                 </materialDesign:PopupBox>
                 <TextBox Text="Search" FontSize="16" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="{DynamicResource primary_text}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />

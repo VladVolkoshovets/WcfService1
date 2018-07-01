@@ -83,5 +83,11 @@ namespace UI
             var profile = new Profile();
             Prof.Content = profile;
         }
+
+
+        private void Button_ClickLogOut(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new LoginPage();
+        }
     }
 }
