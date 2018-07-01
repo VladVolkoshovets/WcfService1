@@ -49,11 +49,11 @@
                     </materialDesign:PopupBox.ToggleContent>
                     <StackPanel>
                         <Button Click="Button_ClickProfile">Profile</Button>
-                        <Button >Create new group</Button>
+                        <Button Click="Button_Click_AddGroup">Create new group</Button>
                         <Button>Logout</Button>
                     </StackPanel>
                 </materialDesign:PopupBox>
-                <TextBox Text="Search" FontSize="16" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="{DynamicResource primary_text}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                <TextBox Text="Search" FontSize="16" Margin="10,0" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="{DynamicResource primary_text}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             </Grid>
 
         </StackPanel>

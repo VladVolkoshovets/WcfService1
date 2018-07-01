@@ -83,6 +83,11 @@ namespace UI
             var profile = new Profile();
             ChatFrame.Content = profile;
         }
+        private void Button_Click_AddGroup(object sender, RoutedEventArgs e)
+        {
+            var newGroup = new AddGroup();
+            ChatFrame.Content = newGroup;
+        }
 
     }
 }
