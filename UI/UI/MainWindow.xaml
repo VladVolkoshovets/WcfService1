@@ -9,11 +9,39 @@
         Icon="Images/Iconca.png"
         Title="MainWindow" Height="450" Width="800"
         MinHeight="370" MinWidth="400"
+        WindowStyle="None" AllowsTransparency="True"
         >
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="Images/Background.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
+        <Border Grid.Row="0" Background="#00cacb" MouseLeftButtonDown="MoveWindow">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25"></ColumnDefinition>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="25"></ColumnDefinition>
+                    <ColumnDefinition Width="25"></ColumnDefinition>
+                    <ColumnDefinition Width="25"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image Source="Images/Iconca.png"></Image>
+                <TextBlock Grid.Column="1" Foreground="{StaticResource primary_text}">Name Programe</TextBlock>
+                <Button Grid.Column="5" Width="18" Height="18" Click="CloseWindow" Style="{StaticResource MaterialDesignRaisedAccentButton}" Padding="0">
+                    <materialDesign:PackIcon Kind="WindowClose"></materialDesign:PackIcon>
+                </Button>
+                <Button Grid.Column="4" Width="18" Height="18" Click="WindowMaxSize" Style="{StaticResource MaterialDesignRaisedAccentButton}" Padding="0">
+                    <materialDesign:PackIcon Kind="WindowMaximize"></materialDesign:PackIcon>
+                </Button>
+                <Button Grid.Column="3" Width="18" Height="18" Click="WindowMinSize" Style="{StaticResource MaterialDesignRaisedAccentButton}" Padding="0">
+                    <materialDesign:PackIcon Kind="WindowMinimize"></materialDesign:PackIcon>
+                </Button>
+            </Grid>
+        </Border>
+        <Frame Grid.Row="1" x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

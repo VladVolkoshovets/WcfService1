@@ -37,6 +37,25 @@ namespace UI
             //
             //MessageBox.Show(res);
         }
-    
+
+        private void CloseWindow(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void MoveWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void WindowMaxSize(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void WindowMinSize(object sender, RoutedEventArgs e)
+        {
+           
+        }
     }
 }
