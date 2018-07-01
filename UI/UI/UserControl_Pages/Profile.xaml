@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <Border Grid.Row="0" Grid.Column="0" Background="{DynamicResource primary_light}" CornerRadius="15" Margin="10">
-            <Image Name="Avaterka" Margin="10" Stretch="Fill"></Image>
+            <Image Name="Avaterka" Margin="10" Source="/Images/Def_avatar.jpg" Stretch="Fill"></Image>
         </Border>
         <Button Grid.Column="1" FontSize="20" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Click">Add Photo</Button>
         <Button Grid.Column="1" Grid.Row="3" Margin="10" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="18" Click="Button_Click_1">Save Change</Button>

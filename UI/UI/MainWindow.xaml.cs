@@ -40,22 +40,36 @@ namespace UI
 
         private void CloseWindow(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            Close();
         }
 
+ 
         private void MoveWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
 
+        private bool isWindowMaxSize = false;
         private void WindowMaxSize(object sender, RoutedEventArgs e)
         {
-           
+            if(isWindowMaxSize == false)
+            {
+                WindowState = WindowState.Maximized;
+                isWindowMaxSize = true;
+            }
+            else
+            {
+                WindowState = WindowState.Normal;
+                isWindowMaxSize = false;
+            }
+
+
         }
 
         private void WindowMinSize(object sender, RoutedEventArgs e)
         {
-           
+            WindowState = WindowState.Minimized;
         }
+
     }
 }
