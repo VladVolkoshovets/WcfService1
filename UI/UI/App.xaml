@@ -14,6 +14,7 @@
             <SolidColorBrush Color="#FFFFFF" x:Key="icons" />
             <SolidColorBrush Color="#BDBDBD" x:Key="divider" />
             <SolidColorBrush Color="#FFF9C4" x:Key="background_message"/>
+            <SolidColorBrush Color="#ceefff" x:Key="colorProfile"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />

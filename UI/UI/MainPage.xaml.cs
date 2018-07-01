@@ -27,11 +27,7 @@ namespace UI
         public MainPage(UserDTO userDTO)
         {
             InitializeComponent();
-
-
-
-            ChatFrame.Content = new NonSelectedChatPage();
-
+        
             foreach (var item in userDTO.ParticipantDTO)
             {
 
@@ -80,6 +76,12 @@ namespace UI
                 
 
             }
+        }
+
+        private void Button_ClickProfile(object sender, RoutedEventArgs e)
+        {
+            var profile = new Profile();
+            Prof.Content = profile;
         }
     }
 }

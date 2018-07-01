@@ -43,12 +43,22 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition Width="2*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button>1</Button>
-                <TextBox  Text="Search" Grid.Column="1" TextAlignment="Center" HorizontalAlignment="Center"></TextBox>
+                <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Grid.Column="0" Margin="10,12,0,0" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <materialDesign:PopupBox.ToggleContent>
+                        <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" />
+                    </materialDesign:PopupBox.ToggleContent>
+                    <StackPanel>
+                        <Button Click="Button_ClickProfile">Profile</Button>
+                        <Button>Create new group</Button>
+                        <Button>Logout</Button>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+                <TextBox Text="Search" FontSize="16" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="{DynamicResource primary_text}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             </Grid>
 
         </StackPanel>
         <Grid Grid.Column="1">
+            <ContentControl Name="Prof"></ContentControl>
             <Frame x:Name="ChatFrame"></Frame>
         </Grid>
     </Grid>
