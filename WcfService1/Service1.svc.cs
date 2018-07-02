@@ -15,7 +15,7 @@ namespace WcfService1
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        private DatabaseBLL _bll = new DatabaseBLL();
+        private BLL.BLL _bll = new BLL.BLL();
         public void SomeWork()
         {
             _bll.SomeWork();

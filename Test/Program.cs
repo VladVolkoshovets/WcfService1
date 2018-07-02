@@ -11,7 +11,7 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            DatabaseBLL _bll = new DatabaseBLL();
+            BLL.BLL _bll = new BLL.BLL();
             _bll.SomeWork();
             Console.WriteLine("Good!");
             Console.ReadLine();
