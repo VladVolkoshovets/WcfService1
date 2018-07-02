@@ -74,7 +74,7 @@
                     <StackPanel>
                         <Button Click="Button_ClickProfile">Profile</Button>
                         <Button Click="Button_Click_AddGroup">Create new group</Button>
-                        <Button>Logout</Button>
+                        <Button Click="Button_ClickLogOut">Logout</Button>
                     </StackPanel>
                 </materialDesign:PopupBox>
                 <TextBox FontSize="16" Margin="10,0" Template="{StaticResource TextBoxTemplate}" Foreground="{DynamicResource primary_text}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />

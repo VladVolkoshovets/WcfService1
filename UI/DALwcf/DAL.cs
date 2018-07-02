@@ -10,19 +10,7 @@ namespace DALwcf
     public class DAL
     {
         private readonly Service1Client _service = new Service1Client();
-        public System.Windows.Media.Imaging.BitmapImage ConvertToImage(byte[] image)
-        {
-            System.Windows.Media.Imaging.BitmapImage GetImage = new System.Windows.Media.Imaging.BitmapImage();
-            using (var ms = new System.IO.MemoryStream(image))
-            {
-                GetImage.BeginInit();
-                GetImage.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad;
-                GetImage.StreamSource = ms;
-                GetImage.EndInit();
-            }
-
-            return GetImage;
-        }
+        
         
         public void FakeWork()
         {
@@ -66,40 +54,53 @@ namespace DALwcf
             UserDTO userDTO = null;
             if (userDAL != null)
             {
-                userDTO = new UserDTO
+                userDTO = Convertation.ToUserDTO(userDAL);
+                userDTO.ParticipantDTO = new List<ParticipantDTO>();
+                foreach (var item in userDAL.Participant)
                 {
-                    UserName = userDAL.UserName,
-                    Id = userDAL.Id,
-                    ParticipantDTO = userDAL.Participant.Select(p => new ParticipantDTO
+                    userDTO.ParticipantDTO.Add(Convertation.ToParticipantDTO(item));
+                    userDTO.ParticipantDTO.Last().RoomDTO = Convertation.ToRoomDTO(item.Room);
+                    userDTO.ParticipantDTO.Last().RoomDTO.Messages = new List<MessageDTO>();
+                    foreach (var item2 in item.Room.Messages)
                     {
-                        Id = p.Id,
-                        RoomsDTO = new RoomDTO
-                        {
-                            Id = p.Rooms.Id,
-                            IsPrivate = p.Rooms.IsPrivate,
-                            Name = p.Rooms.Name,
-                            Messages = p.Rooms.Messages.Select(m => new MessageDTO
-                            {
-                                ID = m.ID,
-                                Text = m.Text,
-                                SendTime = m.SendTime,
-
-                                Sender = new UserDTO
-                                {
-                                    Id = m.Sender.Id,
-                                    Icon = ConvertToImage(m.Sender.Image),
-                                    UserName = m.Sender.UserName
-                                }
-                            }).ToList()
-
-
-                        }
-                                   
-
-
-                    }).ToList(),
-                    Icon = ConvertToImage(userDAL.Image)
+                        userDTO.ParticipantDTO.Last().RoomDTO.Messages.Add(Convertation.ToMessageDTO(item2));
+                        userDTO.ParticipantDTO.Last().RoomDTO.Messages.Last().Sender = Convertation.ToUserDTO(item2.Sender);
+                    }
                 };
+                //userDTO = new UserDTO
+                //{
+                //    UserName = userDAL.UserName,
+                //    Id = userDAL.Id,
+                //    ParticipantDTO = userDAL.Participant.Select(p => new ParticipantDTO
+                //    {
+                //        Id = p.Id,
+                //        RoomsDTO = new RoomDTO
+                //        {
+                //            Id = p.Room.Id,
+                //            IsPrivate = p.Room.IsPrivate,
+                //            Name = p.Room.Name,
+                //            Messages = p.Room.Messages.Select(m => new MessageDTO
+                //            {
+                //                ID = m.ID,
+                //                Text = m.Text,
+                //                SendTime = m.SendTime,
+                //
+                //                Sender = new UserDTO
+                //                {
+                //                    Id = m.Sender.Id,
+                //                    Icon = ConvertToImage(m.Sender.Image),
+                //                    UserName = m.Sender.UserName
+                //                }
+                //            }).ToList()
+                //
+                //
+                //        }
+                //                   
+                //
+                //
+                //    }).ToList(),
+                //    Icon = ConvertToImage(userDAL.Image)
+                //};
 
             }
             return userDTO;

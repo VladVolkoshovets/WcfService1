@@ -53,6 +53,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="DAL.cs" />
+    <Compile Include="DTOs\Convertation.cs" />
     <Compile Include="DTOs\MessageDTO.cs" />
     <Compile Include="DTOs\ParticipantDTO.cs" />
     <Compile Include="DTOs\RoomDTO.cs" />

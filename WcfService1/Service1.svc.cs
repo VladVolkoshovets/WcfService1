@@ -15,7 +15,7 @@ namespace WcfService1
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        private DatabaseBLL _bll = new DatabaseBLL();
+        private BLL.BLL _bll = new BLL.BLL();
         public void SomeWork()
         {
             _bll.SomeWork();
@@ -56,37 +56,52 @@ namespace WcfService1
             User userDC = null;
             if (userDTO != null)
             {
-                userDC = new User
+                userDC = new User();
+                userDC = DataContracts.Convertation.ToUserDC(userDTO);
+                userDC.Participant = new List<Participant>();
+                foreach (var item in userDTO.ParticipantDTO)
                 {
-                    UserName = userDTO.UserName,
-                    Id = userDTO.Id,
-                    Participant = userDTO.ParticipantDTO.Select(p => new Participant
+                    userDC.Participant.Add(DataContracts.Convertation.ToParticipantDC(item));
+                    userDC.Participant.Last().Room = DataContracts.Convertation.ToRoomDC(item.RoomDTO);
+                    userDC.Participant.Last().Room.Messages = new List<Message>();
+                    foreach (var item2 in item.RoomDTO.Messages)
                     {
-                        Id = p.Id,
-                        Rooms = new Room
-                        {
-                            Id = p.RoomDTO.Id,
-                            IsPrivate = p.RoomDTO.IsPrivate,
-                            Name = p.RoomDTO.Name,
-                            Messages = p.RoomDTO.Messages.Select(m => new Message
-                            {
-                                ID = m.ID,
-                                Text = m.Text,
-                                SendTime = m.SendTime,
-                                Sender = new User
-                                {
-                                    Id = m.Sender.Id,
-                                    Image = m.Sender.Image,
-                                    UserName = m.Sender.UserName
-                                },
-                            }).ToList(),
-                        },
-
-                    }).ToList(),
-                    Image = userDTO.Image
-
+                        userDC.Participant.Last().Room.Messages.Add(DataContracts.Convertation.ToMessageDC(item2));
+                        userDC.Participant.Last().Room.Messages.Last().Sender = DataContracts.Convertation.ToUserDC(item2.Sender);
+                        userDC.Participant.Last().Room.Messages.Last().Sender.Image = item2.Sender.Image;
+                    }
                 };
-                userDTO.Image = userDTO.Image;
+                //userDC = new User
+                //{
+                //    UserName = userDTO.UserName,
+                //    Id = userDTO.Id,
+                //    Participant = userDTO.ParticipantDTO.Select(p => new Participant
+                //    {
+                //        Id = p.Id,
+                //        Room = new Room
+                //        {
+                //            Id = p.RoomDTO.Id,
+                //            IsPrivate = p.RoomDTO.IsPrivate,
+                //            Name = p.RoomDTO.Name,
+                //            Messages = p.RoomDTO.Messages.Select(m => new Message
+                //            {
+                //                ID = m.ID,
+                //                Text = m.Text,
+                //                SendTime = m.SendTime,
+                //                Sender = new User
+                //                {
+                //                    Id = m.Sender.Id,
+                //                    Image = m.Sender.Image,
+                //                    UserName = m.Sender.UserName
+                //                },
+                //            }).ToList(),
+                //        },
+                //
+                //    }).ToList(),
+                //    Image = userDTO.Image
+                //
+                //};
+                
             }
 
             return userDC;

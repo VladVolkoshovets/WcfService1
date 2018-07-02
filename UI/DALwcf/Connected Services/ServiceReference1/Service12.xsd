@@ -52,7 +52,7 @@
   <xs:complexType name="Participant">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Rooms" nillable="true" type="tns:Room" />
+      <xs:element minOccurs="0" name="Room" nillable="true" type="tns:Room" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="tns:Status" />
       <xs:element minOccurs="0" name="Users" nillable="true" type="tns:ArrayOfUser" />
     </xs:sequence>
