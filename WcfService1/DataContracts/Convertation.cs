@@ -8,32 +8,33 @@ namespace WcfService1.DataContracts
 {
     public class Convertation
     {
-        public static UserDTO ToUserDTO(User userDAL)
+        public static UserDTO ToUserDTO(User user)
         {
             UserDTO userDTO = new UserDTO
             {
-                Id = userDAL.Id,
-                UserName = userDAL.UserName,
-                Image = userDAL.Image
+                Id = user.Id,
+                UserName = user.UserName,
+                Papassword = user.Papassword,
+                Image = user.Image
             };
             return userDTO;
         }
 
-        public static MessageDTO ToMessageDTO(Message messageDAL)
+        public static MessageDTO ToMessageDTO(Message message)
         {
             MessageDTO messageDTO = new MessageDTO()
             {
-                ID = messageDAL.ID,
-                Text = messageDAL.Text,
-                SendTime = messageDAL.SendTime
+                ID = message.ID,
+                Text = message.Text,
+                SendTime = message.SendTime
             };
             return messageDTO;
         }
-        public static ParticipantDTO ToParticipantDTO(Participant participantDAL)
+        public static ParticipantDTO ToParticipantDTO(Participant participant)
         {
             ParticipantDTO participantDTO = new ParticipantDTO()
             {
-                Id = participantDAL.Id,
+                Id = participant.Id,
             };
             return participantDTO;
         }

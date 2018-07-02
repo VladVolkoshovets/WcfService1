@@ -24,5 +24,20 @@ namespace DAL
             User user = _ctx.Users.FirstOrDefault(u => u.UserName == UserName && u.Papassword == Password); 
             return user;
         }
+        public bool AddUser(User user)
+        {
+           
+            if (_ctx.Users.FirstOrDefault(u => u.UserName.Equals(user.UserName)) != null)
+            {
+                return false;
+            }
+            else
+            {
+                _ctx.Users.Add(user);
+                _ctx.SaveChanges();
+                return true;
+            }
+          
+        }
     }
 }

@@ -72,9 +72,10 @@ namespace DALwcf.DTOs
         public static User ToUserDAL(UserDTO userDTO)
         {
             User userDAL = new User
-            {
+            { 
                 Id = userDTO.Id,
                 UserName = userDTO.UserName,
+                Papassword = userDTO.Papassword
                 //Image = userDTO.Image
             };
             return userDAL;

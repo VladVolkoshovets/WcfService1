@@ -20,6 +20,9 @@ namespace WcfService1
         [OperationContract]
         User Autorisation(string UserName, string Password);
         [OperationContract]
+        bool AddUser(User user);
+ 
+        [OperationContract]
         string GetData(int value);
 
         [OperationContract]

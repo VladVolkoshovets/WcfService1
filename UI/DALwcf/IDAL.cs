@@ -1,16 +1,15 @@
-﻿using BLL.DTOs;
+﻿using DALwcf.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL
+namespace DALwcf
 {
-    interface IBLL
+    interface IDAL
     {
-        void SomeWork();
-        byte[] DefoultIcon();
+        void FakeWork();
         UserDTO Autorisation(string UserName, string Password);
         bool AddUser(UserDTO user);
     }

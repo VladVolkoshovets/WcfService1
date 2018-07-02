@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DALwcf;
+using DALwcf.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,20 +22,44 @@ namespace UI
     /// </summary>
     public partial class RegistrationNewUser : Page
     {
+        private readonly DAL _dal = new DAL();
         public RegistrationNewUser()
         {
             InitializeComponent();
-        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Check data, then go next page.");
         }
 
         private void IfPutEnter(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
-                Button_Click(sender, e);
+                Regist_click(sender, e);
+        }
+
+        private void Regist_click(object sender, RoutedEventArgs e)
+        {
+            if (Pass1.Password == Pass2.Password)
+            {
+                UserDTO user = new UserDTO()
+                {
+                    UserName = UserName.Text,
+                    Papassword = Pass1.Password
+                };
+                if (_dal.AddUser(user))
+                {
+                    MessageBox.Show("The account was created successfully");
+                }
+                else
+                {
+                    MessageBox.Show("Username already in use");
+                }
+              
+               
+            }
+            else
+            {
+               MessageBox.Show("Passwords don't match");
+            }
+           
         }
     }
 }

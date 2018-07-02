@@ -7,7 +7,7 @@ using DALwcf.DTOs;
 using DALwcf.ServiceReference1;
 namespace DALwcf
 {
-    public class DAL
+    public class DAL : IDAL
     {
         private readonly Service1Client _service = new Service1Client();
         
@@ -104,6 +104,10 @@ namespace DALwcf
 
             }
             return userDTO;
+        }
+        public bool AddUser(UserDTO user)
+        {
+            return _service.AddUser(Convertation.ToUserDAL(user));
         }
     }
 }

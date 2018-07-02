@@ -106,6 +106,10 @@ namespace WcfService1
 
             return userDC;
         }
+        public bool AddUser(User user)
+        {
+            return _bll.AddUser(DataContracts.Convertation.ToUserDTO(user));
+        }
        // public User Autorisation(string UserName, string Password)
        // {
        //     UserDTO userDTO = _bll.Autorisation(UserName, Password);

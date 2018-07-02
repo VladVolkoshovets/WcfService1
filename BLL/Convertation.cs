@@ -62,6 +62,7 @@ namespace BLL
             User userDAL = new User
             {
                 Id = userDTO.Id,
+                Papassword = userDTO.Papassword,
                 UserName = userDTO.UserName,
                 Image = userDTO.Image
             };

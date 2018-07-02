@@ -38,15 +38,15 @@
                                    FontSize="24"
                                    Margin="0,0,0,18"/>
 
-                        <TextBox MaxLength="15" materialDesign:HintAssist.Hint="Login" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="{DynamicResource primary_text}" Margin="10,0" VerticalAlignment="Top" HorizontalContentAlignment="Left"  />
-                        <PasswordBox MaxLength="15" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"  Foreground="{DynamicResource primary_text}"  Margin="10,0" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
-                        <PasswordBox MaxLength="15" materialDesign:HintAssist.Hint="Repeat password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Foreground="{DynamicResource primary_text}" Margin="10,0" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
+                        <TextBox Name="UserName" MaxLength="15" materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="{DynamicResource primary_text}" Margin="10,0" VerticalAlignment="Top" HorizontalContentAlignment="Left"  />
+                        <PasswordBox Name="Pass1" MaxLength="15" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"  Foreground="{DynamicResource primary_text}"  Margin="10,0" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
+                        <PasswordBox Name="Pass2" MaxLength="15" materialDesign:HintAssist.Hint="Repeat password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Foreground="{DynamicResource primary_text}" Margin="10,0" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
 
 
 
                         <Label></Label>
                         <!-- Login button -->
-                        <Button Foreground="{StaticResource icons}" Style="{StaticResource MaterialDesignRaisedAccentButton}" Content="Registration" Margin="10,0" VerticalAlignment="Center" Click="Button_Click"/>
+                        <Button Foreground="{StaticResource icons}" Style="{StaticResource MaterialDesignRaisedAccentButton}" Content="Registration" Margin="10,0" VerticalAlignment="Center" Click="Regist_click"/>
 
                     </StackPanel>
 

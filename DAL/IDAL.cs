@@ -12,5 +12,6 @@ namespace DAL
         void SomeWork();
         List<User> GetUsers();
         User Autorisation(string UserName, string Password);
+        bool AddUser(User user);
     }
 }

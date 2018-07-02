@@ -70,8 +70,8 @@ namespace BLL
             UserDTO userDTO = null;
             if (userDAL != null)
             {
-                
-                
+
+
                 userDTO = Convertation.ToUserDTO(userDAL);
                 userDTO.ParticipantDTO = new List<ParticipantDTO>();
                 foreach (var item in userDAL.Participant)
@@ -86,7 +86,7 @@ namespace BLL
                         userDTO.ParticipantDTO.Last().RoomDTO.Messages.Last().Sender.Image = item2.Sender?.Image ?? DefoultIcon();
                     }
                 };
-                
+
                 // Last
                 //userDTO = new UserDTO
                 //{
@@ -126,8 +126,12 @@ namespace BLL
                     userDTO.Image = DefoultIcon();
                 }
             }
-            
+
             return userDTO;
+        }
+        public bool AddUser(UserDTO user)
+        {
+            return _dal.AddUser(Convertation.ToUserDAL(user));
         }
     }
 }
