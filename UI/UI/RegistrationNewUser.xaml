@@ -13,29 +13,46 @@
     </Page.Resources>
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.7*"></RowDefinition>
-            <RowDefinition Height="0.7*"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+
+        <!-- Main content scroll -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    TextBlock.TextAlignment="Center">
+
+                <!-- Login main content white box -->
+                <Border Background="{StaticResource icons}" 
+                            CornerRadius="10"
+                            Padding="35 50 35 15"
+                            Width="210"
+                            Margin="50 50 50 0">
+
+                    <StackPanel>
+
+                        <!-- Sign Up header -->
+                        <TextBlock Text="Registration"
+                                   Foreground="{StaticResource primary_text}"
+                                   FontSize="24"
+                                   Margin="0,0,0,18"/>
+
+                        <TextBox MaxLength="15" materialDesign:HintAssist.Hint="Login" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="{DynamicResource primary_text}" Margin="10,0" VerticalAlignment="Top" HorizontalContentAlignment="Left"  />
+                        <PasswordBox MaxLength="15" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"  Foreground="{DynamicResource primary_text}"  Margin="10,0" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
+                        <PasswordBox MaxLength="15" materialDesign:HintAssist.Hint="Repeat password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Foreground="{DynamicResource primary_text}" Margin="10,0" VerticalAlignment="Top" HorizontalContentAlignment="Left"/>
 
 
-        <Border Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Background="{StaticResource icons}" CornerRadius="10"></Border>
-        <TextBlock Grid.Column="1" Grid.Row="1" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36">Registration</TextBlock>
-        <TextBox MaxLength="15" materialDesign:HintAssist.Hint="Login" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" Grid.Row="2" Foreground="{DynamicResource primary_text}" FontSize="20" Margin="10,0" VerticalAlignment="Top"  />
-        <PasswordBox MaxLength="15" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Grid.Column="1" Grid.Row="3" Foreground="{DynamicResource primary_text}" FontSize="20" Margin="10,0" VerticalAlignment="Top"/>
-        <PasswordBox MaxLength="15" materialDesign:HintAssist.Hint="Repeat Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Grid.Column="1" Grid.Row="4" Foreground="{DynamicResource primary_text}" FontSize="20" Margin="10,0" VerticalAlignment="Top"/>
-        <Button Grid.Column="1" Grid.Row="5" Foreground="{StaticResource icons}" Style="{StaticResource MaterialDesignRaisedAccentButton}" Content="Registration" Margin="20,0" FontSize="18" VerticalAlignment="Center" Click="Button_Click"/>
+
+                        <Label></Label>
+                        <!-- Login button -->
+                        <Button Foreground="{StaticResource icons}" Style="{StaticResource MaterialDesignRaisedAccentButton}" Content="Registration" Margin="10,0" VerticalAlignment="Center" Click="Button_Click"/>
+
+                    </StackPanel>
+
+
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
-
 
 </Page>

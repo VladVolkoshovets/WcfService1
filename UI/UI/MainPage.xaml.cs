@@ -53,7 +53,7 @@ namespace UI
                                 }
                             }
                             roomButton.Select();
-                            ChatFrame.Content = new ChatPage(item.RoomDTO, userDTO);
+                            ChatFrame.Content = new ChatControl(item.RoomsDTO, userDTO);
                         });
                         roomButton.SetContent();
                         ButtonsPanel.Children.Add(roomButton);
@@ -81,11 +81,14 @@ namespace UI
         private void Button_ClickProfile(object sender, RoutedEventArgs e)
         {
             var profile = new Profile();
-            Prof.Content = profile;
+            ChatFrame.Content = profile;
         }
-
-
-        private void Button_ClickLogOut(object sender, RoutedEventArgs e)
+        private void Button_Click_AddGroup(object sender, RoutedEventArgs e)
+        {
+            var newGroup = new AddGroup();
+            ChatFrame.Content = newGroup;
+        }
+          private void Button_ClickLogOut(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new LoginPage();
         }
