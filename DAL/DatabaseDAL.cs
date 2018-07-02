@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DatabaseDAL
+    public class DatabaseDAL : IDAL
     { 
         private readonly MessengerModel _ctx = new MessengerModel();
 

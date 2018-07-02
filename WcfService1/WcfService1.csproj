@@ -72,6 +72,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContracts\Convertation.cs" />
     <Compile Include="DataContracts\Message.cs" />
     <Compile Include="DataContracts\Participant.cs" />
     <Compile Include="DataContracts\Room.cs" />

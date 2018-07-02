@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace BLL
 {
 
-    public class DatabaseBLL
+    public class BLL : IBLL
     {
         private readonly DatabaseDAL _dal = new DatabaseDAL();
         public void SomeWork()

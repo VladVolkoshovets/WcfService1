@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseDAL.cs" />
+    <Compile Include="IDAL.cs" />
     <Compile Include="Models\CustomInitializer.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\MessengerModel.cs" />

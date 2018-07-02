@@ -1,22 +1,34 @@
-﻿using BLL.DTOs;
-using DAL.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DALwcf.ServiceReference1;
 
-namespace BLL
+namespace DALwcf.DTOs
 {
-    public class Convertation
+    class Convertation
     {
+        public static System.Windows.Media.Imaging.BitmapImage ConvertToImage(byte[] image)
+        {
+            System.Windows.Media.Imaging.BitmapImage GetImage = new System.Windows.Media.Imaging.BitmapImage();
+            using (var ms = new System.IO.MemoryStream(image))
+            {
+                GetImage.BeginInit();
+                GetImage.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad;
+                GetImage.StreamSource = ms;
+                GetImage.EndInit();
+            }
+
+            return GetImage;
+        }
         public static UserDTO ToUserDTO(User userDAL)
         {
             UserDTO userDTO = new UserDTO
             {
                 Id = userDAL.Id,
                 UserName = userDAL.UserName,
-                Image = userDAL.Image
+                Icon = ConvertToImage(userDAL.Image)
             };
             return userDTO;
         }
@@ -63,7 +75,7 @@ namespace BLL
             {
                 Id = userDTO.Id,
                 UserName = userDTO.UserName,
-                Image = userDTO.Image
+                //Image = userDTO.Image
             };
             return userDAL;
         }
@@ -104,6 +116,5 @@ namespace BLL
             };
             return statusDAL;
         }
-
     }
 }
