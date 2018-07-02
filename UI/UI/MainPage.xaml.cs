@@ -22,13 +22,13 @@ namespace UI
     /// </summary>
     public partial class MainPage : Page
     {
-
+        public UserDTO CurrentUser { get; set; }
 
         public MainPage(UserDTO userDTO)
         {
             InitializeComponent();
-        
-            foreach (var item in userDTO.ParticipantDTO)
+            CurrentUser = userDTO;
+            foreach (var item in CurrentUser.ParticipantDTO)
             {
 
                 if (item.RoomDTO.Messages != null)
@@ -53,7 +53,7 @@ namespace UI
                                 }
                             }
                             roomButton.Select();
-                            ChatFrame.Content = new ChatControl(item.RoomsDTO, userDTO);
+                            ChatFrame.Content = new ChatControl(item.RoomDTO, CurrentUser);
                         });
                         roomButton.SetContent();
                         ButtonsPanel.Children.Add(roomButton);
@@ -80,7 +80,7 @@ namespace UI
 
         private void Button_ClickProfile(object sender, RoutedEventArgs e)
         {
-            var profile = new Profile();
+            var profile = new Profile(CurrentUser);
             ChatFrame.Content = profile;
         }
         private void Button_Click_AddGroup(object sender, RoutedEventArgs e)

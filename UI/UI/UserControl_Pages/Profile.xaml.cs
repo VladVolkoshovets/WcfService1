@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using DALwcf.DTOs;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,15 +23,19 @@ namespace UI
     public partial class Profile : UserControl
     {
     
-        public Profile()
+        public Profile(UserDTO CurrentUser)
         {
             InitializeComponent();
 
 
-            Avaterka.Source = new BitmapImage(new Uri("/Images/Def_avatar.jpg", UriKind.Relative));
+            IconUser.Source = CurrentUser.Icon;
+        }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Metod for SAVE new info");
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ChangePhoto_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.png) | *.jpg; *.jpeg; *.jpeg; *.png";
@@ -38,13 +43,8 @@ namespace UI
             if (openFileDialog.ShowDialog() == true)
             {
                 string strPath = openFileDialog.FileName;
-                Avaterka.Source = new BitmapImage(new Uri(strPath, UriKind.RelativeOrAbsolute));
+                IconUser.Source = new BitmapImage(new Uri(strPath, UriKind.RelativeOrAbsolute));
             }
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Metod for SAVE new info");
         }
     }
 }
