@@ -31,43 +31,14 @@
                             <TextBlock Text="Sign in"
                                    Foreground="{StaticResource primary_text}"
                                    FontSize="33"
-                                   Margin="0,0,0,18"
-                                   
-                                   />
+                                   Margin="0,0,0,18"/>
 
-                            <!-- Sign up subtext-->
+                        <TextBox Name="UserName" MaxLength="15" materialDesign:HintAssist.Hint="Login" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="{DynamicResource primary_text}" Margin="10,0" HorizontalContentAlignment="Left" />
+                        <PasswordBox Name="Password" MaxLength="15" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Foreground="{DynamicResource primary_text}" Margin="10,0" HorizontalContentAlignment="Left"/>
 
-                            <!-- Email -->
-                        <TextBox     
-                            x:Name="UserName"
-                            Text="Login"
-                            Tag="Login"  
-                            Foreground="{DynamicResource secondary_text}"
-                            FontSize="16" GotFocus="Login_GotFocus"
-                            >
-                        </TextBox>
-                            
-                            
 
-                            <!-- Password -->
-                        <Grid>
-                            <TextBox x:Name="PasswordText"
-                                     Margin="0 0 0 30"
-                                     FontSize="16"
-                                     Foreground="{DynamicResource secondary_text}"
-                                     Text="Password"
-                                     IsReadOnly="True"
-                                     IsTabStop="False"
-                                     />
-                            <PasswordBox x:Name="Password"
-                                         Tag="Password"
-                                         Margin="0 0 0 30"
-                                         Foreground="{DynamicResource primary_text}"
-                                         FontSize="16" GotFocus="Password_GotFocus">
-                            </PasswordBox>
-                        </Grid>
-                        
-                            <Label></Label>
+
+                        <Label></Label>
                             <!-- Login button -->
                         <Button Style="{StaticResource MaterialDesignRaisedAccentButton}"
                                 Content="GO" 

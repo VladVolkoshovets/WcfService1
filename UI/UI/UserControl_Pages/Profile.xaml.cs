@@ -27,7 +27,7 @@ namespace UI
             InitializeComponent();
 
 
-            Avaterka.Source = new BitmapImage(new Uri("Images/Def_avatar.jpg", UriKind.Relative));
+            Avaterka.Source = new BitmapImage(new Uri("/Images/Def_avatar.jpg", UriKind.Relative));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

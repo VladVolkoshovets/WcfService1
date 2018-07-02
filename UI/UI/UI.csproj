@@ -60,19 +60,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ChatPage.xaml.cs">
-      <DependentUpon>ChatPage.xaml</DependentUpon>
+    <Compile Include="UserControl_Pages\AddGroup.xaml.cs">
+      <DependentUpon>AddGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl_Pages\ChatControl.xaml.cs">
+      <DependentUpon>ChatControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\RadioButtonExperement.cs" />
     <Compile Include="Controls\RoomButton.cs" />
     <Compile Include="Controls\RoomGrid.cs" />
-    <Compile Include="Profile.xaml.cs">
+    <Compile Include="UserControl_Pages\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
     <Compile Include="RegistrationNewUser.xaml.cs">
       <DependentUpon>RegistrationNewUser.xaml</DependentUpon>
     </Compile>
-    <Page Include="ChatPage.xaml">
+    <Page Include="UserControl_Pages\AddGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl_Pages\ChatControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,7 +109,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Profile.xaml">
+    <Page Include="UserControl_Pages\Profile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

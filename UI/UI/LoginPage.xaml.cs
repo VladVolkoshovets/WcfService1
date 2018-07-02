@@ -30,21 +30,6 @@ namespace UI
            InitializeComponent();
         }
 
-        private void Login_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if ((sender as TextBox).Text == "Login")
-            {
-                (sender as TextBox).Text = String.Empty;
-                (sender as TextBox).Foreground = (App.Current.Resources["primary_text"] as Brush);
-            }
-
-        }
-
-        private void Password_GotFocus(object sender, RoutedEventArgs e)
-        {
-            PasswordText.Visibility = Visibility.Hidden;
-        }
-
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
             UserDTO userDTO = null;

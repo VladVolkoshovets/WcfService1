@@ -30,6 +30,30 @@
                 </Grid>
             </Button>
         </ControlTemplate>
+        <ControlTemplate TargetType="TextBox" x:Key="TextBoxTemplate" >
+            <Grid>
+                <TextBox Text="{Binding Text, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Text="Search"
+                Margin="5,0,5,0"
+                Foreground="#FF808080"
+                FontStyle="Normal"
+                IsHitTestVisible="False"
+                x:Name="UserMessage"
+                Visibility="Hidden"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="Text" Value=""/>
+                        <Condition Property="IsKeyboardFocusWithin" Value="False"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Visibility" TargetName="UserMessage" Value="Visible"/>
+                </MultiTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
     </Page.Resources>
     <Grid>
 
@@ -49,16 +73,15 @@
                     </materialDesign:PopupBox.ToggleContent>
                     <StackPanel>
                         <Button Click="Button_ClickProfile">Profile</Button>
-                        <Button>Create new group</Button>
+                        <Button Click="Button_Click_AddGroup">Create new group</Button>
                         <Button>Logout</Button>
                     </StackPanel>
                 </materialDesign:PopupBox>
-                <TextBox Text="Search" FontSize="16" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Foreground="{DynamicResource primary_text}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                <TextBox FontSize="16" Margin="10,0" Template="{StaticResource TextBoxTemplate}" Foreground="{DynamicResource primary_text}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             </Grid>
 
         </StackPanel>
         <Grid Grid.Column="1">
-            <ContentControl Name="Prof"></ContentControl>
             <Frame x:Name="ChatFrame"></Frame>
         </Grid>
     </Grid>
