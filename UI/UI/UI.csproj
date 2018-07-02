@@ -158,17 +158,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\icon_user.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Background.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Iconca.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Def_avatar.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Iconca.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

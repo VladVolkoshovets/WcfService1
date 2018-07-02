@@ -101,8 +101,8 @@
                                             Source="{Binding Path=Icon, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" 
                                             HorizontalAlignment="Right"
                                             Margin="0"
-                                            Width="32"
-                                            Height="32"
+                                            Width="28"
+                                            Height="28"
                                             
                                             />
                                         <TextBlock
