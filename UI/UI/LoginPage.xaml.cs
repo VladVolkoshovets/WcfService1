@@ -45,5 +45,11 @@ namespace UI
         {
             ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new RegistrationNewUser();
         }
+
+        private void IfPutEnter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                SignInButton_Click(sender, e);
+        }
     }
 }

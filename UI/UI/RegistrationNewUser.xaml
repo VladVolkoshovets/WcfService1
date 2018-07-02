@@ -7,7 +7,9 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="RegistrationNewUser">
+      Title="RegistrationNewUser"
+      KeyDown="IfPutEnter"
+      >
     <Page.Resources>
         <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource MaterialDesignPasswordBox}"/>
     </Page.Resources>

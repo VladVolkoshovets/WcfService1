@@ -89,5 +89,6 @@ namespace UI
             ChatFrame.Content = newGroup;
         }
 
+
     }
 }

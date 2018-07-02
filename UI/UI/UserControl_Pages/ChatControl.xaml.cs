@@ -80,5 +80,11 @@ namespace UI
 
             Message.Text = String.Empty;
         }
+
+        private void IfPutEnter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                Button_Click_SendMessage(sender, e);
+        }
     }
 }

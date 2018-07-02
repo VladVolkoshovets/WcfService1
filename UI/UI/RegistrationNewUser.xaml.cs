@@ -29,5 +29,11 @@ namespace UI
         {
             MessageBox.Show("Check data, then go next page.");
         }
+
+        private void IfPutEnter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                Button_Click(sender, e);
+        }
     }
 }
