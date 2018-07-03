@@ -46,20 +46,35 @@ namespace UI
                 };
                 if (_dal.AddUser(user))
                 {
-                    MessageBox.Show("The account was created successfully");
+
+                    ErrorLabel.Visibility = Visibility.Visible;
+                    ErrorLabel.Content = "The account was created successfully";
+                    ErrorLabel.Foreground = Brushes.Green;
                 }
                 else
                 {
-                    MessageBox.Show("Username already in use");
+                    ErrorLabel.Visibility = Visibility.Visible;
+                    ErrorLabel.Content = "Username already in use";
+                    ErrorLabel.Foreground = Brushes.Green;
+         
                 }
               
                
             }
             else
             {
-               MessageBox.Show("Passwords don't match");
+                ErrorLabel.Visibility = Visibility.Visible;
+                ErrorLabel.Content = "Passwords don't match";
+                ErrorLabel.Foreground = Brushes.Green;
+          
             }
            
+        }
+
+
+        private void BackToLogIn(object sender, MouseButtonEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new LoginPage();
         }
     }
 }

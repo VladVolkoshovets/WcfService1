@@ -37,7 +37,11 @@ namespace UI
             if (userDTO != null)
             {
                 ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new MainPage(userDTO);
-            } 
+            }
+            else
+            {
+                ErrorLabel.Visibility = Visibility.Visible;
+            }
 
         }
 

@@ -40,8 +40,8 @@
 
 
 
-                        <Label></Label>
-                            <!-- Login button -->
+                        <Label Name="ErrorLabel" HorizontalContentAlignment="Center" Foreground="Red" FontSize="11" Visibility="Hidden">Wrong data</Label>
+                        <!-- Login button -->
                         <Button Style="{StaticResource MaterialDesignRaisedAccentButton}"
                                 Content="GO" 
                                     IsDefault="True"
