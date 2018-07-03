@@ -75,6 +75,7 @@ namespace UI
             }
         }
 
+        //Методи на кнопці меню
         private void Button_ClickProfile(object sender, RoutedEventArgs e)
         {
             var profile = new Profile();
@@ -90,7 +91,7 @@ namespace UI
             ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new LoginPage();
         }
 
-
+        //Методи на групі/чаті
         private void AddNewUser(object sender, RoutedEventArgs e)
         {
             var newUser = new AddNewUserControl(nameForGroup);
@@ -98,11 +99,30 @@ namespace UI
         }
         private void LogOutGroup(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Metod for Log out Group");
+            var newWindowCheack = new CheackFor_Delete_LogOut("Do you want log out!!!");
+
+            if (newWindowCheack.ShowDialog() == true)
+            {
+                //log out
+            }
+            else
+            {
+                //Not log out
+            }
         }
         private void Delete_Group_Room(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Metod for Delete chat");
+
+            var newWindowCheack = new CheackFor_Delete_LogOut("Do you want delete this!!!");
+
+            if(newWindowCheack.ShowDialog() == true)
+            {
+                //Delete
+            }
+            else
+            {
+                //Not Delete
+            }
         }
     }
 }

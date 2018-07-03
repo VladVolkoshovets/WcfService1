@@ -61,6 +61,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CheackFor_Delete_LogOut.xaml.cs">
+      <DependentUpon>CheackFor_Delete_LogOut.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl_Pages\AddGroup.xaml.cs">
       <DependentUpon>AddGroup.xaml</DependentUpon>
     </Compile>
@@ -80,6 +83,10 @@
       <DependentUpon>RegistrationNewUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowStyle\VS2012WindowStyle.cs" />
+    <Page Include="CheackFor_Delete_LogOut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControl_Pages\AddGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

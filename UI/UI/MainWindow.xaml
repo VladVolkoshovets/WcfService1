@@ -10,7 +10,7 @@
         Title="Cha-Cha" Height="450" Width="800"
         MinHeight="370" MinWidth="400"
         Style="{StaticResource VS2012WindowStyle}"
-        
+        WindowStartupLocation="CenterScreen"
         >
   
         <Grid>
