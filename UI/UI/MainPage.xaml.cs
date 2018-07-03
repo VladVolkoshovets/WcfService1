@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using UI.Controls;
+using UI.UserControl_Pages;
 
 namespace UI
 {
@@ -58,7 +59,12 @@ namespace UI
 
                     roomButton.MouseRightButtonDown += new MouseButtonEventHandler((Sender, Args) =>
                     {
-                        MessageBox.Show("sfsd");
+                        ContextMenu cm = this.FindResource("cmButton") as ContextMenu;
+                        cm.PlacementTarget = Sender as Button;
+                        cm.IsOpen = true;
+
+
+                        //MessageBox.Show("sfsd");
                     });
 
 
@@ -82,6 +88,21 @@ namespace UI
         private void Button_ClickLogOut(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new LoginPage();
+        }
+
+
+        private void AddNewUser(object sender, RoutedEventArgs e)
+        {
+            var newUser = new AddNewUserControl();
+            ChatFrame.Content = newUser;
+        }
+        private void LogOutGroup(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Metod for Log out Group");
+        }
+        private void Delete_Group_Room(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Metod for Delete chat");
         }
     }
 }

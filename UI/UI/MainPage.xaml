@@ -54,6 +54,11 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
 
+        <ContextMenu x:Key="cmButton">
+            <MenuItem Name="newUserKey" Header="Add new user" Click="AddNewUser" />
+            <MenuItem Name="LogOutGroukKey" Header="Log out group" Click="LogOutGroup" />
+            <MenuItem Name="DeleteKey" Header="Delete" Click="Delete_Group_Room"/>
+        </ContextMenu>
     </Page.Resources>
     <Grid>
 

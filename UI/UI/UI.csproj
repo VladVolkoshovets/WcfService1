@@ -64,6 +64,9 @@
     <Compile Include="UserControl_Pages\AddGroup.xaml.cs">
       <DependentUpon>AddGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl_Pages\AddNewUserControl.xaml.cs">
+      <DependentUpon>AddNewUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl_Pages\ChatControl.xaml.cs">
       <DependentUpon>ChatControl.xaml</DependentUpon>
     </Compile>
@@ -78,6 +81,10 @@
     </Compile>
     <Compile Include="WindowStyle\VS2012WindowStyle.cs" />
     <Page Include="UserControl_Pages\AddGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl_Pages\AddNewUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
