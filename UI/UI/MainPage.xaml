@@ -66,28 +66,31 @@
             <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel Name="ButtonsPanel" Background="{DynamicResource icons}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Grid.Column="0" Margin="10,12,0,0" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <materialDesign:PopupBox.ToggleContent>
-                        <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" />
-                    </materialDesign:PopupBox.ToggleContent>
-                    <StackPanel>
-                        <Button Click="Button_ClickProfile">Profile</Button>
-                        <Button Click="Button_Click_AddGroup">Create new group</Button>
-                        <Button Click="Button_ClickLogOut">Logout</Button>
-                    </StackPanel>
-                </materialDesign:PopupBox>
-                <TextBox FontSize="16" Margin="10,0" Template="{StaticResource TextBoxTemplate}" Foreground="{DynamicResource primary_text}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
-                    
-                </TextBox>
-            </Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel Name="ButtonsPanel" Background="{DynamicResource icons}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Grid.Column="0" Margin="10,12,0,0" Width="30" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <materialDesign:PopupBox.ToggleContent>
+                            <materialDesign:PackIcon Kind="Menu" Width="30" Height="30" />
+                        </materialDesign:PopupBox.ToggleContent>
+                        <StackPanel>
+                            <Button Click="Button_ClickProfile">Profile</Button>
+                            <Button Click="Button_Click_AddGroup">Create new group</Button>
+                            <Button Click="Button_ClickLogOut">Logout</Button>
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+                    <TextBox FontSize="16" Margin="10,0" Template="{StaticResource TextBoxTemplate}" Foreground="{DynamicResource primary_text}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
 
-        </StackPanel>
+                    </TextBox>
+                </Grid>
+
+            </StackPanel>
+        </ScrollViewer>
+       
         <Grid Grid.Column="1">
             <Frame x:Name="ChatFrame"></Frame>
         </Grid>

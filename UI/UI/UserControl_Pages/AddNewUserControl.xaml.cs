@@ -20,9 +20,19 @@ namespace UI.UserControl_Pages
     /// </summary>
     public partial class AddNewUserControl : UserControl
     {
-        public AddNewUserControl()
+
+        public AddNewUserControl(string NameGroup)
         {
             InitializeComponent();
+
+
+            NameForGroup.Content = "Group: " + NameGroup;
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Metod Add New User");
         }
     }
 }

@@ -10,8 +10,9 @@
         Title="Cha-Cha" Height="450" Width="800"
         MinHeight="370" MinWidth="400"
         Style="{StaticResource VS2012WindowStyle}"
+        
         >
- 
+  
         <Grid>
             <Grid.Background>
                 <ImageBrush ImageSource="Images/Background.jpg" Stretch="UniformToFill"/>

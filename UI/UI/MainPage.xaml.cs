@@ -24,6 +24,7 @@ namespace UI
     public partial class MainPage : Page
     {
         public UserDTO CurrentUser { get; set; }
+        public static string nameForGroup;
 
         public MainPage(UserDTO userDTO)
         {
@@ -37,7 +38,7 @@ namespace UI
                     RoomButton roomButton = new RoomButton()
                     {
                         UserName = item.RoomDTO.Name,
-
+                        
                         LastMessage = String.Empty
                     };
 
@@ -59,12 +60,11 @@ namespace UI
 
                     roomButton.MouseRightButtonDown += new MouseButtonEventHandler((Sender, Args) =>
                     {
+                        nameForGroup = roomButton.UserName;
                         ContextMenu cm = this.FindResource("cmButton") as ContextMenu;
                         cm.PlacementTarget = Sender as Button;
                         cm.IsOpen = true;
 
-
-                        //MessageBox.Show("sfsd");
                     });
 
 
@@ -77,12 +77,12 @@ namespace UI
 
         private void Button_ClickProfile(object sender, RoutedEventArgs e)
         {
-            var profile = new Profile(CurrentUser);
+            var profile = new Profile();
             ChatFrame.Content = profile;
         }
         private void Button_Click_AddGroup(object sender, RoutedEventArgs e)
         {
-            var newGroup = new AddGroup();
+            var newGroup = new AddGroup(ChatFrame);
             ChatFrame.Content = newGroup;
         }
         private void Button_ClickLogOut(object sender, RoutedEventArgs e)
@@ -93,7 +93,7 @@ namespace UI
 
         private void AddNewUser(object sender, RoutedEventArgs e)
         {
-            var newUser = new AddNewUserControl();
+            var newUser = new AddNewUserControl(nameForGroup);
             ChatFrame.Content = newUser;
         }
         private void LogOutGroup(object sender, RoutedEventArgs e)
