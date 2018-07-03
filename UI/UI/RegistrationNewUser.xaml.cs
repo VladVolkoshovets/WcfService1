@@ -55,7 +55,7 @@ namespace UI
                 {
                     ErrorLabel.Visibility = Visibility.Visible;
                     ErrorLabel.Content = "Username already in use";
-                    ErrorLabel.Foreground = Brushes.Green;
+                    ErrorLabel.Foreground = Brushes.Red;
          
                 }
               
@@ -65,7 +65,7 @@ namespace UI
             {
                 ErrorLabel.Visibility = Visibility.Visible;
                 ErrorLabel.Content = "Passwords don't match";
-                ErrorLabel.Foreground = Brushes.Green;
+                ErrorLabel.Foreground = Brushes.Red;
           
             }
            
