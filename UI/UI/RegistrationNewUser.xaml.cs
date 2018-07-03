@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,31 +36,50 @@ namespace UI
                 Regist_click(sender, e);
         }
 
-        private void Regist_click(object sender, RoutedEventArgs e)
+        private async void Regist_click(object sender, RoutedEventArgs e)
         {
             if (Pass1.Password == Pass2.Password)
             {
                 UserDTO user = new UserDTO()
                 {
                     UserName = UserName.Text,
-                    Papassword = Pass1.Password
+                    Papassword = Pass1.Password,
+                    Messages = new List<MessageDTO>(),
+                    ParticipantDTO = new List<ParticipantDTO>(),
                 };
                 if (_dal.AddUser(user))
                 {
-                    MessageBox.Show("The account was created successfully");
+
+                    ErrorLabel.Visibility = Visibility.Visible;
+                    ErrorLabel.Content = "Created successfully";
+                    ErrorLabel.Foreground = Brushes.Green;
+                    await Task.Run(()=>Thread.Sleep(1000));         
+                    ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new MainPage(user);
                 }
                 else
                 {
-                    MessageBox.Show("Username already in use");
+                    ErrorLabel.Visibility = Visibility.Visible;
+                    ErrorLabel.Content = "Username already in use";
+                    ErrorLabel.Foreground = Brushes.Red;
+         
                 }
               
                
             }
             else
             {
-               MessageBox.Show("Passwords don't match");
+                ErrorLabel.Visibility = Visibility.Visible;
+                ErrorLabel.Content = "Passwords don't match";
+                ErrorLabel.Foreground = Brushes.Red;
+          
             }
            
+        }
+
+
+        private void BackToLogIn(object sender, MouseButtonEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new LoginPage();
         }
     }
 }

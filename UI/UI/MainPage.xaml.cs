@@ -32,48 +32,39 @@ namespace UI
             {
 
                 if (item.RoomDTO.Messages != null)
-                    {
+                {
                     RoomButton roomButton = new RoomButton()
                     {
                         UserName = item.RoomDTO.Name,
-                            
-                            LastMessage = String.Empty
-                        };
 
-                        roomButton.LastMessage = item.RoomDTO.Messages.Last().Sender.UserName + ": " + item.RoomDTO.Messages.Last().Text;
-                        roomButton.Icon = item.RoomDTO.Messages.Last().Sender.Icon;
-                        roomButton.Tag = item.Id;
-                        roomButton.Click += new System.Windows.RoutedEventHandler((Sender, Args) =>
+                        LastMessage = String.Empty
+                    };
+
+                    roomButton.LastMessage = item.RoomDTO.Messages.Last().Sender.UserName + ": " + item.RoomDTO.Messages.Last().Text;
+                    roomButton.Icon = item.RoomDTO.Messages.Last().Sender.Icon;
+                    //roomButton.Tag = item.Id;
+                    roomButton.Click += new System.Windows.RoutedEventHandler((Sender, Args) =>
+                    {
+                        for (int i = 0; i < ButtonsPanel.Children.Count; i++)
                         {
-                            for (int i = 0; i < ButtonsPanel.Children.Count; i++)
+                            if (ButtonsPanel.Children[i] is RoomButton)
                             {
-                                if (ButtonsPanel.Children[i] is RoomButton)
-                                {
-                                    (ButtonsPanel.Children[i] as RoomButton).UnSelect();
-                                }
+                                (ButtonsPanel.Children[i] as RoomButton).UnSelect();
                             }
-                            roomButton.Select();
-                            ChatFrame.Content = new ChatControl(item.RoomDTO, CurrentUser);
-                        });
-                        roomButton.SetContent();
-                        ButtonsPanel.Children.Add(roomButton);
-                    }
+                        }
+                        roomButton.Select();
+                        ChatFrame.Content = new ChatControl(item.RoomDTO, CurrentUser);
+                    });
 
-                    //RadioButtonExperement roomButton = new RadioButtonExperement()
-                    //{
-                    //    UserName = item.Name,
-                    //    LastMessage = String.Empty
-                    //};
-                    //if (item.Messages != null)
-                    //{
-                    //
-                    //    roomButton.LastMessage = item.Messages.Last().Sender.UserName + ": " + item.Messages.Last().Text;
-                    //    roomButton.Icon = item.Messages.Last().Sender.Icon;
-                    //}
-                    //roomButton.SetContent();
-                    //ButtonsPanel.Children.Add(roomButton);
+                    roomButton.MouseRightButtonDown += new MouseButtonEventHandler((Sender, Args) =>
+                    {
+                        MessageBox.Show("sfsd");
+                    });
 
-                
+
+                    roomButton.SetContent();
+                    ButtonsPanel.Children.Add(roomButton);
+                }
 
             }
         }
@@ -88,7 +79,7 @@ namespace UI
             var newGroup = new AddGroup();
             ChatFrame.Content = newGroup;
         }
-          private void Button_ClickLogOut(object sender, RoutedEventArgs e)
+        private void Button_ClickLogOut(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new LoginPage();
         }

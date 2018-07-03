@@ -28,7 +28,7 @@
                             CornerRadius="10"
                             Padding="35 50 35 15"
                             Width="210"
-                            Margin="50 50 50 0">
+                            Margin="50 30 50 0">
 
                     <StackPanel>
 
@@ -44,7 +44,7 @@
 
 
 
-                        <Label></Label>
+                        <Label Name="ErrorLabel" HorizontalContentAlignment="Center" Foreground="Red" FontSize="11" Visibility="Hidden">Wrong data</Label>
                         <!-- Login button -->
                         <Button Foreground="{StaticResource icons}" Style="{StaticResource MaterialDesignRaisedAccentButton}" Content="Registration" Margin="10,0" VerticalAlignment="Center" Click="Regist_click"/>
 
@@ -52,7 +52,24 @@
 
 
                 </Border>
-
+                <Label  
+                            MouseDown="BackToLogIn"
+                            Name="CreatNewUser_Label"
+                            Background="Transparent"
+                            Content="Already have an account?" 
+                            HorizontalAlignment="Center">
+                    <Label.Style>
+                        <Style TargetType="Label">
+                            <Setter Property="Foreground" Value="{DynamicResource secondary_text}"></Setter>
+                            <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="{DynamicResource accent}"></Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Label.Style>
+                </Label>
             </StackPanel>
         </ScrollViewer>
     </Grid>

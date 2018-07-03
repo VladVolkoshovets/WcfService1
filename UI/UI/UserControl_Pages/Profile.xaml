@@ -18,9 +18,12 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Border Grid.Row="0" Grid.Column="0" Background="{DynamicResource primary_light}" CornerRadius="15" Margin="10">
-            <Image Name="IconUser" Margin="10" Source="/Images/Def_avatar.jpg" Stretch="Fill"></Image>
-        </Border>
+
+        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" FontSize="20" Margin="10" FontWeight="Bold" HorizontalAlignment="Left"><Run Text="Profile"/></TextBlock>
+        <Border Grid.Row="0" Grid.Column="0" Margin="20" CornerRadius="15"  Background="{DynamicResource primary_light}">
+                <Image x:Name="IconUser" Margin="10" Source="/Images/Def_avatar.jpg" Stretch="Fill"/>
+         </Border>
+ 
         <Button Grid.Column="1" FontSize="20" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="ChangePhoto_Click">Change Photo</Button>
         <Button Grid.Column="1" Grid.Row="3" Margin="10" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="18" Click="Button_Click_1">Save Change</Button>
         <TextBox MaxLength="15" materialDesign:HintAssist.Hint="mail" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="0" Grid.Row="1" Foreground="{DynamicResource primary_text}" FontSize="20" Margin="10,0" VerticalAlignment="Top"  />
@@ -30,5 +33,5 @@
 
     </Grid>
 
-    
+
 </UserControl>
