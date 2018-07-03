@@ -29,20 +29,6 @@ namespace UI
 
     
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.png) | *.jpg; *.jpeg; *.jpeg; *.png";
 
-            if (openFileDialog.ShowDialog() == true)
-            {
-                string strPath = openFileDialog.FileName;
-
-                ImageBrush brush = new ImageBrush();
-                brush.ImageSource = new BitmapImage(new Uri(strPath, UriKind.RelativeOrAbsolute));
-      
-                ImageGroup.Fill = brush;
-            }
-        }
     }
 }
