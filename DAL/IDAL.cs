@@ -13,5 +13,6 @@ namespace DAL
         List<User> GetUsers();
         User Autorisation(string UserName, string Password);
         bool AddUser(User user);
+        void SendMesage(Message message);
     }
 }

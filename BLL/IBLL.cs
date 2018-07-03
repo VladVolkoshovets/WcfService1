@@ -13,5 +13,6 @@ namespace BLL
         byte[] DefoultIcon();
         UserDTO Autorisation(string UserName, string Password);
         bool AddUser(UserDTO user);
+        void SendMesage(MessageDTO message);
     }
 }

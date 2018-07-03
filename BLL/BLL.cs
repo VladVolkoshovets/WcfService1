@@ -129,6 +129,14 @@ namespace BLL
 
             return userDTO;
         }
+        public void SendMesage(MessageDTO message)
+        {
+            Message messageDAL = new Message();
+            messageDAL = Convertation.ToMessageDAL(message);
+            messageDAL.Room.Id = message.RoomDTO.Id;
+            messageDAL.Sender.Id = message.Sender.Id;
+            _dal.SendMesage(messageDAL);
+        }
         public bool AddUser(UserDTO user)
         {
             return _dal.AddUser(Convertation.ToUserDAL(user));

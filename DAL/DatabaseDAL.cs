@@ -39,5 +39,12 @@ namespace DAL
             }
           
         }
+        public void SendMesage(Message message)
+        {
+            message.Room = _ctx.Rooms.FirstOrDefault(r => r.Id == message.Room.Id);
+            message.Sender = _ctx.Users.FirstOrDefault(u => u.Id == message.Sender.Id);
+            _ctx.Messages.Add(message);
+            _ctx.SaveChanges();
+        }
     }
 }
