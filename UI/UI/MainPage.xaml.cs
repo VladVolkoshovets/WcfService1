@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using UI.Controls;
+using UI.UserControl_Pages;
 
 namespace UI
 {
@@ -23,6 +24,7 @@ namespace UI
     public partial class MainPage : Page
     {
         public UserDTO CurrentUser { get; set; }
+        public static string nameForGroup;
 
         public MainPage(UserDTO userDTO)
         {
@@ -36,7 +38,7 @@ namespace UI
                     RoomButton roomButton = new RoomButton()
                     {
                         UserName = item.RoomDTO.Name,
-
+                        
                         LastMessage = String.Empty
                     };
 
@@ -58,7 +60,11 @@ namespace UI
 
                     roomButton.MouseRightButtonDown += new MouseButtonEventHandler((Sender, Args) =>
                     {
-                        MessageBox.Show("sfsd");
+                        nameForGroup = roomButton.UserName;
+                        ContextMenu cm = this.FindResource("cmButton") as ContextMenu;
+                        cm.PlacementTarget = Sender as Button;
+                        cm.IsOpen = true;
+
                     });
 
 
@@ -69,19 +75,54 @@ namespace UI
             }
         }
 
+        //Методи на кнопці меню
         private void Button_ClickProfile(object sender, RoutedEventArgs e)
         {
-            var profile = new Profile(CurrentUser);
+            var profile = new Profile();
             ChatFrame.Content = profile;
         }
         private void Button_Click_AddGroup(object sender, RoutedEventArgs e)
         {
-            var newGroup = new AddGroup();
+            var newGroup = new AddGroup(ChatFrame);
             ChatFrame.Content = newGroup;
         }
         private void Button_ClickLogOut(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new LoginPage();
+        }
+
+        //Методи на групі/чаті
+        private void AddNewUser(object sender, RoutedEventArgs e)
+        {
+            var newUser = new AddNewUserControl(nameForGroup);
+            ChatFrame.Content = newUser;
+        }
+        private void LogOutGroup(object sender, RoutedEventArgs e)
+        {
+            var newWindowCheack = new CheackFor_Delete_LogOut("Do you want log out!!!");
+
+            if (newWindowCheack.ShowDialog() == true)
+            {
+                //log out
+            }
+            else
+            {
+                //Not log out
+            }
+        }
+        private void Delete_Group_Room(object sender, RoutedEventArgs e)
+        {
+
+            var newWindowCheack = new CheackFor_Delete_LogOut("Do you want delete this!!!");
+
+            if(newWindowCheack.ShowDialog() == true)
+            {
+                //Delete
+            }
+            else
+            {
+                //Not Delete
+            }
         }
     }
 }

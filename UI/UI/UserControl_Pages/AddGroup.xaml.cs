@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UI.UserControl_Pages;
 
 namespace UI
 {
@@ -21,14 +22,29 @@ namespace UI
     /// </summary>
     public partial class AddGroup : UserControl
     {
-        public AddGroup()
+
+        private Frame chatFrane = new Frame();
+
+        public AddGroup(Frame _ChatFrame)
         {
             InitializeComponent();
+            chatFrane = _ChatFrame;
 
         }
 
-    
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(NameForNewGroup.Text == String.Empty)
+            {
+                ErrorName.Visibility = Visibility.Visible;
+                ErrorName.Content = "Name Group is Empty";
+            }
+            else
+            {
+                var newUser = new AddNewUserControl(NameForNewGroup.Text);
+                chatFrane.Content = newUser;
+            }
 
-
+        }
     }
 }

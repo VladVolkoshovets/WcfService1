@@ -23,7 +23,7 @@ namespace UI
     public partial class Profile : UserControl
     {
     
-        public Profile(UserDTO CurrentUser)
+        public Profile()
         {
             InitializeComponent();
 

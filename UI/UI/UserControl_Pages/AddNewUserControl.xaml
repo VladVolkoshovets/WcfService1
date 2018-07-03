@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="UI.UserControl_Pages.AddNewUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ControlTemplate TargetType="TextBox" x:Key="TextBoxTemplate" >
+            <Grid>
+                <TextBox Text="{Binding Text, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Text="Search"
+                Margin="5,0,5,0"
+                Foreground="#FF808080"
+                FontStyle="Normal"
+                IsHitTestVisible="False"
+                x:Name="UserMessage"
+                Visibility="Hidden"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="Text" Value=""/>
+                        <Condition Property="IsKeyboardFocusWithin" Value="False"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Visibility" TargetName="UserMessage" Value="Visible"/>
+                </MultiTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
+    
+    <Grid Background="{StaticResource colorProfile}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.12*"></RowDefinition>
+            <RowDefinition Height="0.12*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Name="NameForGroup" FontSize="20" FontWeight="Bold" Margin="10,0" Content="Group: Name_Group"></Label>
+        <TextBox FontSize="16" Margin="10,3" Template="{StaticResource TextBoxTemplate}" Foreground="{DynamicResource primary_text}" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Border Grid.Row="3" Margin="10" CornerRadius="15" Background="{DynamicResource primary_light}"></Border>
+        <ScrollViewer Grid.Row="3"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel Margin="20" Background="{DynamicResource icons}"></StackPanel>
+        </ScrollViewer>
+        <Button Grid.Column="1" Grid.Row="2" Content="Add New User to Group" Margin="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click"></Button>
+    </Grid>
+</UserControl>
