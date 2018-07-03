@@ -34,8 +34,17 @@ namespace UI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var newUser = new AddNewUserControl(NameForNewGroup.Text);
-            chatFrane.Content = newUser;
+            if(NameForNewGroup.Text == String.Empty)
+            {
+                ErrorName.Visibility = Visibility.Visible;
+                ErrorName.Content = "Name Group is Empty";
+            }
+            else
+            {
+                var newUser = new AddNewUserControl(NameForNewGroup.Text);
+                chatFrane.Content = newUser;
+            }
+
         }
     }
 }
