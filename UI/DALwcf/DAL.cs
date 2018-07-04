@@ -16,7 +16,7 @@ namespace DALwcf
     public class DAL : IDAL, ServiceReference1.IServiceCallback
     {
 
-        public static ObservableCollection<MessageDTO> Messages;
+        public ObservableCollection<MessageDTO> Messages;
         
         public static int i = 1;
         public static UserDTO CourentUser { get; set; }
@@ -28,7 +28,8 @@ namespace DALwcf
             instanceContext = new InstanceContext(this);
             _service = new ServiceReference1.ServiceClient(instanceContext);
             Messages = new ObservableCollection<MessageDTO>();
-           
+
+
         }
         //private readonly ServiceReference1.Service1Client _service = new ServiceReference1.Service1Client();
 

@@ -29,15 +29,15 @@ namespace UI
         public ChatControl()
         {
             InitializeComponent();
-            DALwcf.DAL.Messages.CollectionChanged = Names_CollectionChanged;
+            _dal.Messages.CollectionChanged += Names_CollectionChanged;
 
 
         }
 
         public static void Names_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            
-            MessageBox.Show(DALwcf.DAL.Messages.Count.ToString());
+            MessageBox.Show("Message");
+
             if (e.NewItems != null)
             {
                 MessageBox.Show("Message");
@@ -112,7 +112,7 @@ namespace UI
                 Text = Message.Text
             };
             _dal.SendMessage(message);
-            MessageBox.Show(DALwcf.DAL.i.ToString() + "     " + DALwcf.DAL.Messages.Count.ToString());
+            MessageBox.Show(DALwcf.DAL.i.ToString() + "     " + _dal.Messages.Count.ToString());
             Message.Text = String.Empty;
         }
 
