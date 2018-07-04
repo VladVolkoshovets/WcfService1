@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using System.Collections.Specialized;
 
 namespace UI
 {
@@ -27,9 +29,22 @@ namespace UI
         public ChatControl()
         {
             InitializeComponent();
+            DALwcf.DAL.Messages.CollectionChanged = Names_CollectionChanged;
+
+
         }
 
-        public ChatControl(RoomDTO thisRoom, UserDTO thisUser)
+        public static void Names_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            
+            MessageBox.Show(DALwcf.DAL.Messages.Count.ToString());
+            if (e.NewItems != null)
+            {
+                MessageBox.Show("Message");
+            }
+        }
+
+            public ChatControl(RoomDTO thisRoom, UserDTO thisUser)
         {
             InitializeComponent();
             CurrentUser = thisUser;
@@ -97,7 +112,7 @@ namespace UI
                 Text = Message.Text
             };
             _dal.SendMessage(message);
-            MessageBox.Show(DALwcf.DAL.i.ToString()); 
+            MessageBox.Show(DALwcf.DAL.i.ToString() + "     " + DALwcf.DAL.Messages.Count.ToString());
             Message.Text = String.Empty;
         }
 

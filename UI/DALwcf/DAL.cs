@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -14,6 +15,9 @@ namespace DALwcf
     //[CallbackBehavior (UseSynchronizationContext = false)]
     public class DAL : IDAL, ServiceReference1.IServiceCallback
     {
+
+        public static ObservableCollection<MessageDTO> Messages;
+        
         public static int i = 1;
         public static UserDTO CourentUser { get; set; }
         private readonly InstanceContext instanceContext;
@@ -23,12 +27,15 @@ namespace DALwcf
         {
             instanceContext = new InstanceContext(this);
             _service = new ServiceReference1.ServiceClient(instanceContext);
+            Messages = new ObservableCollection<MessageDTO>();
+           
         }
         //private readonly ServiceReference1.Service1Client _service = new ServiceReference1.Service1Client();
 
         public void FakeWork()
         {
             _service.SomeWork();
+
         }
 
         public void Autorisation(string UserName, string Password)
@@ -51,7 +58,8 @@ namespace DALwcf
         {
             if (CourentUser.ParticipantDTO.Select(p => p.RoomDTO.Id == message.Room.Id).FirstOrDefault())
             {
-                i = 100;
+                i = 1000;
+                Messages.Add(Convertation.ToMessageDTO(message));
             }
         }
 
