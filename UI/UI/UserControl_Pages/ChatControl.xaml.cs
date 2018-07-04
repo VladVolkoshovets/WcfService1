@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using System.Collections.Specialized;
 
 namespace UI
 {
@@ -21,19 +23,34 @@ namespace UI
     /// </summary>
     public partial class ChatControl : UserControl
     {
-        public UserDTO CurrentUser { get; set; }
-
+        public static UserDTO CurrentUser { get; set; }
+        public static RoomDTO CurrentRoom { get; set; }
+        private readonly DALwcf.DAL _dal = new DALwcf.DAL();
         public ChatControl()
         {
             InitializeComponent();
+            _dal.Messages.CollectionChanged += Names_CollectionChanged;
+
+
         }
 
-        public ChatControl(RoomDTO room, UserDTO thisUser)
+        public static void Names_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            MessageBox.Show("Message");
+
+            if (e.NewItems != null)
+            {
+                MessageBox.Show("Message");
+            }
+        }
+
+            public ChatControl(RoomDTO thisRoom, UserDTO thisUser)
         {
             InitializeComponent();
             CurrentUser = thisUser;
+            CurrentRoom = thisRoom;
             Grid grid = new Grid();
-            foreach (var item in room.Messages)
+            foreach (var item in CurrentRoom.Messages)
             {
                 Border border = new Border();
                 border.Padding = new System.Windows.Thickness(11);
@@ -59,25 +76,43 @@ namespace UI
             }
         }
 
-
-        private void Button_Click_SendMessage(object sender, RoutedEventArgs e)
+        public  void ReceiveMessageInCurrentRoom(MessageDTO message)
         {
             Border border = new Border();
-            border.OpacityMask = Brushes.White;
-            border.Opacity = 50;
             border.Padding = new System.Windows.Thickness(11);
             border.CornerRadius = new CornerRadius(8);
-            border.HorizontalAlignment = HorizontalAlignment.Right;
             border.MaxWidth = 350;
-            border.Background = System.Windows.Application.Current.Resources["background_message"] as Brush;
+            if (message.Sender.Id == CurrentUser.Id)
+            {
+                border.HorizontalAlignment = HorizontalAlignment.Right;
+                border.Background = System.Windows.Application.Current.Resources["background_message"] as Brush;
+            }
+            else
+            {
+                border.HorizontalAlignment = HorizontalAlignment.Left;
+                border.Background = System.Windows.Application.Current.Resources["icons"] as Brush;
+            }
             TextBlock textBlock = new TextBlock();
             textBlock.TextWrapping = TextWrapping.Wrap;
-            textBlock.Text = CurrentUser.UserName + ": " + Message.Text;
+            textBlock.Text = message.Sender.UserName + ": " + message.Text;
             border.Child = textBlock;
             border.Margin = new System.Windows.Thickness(4);
             StackPanel.Children.Add(border);
-
-
+        }
+        private void Button_Click_SendMessage(object sender, RoutedEventArgs e)
+        {
+            MessageDTO message = new MessageDTO()
+            {
+                Sender = new UserDTO()
+                {
+                    Id = CurrentUser.Id
+                },
+                RoomDTO = CurrentRoom,
+                SendTime = DateTime.Now,
+                Text = Message.Text
+            };
+            _dal.SendMessage(message);
+            MessageBox.Show(DALwcf.DAL.i.ToString() + "     " + _dal.Messages.Count.ToString());
             Message.Text = String.Empty;
         }
 

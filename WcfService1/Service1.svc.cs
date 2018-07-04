@@ -13,6 +13,8 @@ namespace WcfService1
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
+
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class Service1 : IService1
     {
         private BLL.BLL _bll = new BLL.BLL();
@@ -50,9 +52,12 @@ namespace WcfService1
             //return usersBuff.ToArray();
             return null;
             }
-        public User Autorisation(string UserName, string Password)
+
+        public void Autorisation(string UserName, string Password)
         {
+
             UserDTO userDTO = _bll.Autorisation(UserName, Password);
+
             User userDC = null;
             if (userDTO != null)
             {
@@ -71,40 +76,24 @@ namespace WcfService1
                         userDC.Participant.Last().Room.Messages.Last().Sender.Image = item2.Sender.Image;
                     }
                 };
-                //userDC = new User
-                //{
-                //    UserName = userDTO.UserName,
-                //    Id = userDTO.Id,
-                //    Participant = userDTO.ParticipantDTO.Select(p => new Participant
-                //    {
-                //        Id = p.Id,
-                //        Room = new Room
-                //        {
-                //            Id = p.RoomDTO.Id,
-                //            IsPrivate = p.RoomDTO.IsPrivate,
-                //            Name = p.RoomDTO.Name,
-                //            Messages = p.RoomDTO.Messages.Select(m => new Message
-                //            {
-                //                ID = m.ID,
-                //                Text = m.Text,
-                //                SendTime = m.SendTime,
-                //                Sender = new User
-                //                {
-                //                    Id = m.Sender.Id,
-                //                    Image = m.Sender.Image,
-                //                    UserName = m.Sender.UserName
-                //                },
-                //            }).ToList(),
-                //        },
-                //
-                //    }).ToList(),
-                //    Image = userDTO.Image
-                //
-                //};
-                
             }
-
-            return userDC;
+            OperationContext.Current.GetCallbackChannel<IServiceCallback>().ReceiveUser(userDC);
+        }
+        public void SendMesage(Message message)
+        {
+            MessageDTO messageDTO = new MessageDTO();
+            messageDTO = DataContracts.Convertation.ToMessageDTO(message);
+            messageDTO.RoomDTO = new RoomDTO()
+            {
+                Id = message.Room.Id
+            };
+            messageDTO.Sender = new UserDTO()
+            {
+                Id = message.Sender.Id
+            };
+           
+            _bll.SendMesage(messageDTO);
+            OperationContext.Current.GetCallbackChannel<IServiceCallback>().ReceiveMessage(message);
         }
         public bool AddUser(User user)
         {
@@ -164,4 +153,25 @@ namespace WcfService1
             return composite;
         }
     }
+    //public class Service2 : IService2
+    //{
+    //    private BLL.BLL _bll = new BLL.BLL();
+    //
+    //    public void SendMesage(Message message)
+    //    {
+    //        MessageDTO messageDTO = new MessageDTO();
+    //        messageDTO = DataContracts.Convertation.ToMessageDTO(message);
+    //        messageDTO.RoomDTO = new RoomDTO()
+    //        {
+    //            Id = message.Room.Id
+    //        };
+    //        messageDTO.Sender = new UserDTO()
+    //        {
+    //            Id = message.Sender.Id
+    //        };
+    //
+    //        _bll.SendMesage(messageDTO);
+    //        OperationContext.Current.GetCallbackChannel<IServiceCallback>().Receive(message);
+    //    }
+    //}
 }

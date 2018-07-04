@@ -86,10 +86,20 @@ namespace DALwcf.DTOs
             {
                 ID = messageDTO.ID,
                 Text = messageDTO.Text,
-                SendTime = messageDTO.SendTime
+                SendTime = messageDTO.SendTime,
+                Room = new Room()
+                {
+                    Id = messageDTO.RoomDTO.Id
+                },
+                Sender = new User()
+                {
+                    Id = messageDTO.Sender.Id
+                }
+                
             };
             return messageDAL;
         }
+
         public static Participant ToParticipantDAL(ParticipantDTO participantDTO)
         {
             Participant participantDAL = new Participant()
