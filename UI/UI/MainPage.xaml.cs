@@ -44,7 +44,6 @@ namespace UI
 
                     roomButton.LastMessage = item.RoomDTO.Messages.Last().Sender.UserName + ": " + item.RoomDTO.Messages.Last().Text;
                     roomButton.Icon = item.RoomDTO.Messages.Last().Sender.Icon;
-                    //roomButton.Tag = item.Id;
                     roomButton.Click += new System.Windows.RoutedEventHandler((Sender, Args) =>
                     {
                         for (int i = 0; i < ButtonsPanel.Children.Count; i++)
