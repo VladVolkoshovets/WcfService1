@@ -74,8 +74,12 @@ namespace BLL
             {
                 ID = messageDTO.ID,
                 Text = messageDTO.Text,
-                SendTime = messageDTO.SendTime
+                SendTime = messageDTO.SendTime,
+                Room = new Room(),
+                Sender = new User()
+                
             };
+
             return messageDAL;
         }
         public static Participant ToParticipantDAL(ParticipantDTO participantDTO)

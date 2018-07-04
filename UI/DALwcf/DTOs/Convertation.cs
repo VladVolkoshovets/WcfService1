@@ -90,6 +90,16 @@ namespace DALwcf.DTOs
             };
             return messageDAL;
         }
+        public static Message ToMessageDAL2(MessageDTO messageDTO)
+        {
+            Message messageDAL = new Message()
+            {
+                ID = messageDTO.ID,
+                Text = messageDTO.Text,
+                SendTime = messageDTO.SendTime
+            };
+            return messageDAL;
+        }
         public static Participant ToParticipantDAL(ParticipantDTO participantDTO)
         {
             Participant participantDAL = new Participant()

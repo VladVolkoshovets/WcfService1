@@ -21,8 +21,8 @@ namespace UI
     /// </summary>
     public partial class ChatControl : UserControl
     {
-        public UserDTO CurrentUser { get; set; }
-        public RoomDTO CurrentRoom { get; set; }
+        public static UserDTO CurrentUser { get; set; }
+        public static RoomDTO CurrentRoom { get; set; }
         public ChatControl()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace UI
             CurrentUser = thisUser;
             CurrentRoom = thisRoom;
             Grid grid = new Grid();
-            foreach (var item in thisRoom.Messages)
+            foreach (var item in CurrentRoom.Messages)
             {
                 Border border = new Border();
                 border.Padding = new System.Windows.Thickness(11);
@@ -60,7 +60,7 @@ namespace UI
             }
         }
 
-        public void ReceiveMessage(MessageDTO message)
+        public  void ReceiveMessageInCurrentRoom(MessageDTO message)
         {
             Border border = new Border();
             border.Padding = new System.Windows.Thickness(11);
@@ -88,16 +88,11 @@ namespace UI
             MessageDTO message = new MessageDTO()
             {
                 Sender = CurrentUser,
-                RoomDTO = 
-            }
-        
-
-            TextBlock textBlock = new TextBlock();
-            textBlock.TextWrapping = TextWrapping.Wrap;
-            textBlock.Text = CurrentUser.UserName + ": " + Message.Text;
+                RoomDTO = CurrentRoom,
+                SendTime = DateTime.Now,
+                Text = Message.Text
+            };
             
-
-
             Message.Text = String.Empty;
         }
 

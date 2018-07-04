@@ -11,21 +11,26 @@ namespace WcfService1
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
 
-
-    [ServiceContract(CallbackContract = typeof(IService1Callback))]
+    //[ServiceContract(CallbackContract = typeof(IServiceCallback), Name = "IServiceWCallback")]
+    //public interface IService2
+    //{
+    //    [OperationContract(IsOneWay = true)]
+    //    void SendMesage(Message message);
+    //}
+    [ServiceContract(Name = "IService", CallbackContract = typeof(IServiceCallback)) ]
     public interface IService1 
     {
         [OperationContract]
         void SomeWork();
-        [OperationContract]
+        [OperationContract(IsOneWay = false)]
         User[] GetUsers();
         [OperationContract]
         User Autorisation(string UserName, string Password);
         [OperationContract]
-        void SendMesage(Message message);
-        [OperationContract]
         bool AddUser(User user);
- 
+        [OperationContract(IsOneWay = true)]
+        void SendMesage(Message message);
+
         [OperationContract]
         string GetData(int value);
 
@@ -34,9 +39,10 @@ namespace WcfService1
 
         // TODO: Add your service operations here
     }
-    public interface IService1Callback
+
+    public interface IServiceCallback
     {
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void Receive(Message message);
     }
 

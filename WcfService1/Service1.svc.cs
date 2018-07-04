@@ -14,7 +14,7 @@ namespace WcfService1
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
 
-    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
+    //[ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class Service1 : IService1
     {
         private BLL.BLL _bll = new BLL.BLL();
@@ -112,10 +112,17 @@ namespace WcfService1
         {
             MessageDTO messageDTO = new MessageDTO();
             messageDTO = DataContracts.Convertation.ToMessageDTO(message);
-            messageDTO.RoomDTO.Id = message.Room.Id;
-            messageDTO.Sender.Id = message.Sender.Id;
+            messageDTO.RoomDTO = new RoomDTO()
+            {
+                Id = message.Room.Id
+            };
+            messageDTO.Sender = new UserDTO()
+            {
+                Id = message.Sender.Id
+            };
+           
             _bll.SendMesage(messageDTO);
-            OperationContext.Current.GetCallbackChannel<IService1Callback>().Receive(message);
+            OperationContext.Current.GetCallbackChannel<IServiceCallback>().Receive(message);
         }
         public bool AddUser(User user)
         {
@@ -175,4 +182,25 @@ namespace WcfService1
             return composite;
         }
     }
+    //public class Service2 : IService2
+    //{
+    //    private BLL.BLL _bll = new BLL.BLL();
+    //
+    //    public void SendMesage(Message message)
+    //    {
+    //        MessageDTO messageDTO = new MessageDTO();
+    //        messageDTO = DataContracts.Convertation.ToMessageDTO(message);
+    //        messageDTO.RoomDTO = new RoomDTO()
+    //        {
+    //            Id = message.Room.Id
+    //        };
+    //        messageDTO.Sender = new UserDTO()
+    //        {
+    //            Id = message.Sender.Id
+    //        };
+    //
+    //        _bll.SendMesage(messageDTO);
+    //        OperationContext.Current.GetCallbackChannel<IServiceCallback>().Receive(message);
+    //    }
+    //}
 }

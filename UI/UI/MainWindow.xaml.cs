@@ -37,6 +37,11 @@ namespace UI
             //
             //MessageBox.Show(res);
         }
+        public static void Cheker()
+        {
+            MessageBox.Show("Sended");
+
+        }
 
        
     }

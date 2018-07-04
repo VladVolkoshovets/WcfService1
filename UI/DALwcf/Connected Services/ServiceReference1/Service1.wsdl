@@ -1,135 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:53132/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:53132/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:53132/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfService1.DataContracts" />
-      <xsd:import schemaLocation="http://localhost:53132/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WcfService1" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfService1.DataContracts" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WcfService1" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IService1_SomeWork_InputMessage">
+  <wsdl:message name="IService_SomeWork_InputMessage">
     <wsdl:part name="parameters" element="tns:SomeWork" />
   </wsdl:message>
-  <wsdl:message name="IService1_SomeWork_OutputMessage">
+  <wsdl:message name="IService_SomeWork_OutputMessage">
     <wsdl:part name="parameters" element="tns:SomeWorkResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetUsers_InputMessage">
+  <wsdl:message name="IService_GetUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUsers" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetUsers_OutputMessage">
+  <wsdl:message name="IService_GetUsers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUsersResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_Autorisation_InputMessage">
+  <wsdl:message name="IService_Autorisation_InputMessage">
     <wsdl:part name="parameters" element="tns:Autorisation" />
   </wsdl:message>
-  <wsdl:message name="IService1_Autorisation_OutputMessage">
+  <wsdl:message name="IService_Autorisation_OutputMessage">
     <wsdl:part name="parameters" element="tns:AutorisationResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_AddUser_InputMessage">
+  <wsdl:message name="IService_AddUser_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUser" />
   </wsdl:message>
-  <wsdl:message name="IService1_AddUser_OutputMessage">
+  <wsdl:message name="IService_AddUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetData_InputMessage">
+  <wsdl:message name="IService_SendMesage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMesage" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetData" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetData_OutputMessage">
+  <wsdl:message name="IService_GetData_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDataResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetDataUsingDataContract_InputMessage">
+  <wsdl:message name="IService_GetDataUsingDataContract_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetDataUsingDataContract_OutputMessage">
+  <wsdl:message name="IService_GetDataUsingDataContract_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
   </wsdl:message>
-  <wsdl:portType name="IService1">
+  <wsdl:message name="IService_Receive_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:Receive" />
+  </wsdl:message>
+  <wsdl:portType name="IService">
     <wsdl:operation name="SomeWork">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SomeWork" message="tns:IService1_SomeWork_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SomeWorkResponse" message="tns:IService1_SomeWork_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SomeWork" message="tns:IService_SomeWork_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/SomeWorkResponse" message="tns:IService_SomeWork_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUsers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUsers" message="tns:IService1_GetUsers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUsersResponse" message="tns:IService1_GetUsers_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetUsers" message="tns:IService_GetUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetUsersResponse" message="tns:IService_GetUsers_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Autorisation">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Autorisation" message="tns:IService1_Autorisation_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AutorisationResponse" message="tns:IService1_Autorisation_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/Autorisation" message="tns:IService_Autorisation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AutorisationResponse" message="tns:IService_Autorisation_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddUser" message="tns:IService1_AddUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddUserResponse" message="tns:IService1_AddUser_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddUser" message="tns:IService_AddUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddUserResponse" message="tns:IService_AddUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMesage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SendMesage" message="tns:IService_SendMesage_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetData">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataResponse" message="tns:IService1_GetData_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetData" message="tns:IService_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetDataResponse" message="tns:IService_GetData_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetDataUsingDataContract">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContractResponse" message="tns:IService1_GetDataUsingDataContract_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetDataUsingDataContract" message="tns:IService_GetDataUsingDataContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetDataUsingDataContractResponse" message="tns:IService_GetDataUsingDataContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Receive">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/Receive" message="tns:IService_Receive_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
-    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+  <wsdl:binding name="NetTcpBinding_IService" type="tns:IService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="SomeWork">
-      <soap:operation soapAction="http://tempuri.org/IService1/SomeWork" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/SomeWork" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetUsers">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetUsers" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetUsers" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Autorisation">
-      <soap:operation soapAction="http://tempuri.org/IService1/Autorisation" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/Autorisation" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="AddUser">
-      <soap:operation soapAction="http://tempuri.org/IService1/AddUser" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/AddUser" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetData">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetData" style="document" />
+    <wsdl:operation name="SendMesage">
+      <soap12:operation soapAction="http://tempuri.org/IService/SendMesage" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetData">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetDataUsingDataContract">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetDataUsingDataContract" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IService/GetDataUsingDataContract" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Receive">
+      <soap12:operation soapAction="http://tempuri.org/IService/Receive" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="Service1">
-    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
-      <soap:address location="http://localhost:53132/Service1.svc" />
+    <wsdl:port name="NetTcpBinding_IService" binding="tns:NetTcpBinding_IService">
+      <soap12:address location="net.tcp://localhost:8090/ReportService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/ReportService</wsa10:Address>
+      </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
