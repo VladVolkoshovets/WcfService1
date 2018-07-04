@@ -1,6 +1,7 @@
 ﻿using DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,32 +9,36 @@ using System.Threading.Tasks;
 namespace DAL
 {
     public class DatabaseDAL : IDAL
-    { 
-        private readonly MessengerModel _ctx = new MessengerModel();
+    {
+        private readonly DbContext _ctx;
+        public DatabaseDAL(DbContext dbContext)
+        {
+            _ctx = dbContext;
+        }
 
         public void SomeWork()
         {
-            _ctx.Messages.First();
+            _ctx.Set<Message>().First();
         }
         public List<User> GetUsers()
         {
-            return _ctx.Users.ToList();
+            return _ctx.Set<User>().ToList();
         }
         public User Autorisation(string UserName, string Password)
         {
-            User user = _ctx.Users.FirstOrDefault(u => u.UserName == UserName && u.Papassword == Password); 
+            User user = _ctx.Set<User>().FirstOrDefault(u => u.UserName == UserName && u.Papassword == Password); 
             return user;
         }
         public bool AddUser(User user)
         {
            
-            if (_ctx.Users.FirstOrDefault(u => u.UserName.Equals(user.UserName)) != null)
+            if (_ctx.Set<User>().FirstOrDefault(u => u.UserName.Equals(user.UserName)) != null)
             {
                 return false;
             }
             else
             {
-                _ctx.Users.Add(user);
+                _ctx.Set<User>().Add(user);
                 _ctx.SaveChanges();
                 return true;
             }
@@ -41,9 +46,9 @@ namespace DAL
         }
         public void SendMesage(Message message)
         {
-            message.Room = _ctx.Rooms.FirstOrDefault(r => r.Id == message.Room.Id);
-            message.Sender = _ctx.Users.FirstOrDefault(u => u.Id == message.Sender.Id);
-            _ctx.Messages.Add(message);
+            message.Room = _ctx.Set<Room>().FirstOrDefault(r => r.Id == message.Room.Id);
+            message.Sender = _ctx.Set<User>().FirstOrDefault(u => u.Id == message.Sender.Id);
+            _ctx.Set<Message>().Add(message);
             _ctx.SaveChanges();
         }
     }

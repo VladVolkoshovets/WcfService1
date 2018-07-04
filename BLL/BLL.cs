@@ -14,7 +14,11 @@ namespace BLL
 
     public class BLL : IBLL
     {
-        private readonly DatabaseDAL _dal = new DatabaseDAL();
+        private readonly IDAL _dal;
+        public BLL(IDAL dAL)
+        {
+            _dal = dAL;
+        }
         public void SomeWork()
         {
             _dal.SomeWork();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    interface IBLL
+    public interface IBLL
     {
         void SomeWork();
         byte[] DefoultIcon();

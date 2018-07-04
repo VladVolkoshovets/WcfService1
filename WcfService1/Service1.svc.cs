@@ -17,7 +17,17 @@ namespace WcfService1
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class Service1 : IService1
     {
-        private BLL.BLL _bll = new BLL.BLL();
+        private BLL.IBLL _bll;
+
+        public Service1()
+        {
+
+        }
+        public Service1(IBLL bLL)
+        {
+            _bll = bLL;
+        }
+
         public void SomeWork()
         {
             _bll.SomeWork();

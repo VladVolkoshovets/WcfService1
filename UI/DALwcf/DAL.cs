@@ -14,6 +14,7 @@ namespace DALwcf
     //[CallbackBehavior (UseSynchronizationContext = false)]
     public class DAL : IDAL, ServiceReference1.IServiceCallback
     {
+        public static IObservable<MessageDTO> Messages;
         public static int i = 1;
         public static UserDTO CourentUser { get; set; }
         private readonly InstanceContext instanceContext;
@@ -51,7 +52,7 @@ namespace DALwcf
         {
             if (CourentUser.ParticipantDTO.Select(p => p.RoomDTO.Id == message.Room.Id).FirstOrDefault())
             {
-                i = 100;
+                
             }
         }
 
