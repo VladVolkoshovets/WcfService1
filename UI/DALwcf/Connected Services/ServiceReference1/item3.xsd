@@ -7,23 +7,6 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="SomeWorkResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetUsers">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetUsersResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WcfService1.DataContracts" minOccurs="0" name="GetUsersResult" nillable="true" type="q1:ArrayOfUser" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="Autorisation">
     <xs:complexType>
       <xs:sequence>
@@ -32,17 +15,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AutorisationResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfService1.DataContracts" minOccurs="0" name="AutorisationResult" nillable="true" type="q2:User" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="AddUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfService1.DataContracts" minOccurs="0" name="user" nillable="true" type="q3:User" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WcfService1.DataContracts" minOccurs="0" name="user" nillable="true" type="q1:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -56,7 +32,7 @@
   <xs:element name="SendMesage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfService1.DataContracts" minOccurs="0" name="message" nillable="true" type="q4:Message" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfService1.DataContracts" minOccurs="0" name="message" nillable="true" type="q2:Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -77,21 +53,28 @@
   <xs:element name="GetDataUsingDataContract">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="composite" nillable="true" type="q5:CompositeType" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="composite" nillable="true" type="q3:CompositeType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetDataUsingDataContractResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q6:CompositeType" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfService1" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q4:CompositeType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Receive">
+  <xs:element name="ReceiveMessage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfService1.DataContracts" minOccurs="0" name="message" nillable="true" type="q7:Message" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfService1.DataContracts" minOccurs="0" name="message" nillable="true" type="q5:Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReceiveUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfService1.DataContracts" minOccurs="0" name="user" nillable="true" type="q6:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

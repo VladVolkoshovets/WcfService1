@@ -23,6 +23,7 @@ namespace UI
     {
         public static UserDTO CurrentUser { get; set; }
         public static RoomDTO CurrentRoom { get; set; }
+        private readonly DALwcf.DAL _dal = new DALwcf.DAL();
         public ChatControl()
         {
             InitializeComponent();
@@ -87,12 +88,16 @@ namespace UI
         {
             MessageDTO message = new MessageDTO()
             {
-                Sender = CurrentUser,
+                Sender = new UserDTO()
+                {
+                    Id = CurrentUser.Id
+                },
                 RoomDTO = CurrentRoom,
                 SendTime = DateTime.Now,
                 Text = Message.Text
             };
-            
+            _dal.SendMessage(message);
+            MessageBox.Show(DALwcf.DAL.i.ToString()); 
             Message.Text = String.Empty;
         }
 

@@ -591,23 +591,17 @@ namespace DALwcf.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService", CallbackContract=typeof(DALwcf.ServiceReference1.IServiceCallback))]
     public interface IService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SomeWork", ReplyAction="http://tempuri.org/IService/SomeWorkResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SomeWork")]
         void SomeWork();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SomeWork", ReplyAction="http://tempuri.org/IService/SomeWorkResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/SomeWork")]
         System.Threading.Tasks.Task SomeWorkAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsers", ReplyAction="http://tempuri.org/IService/GetUsersResponse")]
-        DALwcf.ServiceReference1.User[] GetUsers();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Autorisation")]
+        void Autorisation(string UserName, string Password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetUsers", ReplyAction="http://tempuri.org/IService/GetUsersResponse")]
-        System.Threading.Tasks.Task<DALwcf.ServiceReference1.User[]> GetUsersAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Autorisation", ReplyAction="http://tempuri.org/IService/AutorisationResponse")]
-        DALwcf.ServiceReference1.User Autorisation(string UserName, string Password);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Autorisation", ReplyAction="http://tempuri.org/IService/AutorisationResponse")]
-        System.Threading.Tasks.Task<DALwcf.ServiceReference1.User> AutorisationAsync(string UserName, string Password);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Autorisation")]
+        System.Threading.Tasks.Task AutorisationAsync(string UserName, string Password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AddUser", ReplyAction="http://tempuri.org/IService/AddUserResponse")]
         bool AddUser(DALwcf.ServiceReference1.User user);
@@ -637,8 +631,11 @@ namespace DALwcf.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IServiceCallback {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/Receive")]
-        void Receive(DALwcf.ServiceReference1.Message message);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveMessage")]
+        void ReceiveMessage(DALwcf.ServiceReference1.Message message);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IService/ReceiveUser")]
+        void ReceiveUser(DALwcf.ServiceReference1.User user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -677,19 +674,11 @@ namespace DALwcf.ServiceReference1 {
             return base.Channel.SomeWorkAsync();
         }
         
-        public DALwcf.ServiceReference1.User[] GetUsers() {
-            return base.Channel.GetUsers();
+        public void Autorisation(string UserName, string Password) {
+            base.Channel.Autorisation(UserName, Password);
         }
         
-        public System.Threading.Tasks.Task<DALwcf.ServiceReference1.User[]> GetUsersAsync() {
-            return base.Channel.GetUsersAsync();
-        }
-        
-        public DALwcf.ServiceReference1.User Autorisation(string UserName, string Password) {
-            return base.Channel.Autorisation(UserName, Password);
-        }
-        
-        public System.Threading.Tasks.Task<DALwcf.ServiceReference1.User> AutorisationAsync(string UserName, string Password) {
+        public System.Threading.Tasks.Task AutorisationAsync(string UserName, string Password) {
             return base.Channel.AutorisationAsync(UserName, Password);
         }
         

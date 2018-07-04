@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using DALwcf;
 using DALwcf.DTOs;
 using MaterialDesignColors;
+using System.Threading;
 
 namespace UI
 {
@@ -23,20 +24,21 @@ namespace UI
     /// </summary>
     public partial class LoginPage : Page
     {
-        private readonly DAL _dal = new DAL();
+        private readonly DAL _dal;
 
         public LoginPage()
         {
-           InitializeComponent();
+            _dal = new DAL();
+            InitializeComponent();
         }
 
-        private void SignInButton_Click(object sender, RoutedEventArgs e)
+        private async void SignInButton_Click(object sender, RoutedEventArgs e)
         {
-            UserDTO userDTO = null;
-            userDTO = _dal.Autorisation(UserName.Text, Password.Password);
-            if (userDTO != null)
+            _dal.Autorisation(UserName.Text, Password.Password);
+            await Task.Run(() => Thread.Sleep(100));
+            if (_dal.CourentUser != null)
             {
-                ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new MainPage(userDTO);
+                ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new MainPage(_dal.CourentUser);
             }
             else
             {

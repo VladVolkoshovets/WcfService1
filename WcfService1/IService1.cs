@@ -20,12 +20,12 @@ namespace WcfService1
     [ServiceContract(Name = "IService", CallbackContract = typeof(IServiceCallback)) ]
     public interface IService1 
     {
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void SomeWork();
-        [OperationContract(IsOneWay = false)]
+        
         User[] GetUsers();
-        [OperationContract]
-        User Autorisation(string UserName, string Password);
+        [OperationContract(IsOneWay = true)]
+        void Autorisation(string UserName, string Password);
         [OperationContract]
         bool AddUser(User user);
         [OperationContract(IsOneWay = true)]
@@ -43,7 +43,9 @@ namespace WcfService1
     public interface IServiceCallback
     {
         [OperationContract(IsOneWay = true)]
-        void Receive(Message message);
+        void ReceiveMessage(Message message);
+        [OperationContract(IsOneWay = true)]
+        void ReceiveUser(User user);
     }
 
         // Use a data contract as illustrated in the sample below to add composite types to service operations.

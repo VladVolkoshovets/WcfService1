@@ -19,20 +19,8 @@
   <wsdl:message name="IService_SomeWork_InputMessage">
     <wsdl:part name="parameters" element="tns:SomeWork" />
   </wsdl:message>
-  <wsdl:message name="IService_SomeWork_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SomeWorkResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetUsers_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetUsers" />
-  </wsdl:message>
-  <wsdl:message name="IService_GetUsers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
-  </wsdl:message>
   <wsdl:message name="IService_Autorisation_InputMessage">
     <wsdl:part name="parameters" element="tns:Autorisation" />
-  </wsdl:message>
-  <wsdl:message name="IService_Autorisation_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AutorisationResponse" />
   </wsdl:message>
   <wsdl:message name="IService_AddUser_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUser" />
@@ -55,21 +43,18 @@
   <wsdl:message name="IService_GetDataUsingDataContract_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_Receive_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:Receive" />
+  <wsdl:message name="IService_ReceiveMessage_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveMessage" />
+  </wsdl:message>
+  <wsdl:message name="IService_ReceiveUser_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveUser" />
   </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="SomeWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/SomeWork" message="tns:IService_SomeWork_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/SomeWorkResponse" message="tns:IService_SomeWork_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUsers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetUsers" message="tns:IService_GetUsers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetUsersResponse" message="tns:IService_GetUsers_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Autorisation">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/Autorisation" message="tns:IService_Autorisation_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/AutorisationResponse" message="tns:IService_Autorisation_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/AddUser" message="tns:IService_AddUser_InputMessage" />
@@ -86,8 +71,11 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetDataUsingDataContract" message="tns:IService_GetDataUsingDataContract_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/GetDataUsingDataContractResponse" message="tns:IService_GetDataUsingDataContract_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Receive">
-      <wsdl:output wsaw:Action="http://tempuri.org/IService/Receive" message="tns:IService_Receive_OutputCallbackMessage" />
+    <wsdl:operation name="ReceiveMessage">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveMessage" message="tns:IService_ReceiveMessage_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveUser">
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/ReceiveUser" message="tns:IService_ReceiveUser_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IService" type="tns:IService">
@@ -98,27 +86,12 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUsers">
-      <soap12:operation soapAction="http://tempuri.org/IService/GetUsers" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Autorisation">
       <soap12:operation soapAction="http://tempuri.org/IService/Autorisation" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="AddUser">
       <soap12:operation soapAction="http://tempuri.org/IService/AddUser" style="document" />
@@ -153,8 +126,14 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Receive">
-      <soap12:operation soapAction="http://tempuri.org/IService/Receive" style="document" />
+    <wsdl:operation name="ReceiveMessage">
+      <soap12:operation soapAction="http://tempuri.org/IService/ReceiveMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveUser">
+      <soap12:operation soapAction="http://tempuri.org/IService/ReceiveUser" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
