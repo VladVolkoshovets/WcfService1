@@ -36,9 +36,9 @@ namespace UI
         {
             _dal.Autorisation(UserName.Text, Password.Password);
             await Task.Run(() => Thread.Sleep(100));
-            if (_dal.CourentUser != null)
+            if (DAL.CourentUser != null)
             {
-                ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new MainPage(_dal.CourentUser);
+                ((MainWindow)Application.Current.MainWindow).MainFrame.Content = new MainPage(DAL.CourentUser);
             }
             else
             {

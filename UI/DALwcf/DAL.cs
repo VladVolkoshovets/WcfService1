@@ -15,7 +15,7 @@ namespace DALwcf
     public class DAL : IDAL, ServiceReference1.IServiceCallback
     {
         public static int i = 1;
-        public UserDTO CourentUser { get; set; }
+        public static UserDTO CourentUser { get; set; }
         private readonly InstanceContext instanceContext;
         private readonly ServiceClient _service;
 
@@ -40,7 +40,7 @@ namespace DALwcf
         public void SendMessage(MessageDTO messageDTO)
         {
 
-            _service.SendMesage(Convertation.ToMessageDAL2(messageDTO));
+            _service.SendMesage(Convertation.ToMessageDAL(messageDTO));
         }
         public bool AddUser(UserDTO user)
         {
