@@ -25,16 +25,16 @@ namespace UI
     {
         public static UserDTO CurrentUser { get; set; }
         public static RoomDTO CurrentRoom { get; set; }
-        private readonly DALwcf.DAL _dal = new DALwcf.DAL();
+        private DALwcf.DAL _dal = new DALwcf.DAL();
         public ChatControl()
         {
             InitializeComponent();
-            _dal.Messages.CollectionChanged += Names_CollectionChanged;
+            _dal.Messages.CollectionChanged += CollectionChangedMethod;
 
 
         }
 
-        public static void Names_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        public static void CollectionChangedMethod(object sender, NotifyCollectionChangedEventArgs e)
         {
             MessageBox.Show("Message");
 
@@ -50,6 +50,7 @@ namespace UI
             CurrentUser = thisUser;
             CurrentRoom = thisRoom;
             Grid grid = new Grid();
+            _dal.Messages.CollectionChanged += CollectionChangedMethod;
             foreach (var item in CurrentRoom.Messages)
             {
                 Border border = new Border();
@@ -101,6 +102,7 @@ namespace UI
         }
         private void Button_Click_SendMessage(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show(DALwcf.DAL.i.ToString() + "     " + _dal.Messages.Count.ToString());
             MessageDTO message = new MessageDTO()
             {
                 Sender = new UserDTO()
@@ -112,7 +114,7 @@ namespace UI
                 Text = Message.Text
             };
             _dal.SendMessage(message);
-            MessageBox.Show(DALwcf.DAL.i.ToString() + "     " + _dal.Messages.Count.ToString());
+            
             Message.Text = String.Empty;
         }
 

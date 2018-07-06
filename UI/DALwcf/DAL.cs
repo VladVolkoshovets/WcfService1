@@ -31,6 +31,7 @@ namespace DALwcf
 
 
         }
+
         //private readonly ServiceReference1.Service1Client _service = new ServiceReference1.Service1Client();
 
         public void FakeWork()
@@ -59,8 +60,10 @@ namespace DALwcf
         {
             if (CourentUser.ParticipantDTO.Select(p => p.RoomDTO.Id == message.Room.Id).FirstOrDefault())
             {
+                
                 i = 1000;
                 Messages.Add(Convertation.ToMessageDTO(message));
+                //Messages.RemoveAt(0);
             }
         }
 
