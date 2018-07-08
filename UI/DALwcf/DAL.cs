@@ -16,7 +16,7 @@ namespace DALwcf
     public class DAL : IDAL, ServiceReference1.IServiceCallback
     {
 
-        public ObservableCollection<MessageDTO> Messages;
+        public static ObservableCollection<MessageDTO> Messages;
         
         public static int i = 1;
         public static UserDTO CourentUser { get; set; }
@@ -48,8 +48,9 @@ namespace DALwcf
         }
         public void SendMessage(MessageDTO messageDTO)
         {
-
-            _service.SendMesage(Convertation.ToMessageDAL(messageDTO));
+            Message message = Convertation.ToMessageDAL(messageDTO);
+            message.Sender = Convertation.ToUserDAL(messageDTO.Sender);
+            _service.SendMesage(message);
         }
         public bool AddUser(UserDTO user)
         {
@@ -58,13 +59,16 @@ namespace DALwcf
 
         public void ReceiveMessage(Message message)
         {
-            if (CourentUser.ParticipantDTO.Select(p => p.RoomDTO.Id == message.Room.Id).FirstOrDefault())
+            if (CourentUser.ParticipantDTO.Select(p => p.RoomDTO.Id == message.Room.Id).Any()) // переробить умову
             {
-                
-                i = 1000;
-                Messages.Add(Convertation.ToMessageDTO(message));
+
+                i ++;
+                MessageDTO messageDTO = Convertation.ToMessageDTO(message);
+                messageDTO.Sender = Convertation.ToUserDTO(message.Sender);
+                Messages.Add(messageDTO);
                 //Messages.RemoveAt(0);
             }
+            else i = 50;
         }
 
         public void ReceiveUser(User userDAL)

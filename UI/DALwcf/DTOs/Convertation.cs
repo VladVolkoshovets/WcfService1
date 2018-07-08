@@ -9,6 +9,8 @@ namespace DALwcf.DTOs
 {
     class Convertation
     {
+        private static readonly Uri bitmapImage;
+
         public static System.Windows.Media.Imaging.BitmapImage ConvertToImage(byte[] image)
         {
             System.Windows.Media.Imaging.BitmapImage GetImage = new System.Windows.Media.Imaging.BitmapImage();
@@ -21,6 +23,20 @@ namespace DALwcf.DTOs
             }
 
             return GetImage;
+        }
+        public static byte[] ConvertToByteArr(System.Windows.Media.Imaging.BitmapImage image)
+        {
+
+            byte[] data;
+            System.Windows.Media.Imaging.JpegBitmapEncoder encoder = new System.Windows.Media.Imaging.JpegBitmapEncoder();
+            encoder.Frames.Add(System.Windows.Media.Imaging.BitmapFrame.Create(image));
+            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+            {
+                encoder.Save(ms);
+                data = ms.ToArray();
+            }
+
+            return data;
         }
         public static UserDTO ToUserDTO(User userDAL)
         {
@@ -72,11 +88,11 @@ namespace DALwcf.DTOs
         public static User ToUserDAL(UserDTO userDTO)
         {
             User userDAL = new User
-            { 
+            {
                 Id = userDTO.Id,
                 UserName = userDTO.UserName,
-                Papassword = userDTO.Papassword
-                //Image = userDTO.Image
+                Papassword = userDTO.Papassword,
+                Image = ConvertToByteArr(userDTO.Icon)
             };
             return userDAL;
         }

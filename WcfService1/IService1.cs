@@ -18,6 +18,7 @@ namespace WcfService1
     //    void SendMesage(Message message);
     //}
     [ServiceContract(Name = "IService", CallbackContract = typeof(IServiceCallback)) ]
+
     public interface IService1 
     {
         [OperationContract(IsOneWay = true)]
